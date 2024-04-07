@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\DigitalTwins.Common\DigitalTwins.Common.csproj" />
+    </ItemGroup>
+
 </Project>
