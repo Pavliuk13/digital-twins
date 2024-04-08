@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DigitalTwins.DAL.Context.Configurations;
 
-public sealed class RoleConfig : IEntityTypeConfiguration<Role>
+public class RoleConfig : IEntityTypeConfiguration<Role>
 {
     public void Configure(EntityTypeBuilder<Role> builder)
     {
@@ -13,9 +13,5 @@ public sealed class RoleConfig : IEntityTypeConfiguration<Role>
         builder.Property(x => x.Name)
             .IsRequired()
             .HasMaxLength(20);
-
-        builder.HasMany(x => x.Organizations)
-            .WithMany(y => y.Roles)
-            .UsingEntity<RoleOrganization>();
     }
 }

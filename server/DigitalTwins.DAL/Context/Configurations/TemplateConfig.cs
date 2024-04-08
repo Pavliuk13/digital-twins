@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DigitalTwins.DAL.Context.Configurations;
 
-public sealed class TemplateConfig : IEntityTypeConfiguration<Template>
+public class TemplateConfig : IEntityTypeConfiguration<Template>
 {
     public void Configure(EntityTypeBuilder<Template> builder)
     {

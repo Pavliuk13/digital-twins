@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DigitalTwins.DAL.Context.Configurations;
 
-public sealed class UserLocationConfig : IEntityTypeConfiguration<UserLocation>
+public class UserLocationConfig : IEntityTypeConfiguration<UserLocation>
 {
     public void Configure(EntityTypeBuilder<UserLocation> builder)
     {

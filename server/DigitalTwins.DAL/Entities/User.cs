@@ -2,7 +2,7 @@ using DigitalTwins.Common.Enums;
 
 namespace DigitalTwins.DAL.Entities;
 
-public sealed class User
+public class User
 {
     public long Id { get; set; }
 
@@ -20,13 +20,11 @@ public sealed class User
 
     public string? InvitationCode { get; set; }
 
-    public IEnumerable<Role> Roles { get; set; } = null!;
-
-    public IEnumerable<Organization> Organizations { get; set; } = null!;
-
     public IEnumerable<Template> Templates { get; set; } = null!;
     
     public IEnumerable<Device> Devices { get; set; } = null!;
     
     public IEnumerable<Location> Locations { get; set; } = null!;
+    
+    public IEnumerable<UserOrganizationRole> UserOrganizationRoles { get; set; } = null!;
 }

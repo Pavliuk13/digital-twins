@@ -1,10 +1,12 @@
 namespace DigitalTwins.DAL.Entities;
 
-public sealed class Permission
+public class Permission
 {
     public long Id { get; set; }
 
-    public string Name { get; set; } = string.Empty;
+    public string Key { get; set; } = string.Empty;
+    
+    public string Value { get; set; } = string.Empty;
 
-    public IEnumerable<Role> Roles { get; set; } = null!;
+    public IEnumerable<OrganizationPermissionRole> OrganizationPermissionRoles { get; set; } = null!;
 }

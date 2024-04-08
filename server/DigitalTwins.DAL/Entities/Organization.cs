@@ -1,6 +1,6 @@
 namespace DigitalTwins.DAL.Entities;
 
-public sealed class Organization
+public class Organization
 {
     public long Id { get; set; }
 
@@ -16,9 +16,9 @@ public sealed class Organization
 
     public IEnumerable<Location> Locations { get; set; } = null!;
 
-    public IEnumerable<User> Users { get; set; } = null!;
-
-    public IEnumerable<Role> Roles { get; set; } = null!;
-    
     public IEnumerable<Template> Templates { get; set; } = null!;
+    
+    public IEnumerable<UserOrganizationRole> UserOrganizationRoles { get; set; } = null!;
+    
+    public IEnumerable<OrganizationPermissionRole> OrganizationPermissionRoles { get; set; } = null!;
 }

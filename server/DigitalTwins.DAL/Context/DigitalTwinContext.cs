@@ -13,6 +13,8 @@ public sealed class DigitalTwinContext : DbContext
     public DbSet<Role> Roles { get; }
     public DbSet<Template> Templates { get; }
     public DbSet<User> Users { get; }
+    public DbSet<UserOrganizationRole> UserOrganizationRoles { get; }
+    public DbSet<OrganizationPermissionRole> OrganizationPermissionRoles { get; }
 
     public DigitalTwinContext(DbContextOptions<DigitalTwinContext> options) : base(options)
     {
@@ -24,10 +26,13 @@ public sealed class DigitalTwinContext : DbContext
         Roles = Set<Role>();
         Templates = Set<Template>();
         Users = Set<User>();
+        UserOrganizationRoles = Set<UserOrganizationRole>();
+        OrganizationPermissionRoles = Set<OrganizationPermissionRole>();
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Configure();
+        modelBuilder.SetDefaultValues();
     }
 }

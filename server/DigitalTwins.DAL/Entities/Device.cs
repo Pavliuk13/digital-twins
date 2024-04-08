@@ -2,7 +2,7 @@ using DigitalTwins.Common.Enums;
 
 namespace DigitalTwins.DAL.Entities;
 
-public sealed class Device
+public class Device
 {
     public long Id { get; set; }
 

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DigitalTwins.DAL.Context.Configurations;
 
-public sealed class UserRoleConfig : IEntityTypeConfiguration<UserRole>
+public class UserRoleConfig : IEntityTypeConfiguration<UserRole>
 {
     public void Configure(EntityTypeBuilder<UserRole> builder)
     {

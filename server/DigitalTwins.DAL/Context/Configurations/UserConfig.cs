@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DigitalTwins.DAL.Context.Configurations;
 
-public sealed class UserConfig : IEntityTypeConfiguration<User>
+public class UserConfig : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {
@@ -21,9 +21,6 @@ public sealed class UserConfig : IEntityTypeConfiguration<User>
             .IsRequired()
             .HasMaxLength(150);
 
-        builder.HasMany(x => x.Roles)
-            .WithMany(y => y.Users)
-            .UsingEntity<UserRole>();
         
         builder.HasMany(x => x.Locations)
             .WithMany(y => y.Users)

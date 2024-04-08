@@ -1,6 +1,6 @@
 namespace DigitalTwins.DAL.Entities;
 
-public sealed class UserLocation
+public class UserLocation
 {
     public long UserId { get; set; }
 

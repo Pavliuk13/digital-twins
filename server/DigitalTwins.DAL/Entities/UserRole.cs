@@ -1,6 +1,6 @@
 namespace DigitalTwins.DAL.Entities;
 
-public sealed class UserRole
+public class UserRole
 {
     public long UserId { get; set; }
 

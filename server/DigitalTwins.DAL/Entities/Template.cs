@@ -2,7 +2,7 @@ using DigitalTwins.Common.Enums;
 
 namespace DigitalTwins.DAL.Entities;
 
-public sealed class Template
+public class Template
 {
     public long Id { get; set; }
 

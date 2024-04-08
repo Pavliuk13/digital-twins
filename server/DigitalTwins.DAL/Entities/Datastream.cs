@@ -2,7 +2,7 @@ using DigitalTwins.Common.Enums;
 
 namespace DigitalTwins.DAL.Entities;
 
-public sealed class Datastream
+public class Datastream
 {
     public long Id { get; set; }
 

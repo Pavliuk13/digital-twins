@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DigitalTwins.DAL.Context.Configurations;
 
-public sealed class DatastreamConfig : IEntityTypeConfiguration<Datastream>
+public class DatastreamConfig : IEntityTypeConfiguration<Datastream>
 {
     public void Configure(EntityTypeBuilder<Datastream> builder)
     {
