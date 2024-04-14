@@ -1,0 +1,50 @@
+// fonts
+$font_sans_serif: sans-serif;
+$font_noto_sans: 'Noto Sans'; // body
+$font_catamaran: 'Catamaran'; // heading
+$font_body: $font_noto_sans, $font_sans_serif;
+
+// font-size
+$font_size_12: 12px;
+$font_size_14: 14px;
+$font_size_16: 16px;
+$font_size_18: 18px;
+$font_size_22: 22px;
+$font_size_24: 24px;
+$font_size_26: 26px;
+$font_size_34: 34px;
+$font_size_36: 36px;
+
+// line-height
+$font_line_height_20: 20px;
+$font_line_height_24: 24px;
+$font_line_height_42: 42px;
+
+// font-weight
+$font_weight_100: 100; // thin
+$font_weight_300: 300; // light
+$font_weight_400: 400; // regular
+$font_weight_600: 600; // semi-bold
+$font_weight_700: 700; // bold
+
+// colors
+$transparent: transparent;
+
+$blue_100: #d1e6ff;
+$blue_500: #1b85f3;
+$blue_700: #1268cc;
+$blue_900: #0c4180;
+
+$grey_200: #d9dfe6;
+$grey_600: #666687;
+$grey_800: #40464d;
+$grey_900: #202326;
+$grey_1000: #101113;
+
+$white_1000: #ffffff;
+
+// transitions
+$transition_default: all 0.3s ease-in-out;
+
+// sizes
+$sidebar_width: 280px;
