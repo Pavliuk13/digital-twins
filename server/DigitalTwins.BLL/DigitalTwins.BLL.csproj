@@ -10,4 +10,8 @@
       <ProjectReference Include="..\DigitalTwins.Common\DigitalTwins.Common.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Queries" />
+    </ItemGroup>
+
 </Project>

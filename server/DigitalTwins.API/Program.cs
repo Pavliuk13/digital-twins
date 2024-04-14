@@ -1,4 +1,5 @@
 using DigitalTwins.API.Extensions;
+using DigitalTwins.BLL;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +18,9 @@ builder.Services.AddDigitalTwinContext(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.RegisterCustomServices(builder.Configuration);
 builder.Services.AddCors();
+builder.Services.AddAutoMapper(typeof(DigitalTwinBllEntryPoint).Assembly);
 builder.Services.AddHealthChecks();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
