@@ -109,6 +109,18 @@ void loop() {
 }
 ```
 
+# Frontend
+
+Commands to run the client using the CLI:
+1. Install all dependencies:
+```
+yarn install
+```
+2. Run client:
+```
+yarn dev
+```
+
 
 ## Authors
 
