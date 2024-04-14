@@ -1,0 +1,90 @@
+{
+  "extends": [
+    "plugin:import/errors",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "airbnb",
+    "airbnb/hooks",
+    "eslint:recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "no-restricted-exports": ["error", { "restrictedNamedExports": [] }],
+    "react/prop-types": 0,
+    "react/react-in-jsx-scope": 0,
+    "import/extensions": "off",
+    "import/prefer-default-export": "off",
+    "react/button-has-type": "off",
+    "react/jsx-props-no-spreading": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "camelcase": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "react/jsx-no-comment-textnodes": "off",
+    "react/jsx-filename-extension": [
+      1,
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      { "ignoreRestSiblings": true }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "react/require-default-props": "off",
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": ["error"]
+      }
+    },
+    {
+      "files": ["src/store/**/*"],
+      "rules": {
+        "no-param-reassign": [
+          "error",
+          {
+            "props": true,
+            "ignorePropertyModificationsFor": ["state", "res"]
+          }
+        ]
+      }
+    }
+  ],
+  "plugins": ["react", "import", "jsx-a11y", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": ["./tsconfig.json", "./tsconfig.node.json"],
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2024": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": "tsconfig.json"
+      },
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "moduleDirectory": ["src", "node_modules"]
+      }
+    }
+  }
+}

@@ -1,30 +1,14 @@
-# React + TypeScript + Vite
+This is a starter template to setup React with ViteJS in VS Code.
+YouTube video: https://www.youtube.com/watch?v=p0akKP9UasQ
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+One thing I did not cover in the video is the `eslint-plugin-react-hooks` package, which enforces the rules of Hooks, (https://react.dev/warnings/invalid-hook-call-warning). This package is implemented in the `eslintrc.json` file, in the "extends" array, as `"plugin:react-hooks/recommended"`. You can read more about it here: https://www.npmjs.com/package/eslint-plugin-react-hooks.
 
-Currently, two official plugins are available:
+I have removed the caret `^` in front of each NPM package so that you will install all known working packages.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+For `DevDependencies` run: `npm i -D vite@4.4.9 @vitejs/plugin-react@4.0.4 eslint@8.48.0 eslint-config-prettier@9.0.0 eslint-plugin-import@2.28.1 eslint-plugin-jsx-a11y@6.7.1 eslint-plugin-react@7.33.2 prettier@3.0.3 eslint-plugin-prettier@5.0.0`.
 
-## Expanding the ESLint configuration
+For production `Dependencies` run: `npm i react@18.2.0 react-dom@18.2.0`.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Or you could just run `npm i` with the provided `package.json` file.
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+I have also provided a VS Code `VSCODE_Settings_Example.json` file for your convinience, you can cherry pick whatever rule/rules that works for you.
