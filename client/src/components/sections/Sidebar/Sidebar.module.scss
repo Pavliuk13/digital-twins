@@ -1,0 +1,19 @@
+@import '@@styles/variables';
+
+.sidebar {
+  position: fixed;
+  width: $sidebar_width;
+  height: 100vh;
+  padding: 0 30px 24px 30px;
+  background-color: $grey_1000;
+  overflow: auto;
+  transition: $transition_default;
+
+  &_show {
+    left: 0;
+  }
+
+  &_hide {
+    left: -$sidebar_width;
+  }
+}

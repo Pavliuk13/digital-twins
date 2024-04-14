@@ -1,0 +1,59 @@
+@import '@@styles/variables';
+
+.root {
+  font-size: $font_size_14;
+  line-height: $font_line_height_20;
+  font-weight: $font_weight_400;
+  color: $white_1000;
+
+  border: 3px solid $transparent;
+  border-radius: 14px;
+
+  transition: $transition_default;
+
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.size {
+  &_small {
+    padding: 9px;
+  }
+
+  &_medium {
+    padding: 13px;
+  }
+
+  &_large {
+    padding: 17px;
+  }
+}
+
+.variant {
+  &_primary {
+    background-color: $blue_500;
+
+    transition: $transition_default;
+
+    &:hover {
+      background-color: $blue_700;
+    }
+
+    &:focus {
+      border: 3px solid $blue_500;
+      background-color: $blue_700;
+    }
+
+    &:disabled {
+      background-color: $blue_700;
+    }
+  }
+}

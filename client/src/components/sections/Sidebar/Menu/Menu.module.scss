@@ -1,0 +1,26 @@
+@import '@@styles/variables';
+
+.menu {
+  margin-top: 60px;
+
+  &__group {
+    margin-top: 48px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 14px;
+    padding: 12px;
+    transition: $transition_default;
+
+    &:hover {
+      background-color: rgba($blue_100, 0.15);
+    }
+
+    &_active {
+      background-color: rgba($blue_100, 0.15);
+    }
+  }
+}

@@ -1,0 +1,19 @@
+@import '@@styles/variables';
+@import '@@styles/mixins';
+
+.wrapper {
+  @include flexCenter;
+
+  padding: 24px 0;
+}
+
+.smart {
+  font-size: $font_size_24;
+  font-weight: $font_weight_700;
+  margin-left: 8px;
+}
+
+.lab {
+  font-size: $font_size_24;
+  font-weight: $font_weight_100;
+}

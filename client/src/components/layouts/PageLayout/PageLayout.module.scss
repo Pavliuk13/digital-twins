@@ -1,0 +1,13 @@
+@import '@@styles/variables';
+
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  transition: $transition_default;
+
+  &_withSidebar {
+    margin-left: $sidebar_width;
+  }
+}

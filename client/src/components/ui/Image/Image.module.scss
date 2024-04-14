@@ -1,0 +1,152 @@
+@import '@@styles/variables';
+
+.image {
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: text-top;
+
+  &_cursor {
+    &_pointer {
+      cursor: pointer;
+    }
+
+    &_default {
+      cursor: default;
+    }
+
+    &_not-allowed {
+      cursor: not-allowed;
+    }
+
+    &_wait {
+      cursor: wait;
+    }
+  }
+
+  &_fill {
+    &_white_1000 {
+      fill: $white_1000;
+    }
+
+    &_blue_500 {
+      fill: $blue_500;
+    }
+
+    &_currentColor {
+      fill: currentColor;
+    }
+  }
+
+  &_position {
+    &_left_2 {
+      margin-right: 2px;
+    }
+
+    &_left_4 {
+      margin-right: 4px;
+    }
+
+    &_left_8 {
+      margin-right: 8px;
+    }
+
+    &_left_10 {
+      margin-right: 10px;
+    }
+
+    &_left_12 {
+      margin-right: 12px;
+    }
+
+    &_left_16 {
+      margin-right: 16px;
+    }
+
+    &_right_2 {
+      margin-left: 2px;
+    }
+
+    &_right_4 {
+      margin-left: 4px;
+    }
+
+    &_right_8 {
+      margin-left: 8px;
+    }
+
+    &_right_12 {
+      margin-left: 12px;
+    }
+
+    &_right_16 {
+      margin-left: 16px;
+    }
+  }
+
+  &_size {
+    &_6 {
+      width: 6px;
+      height: 6px;
+    }
+
+    &_8 {
+      width: 8px;
+      height: 8px;
+    }
+
+    &_10 {
+      width: 10px;
+      height: 10px;
+    }
+
+    &_12 {
+      width: 12px;
+      height: 12px;
+    }
+
+    &_14 {
+      width: 14px;
+      height: 14px;
+    }
+
+    &_16 {
+      width: 16px;
+      height: 16px;
+    }
+
+    &_20 {
+      width: 20px;
+      height: 20px;
+    }
+
+    &_24 {
+      width: 24px;
+      height: 24px;
+    }
+
+    &_26 {
+      width: 26px;
+      height: 26px;
+    }
+
+    &_28 {
+      width: 28px;
+      height: 28px;
+    }
+
+    &_32 {
+      width: 32px;
+      height: 32px;
+    }
+
+    &_36 {
+      width: 36px;
+      height: 36px;
+    }
+
+    &_48 {
+      width: 48px;
+      height: 48px;
+    }
+  }
+}

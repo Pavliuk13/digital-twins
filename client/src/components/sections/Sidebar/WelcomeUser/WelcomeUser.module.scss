@@ -1,0 +1,30 @@
+@import '@@styles/variables';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: $grey_200;
+}
+
+.welcome {
+  font-family: $font_noto_sans;
+  font-size: $font_size_14;
+  line-height: $font_size_22;
+  font-weight: $font_weight_400;
+  color: $grey_200;
+}
+
+.name {
+  font-family: $font_noto_sans;
+  font-size: $font_size_18;
+  line-height: $font_size_26;
+  font-weight: $font_weight_600;
+}

@@ -1,0 +1,74 @@
+@import '@@styles/variables';
+
+.typography {
+  margin: 0;
+
+  &_h1 {
+    font-family: $font_catamaran;
+    font-size: $font_size_34;
+    line-height: $font_line_height_42;
+    font-weight: $font_weight_600;
+  }
+
+  &_body {
+    font-family: $font_noto_sans;
+    font-size: $font_size_16;
+    line-height: $font_line_height_24;
+    font-weight: $font_weight_400;
+  }
+
+  &_bodyBold {
+    font-family: $font_noto_sans;
+    font-size: $font_size_16;
+    line-height: $font_line_height_24;
+    font-weight: $font_weight_600;
+  }
+
+  &_color {
+    &_white_1000 {
+      color: $white_1000;
+    }
+  }
+
+  &_bottomOffset {
+    &_0 {
+      margin-bottom: 0;
+    }
+
+    &_2 {
+      margin-bottom: 2px;
+    }
+
+    &_4 {
+      margin-bottom: 4px;
+    }
+
+    &_8 {
+      margin-bottom: 8px;
+    }
+
+    &_12 {
+      margin-bottom: 12px;
+    }
+
+    &_16 {
+      margin-bottom: 16px;
+    }
+
+    &_20 {
+      margin-bottom: 20px;
+    }
+
+    &_24 {
+      margin-bottom: 24px;
+    }
+  }
+
+  &_block {
+    display: block;
+  }
+
+  &_inline {
+    display: inline;
+  }
+}
