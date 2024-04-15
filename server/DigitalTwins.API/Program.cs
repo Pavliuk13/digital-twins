@@ -1,4 +1,5 @@
 using DigitalTwins.API.Extensions;
+using DigitalTwins.API.Middlewares;
 using DigitalTwins.BLL;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,6 +35,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseDigitalTwinContext();
+
+app.UseMiddleware<GenericExceptionHandlerMiddleware>();
 
 app.UseCors(opt => opt
     .AllowAnyHeader()
