@@ -20,7 +20,9 @@ public static class ServiceCollectionExtension
     public static void RegisterCustomServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.Configure<MqttOptions>(configuration.GetSection(MqttOptions.SectionName));
-        
+
+        services.AddHostedService<MqttService>();
         services.AddSingleton<IMqttService, MqttService>();
+        services.AddScoped<IDeviceService, DeviceService>();
     }
 }
