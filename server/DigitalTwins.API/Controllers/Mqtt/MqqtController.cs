@@ -17,6 +17,7 @@ public class MqqtController : ControllerBase
 
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Post([FromBody] MqttRequestDTO requestDto)
     {
         await _service.PublishAsync(requestDto);

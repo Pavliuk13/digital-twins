@@ -33,6 +33,11 @@ public class MqttService : IMqttService, IHostedService
 
     public async Task PublishAsync(MqttRequestDTO requestDto)
     {
+        if (!_mqttClient.IsConnected)
+        {
+            await Reconnect();
+        }
+        
         var topic = string.Format(LightTopicTemplate, requestDto.BoardName, requestDto.Guid);
         var response = _mapper.Map<MqttResponseDTO>(requestDto);
         
@@ -43,7 +48,7 @@ public class MqttService : IMqttService, IHostedService
             .WithTopic(topic)
             .WithPayload(payload)
             .Build();
-        
+
         await _mqttClient.PublishAsync(mqttMessage);
     }
 
@@ -77,5 +82,14 @@ public class MqttService : IMqttService, IHostedService
             var deviceService = scope.ServiceProvider.GetRequiredService<IDeviceService>();
             await deviceService.HandleDeviceStatuses(args.ApplicationMessage.ConvertPayloadToString());
         };
+    }
+    
+    private async Task Reconnect()
+    {
+        var options = new MqttClientOptionsBuilder()
+            .WithTcpServer(_mqttOptions.Value.ServerAddress, _mqttOptions.Value.Port)
+            .Build();
+
+        await _mqttClient.ConnectAsync(options);
     }
 }

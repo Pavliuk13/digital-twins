@@ -15,10 +15,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers\UI" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\DigitalTwins.BLL\DigitalTwins.BLL.csproj" />
       <ProjectReference Include="..\DigitalTwins.Common\DigitalTwins.Common.csproj" />
       <ProjectReference Include="..\DigitalTwins.DAL\DigitalTwins.DAL.csproj" />
