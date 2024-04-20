@@ -6,7 +6,7 @@ import { VARIANTS_MAP } from './constants';
 import styles from './Typography.module.scss';
 
 interface TypographyProps {
-  variant?: 'h1' | 'body' | 'bodyBold';
+  variant?: 'h1' | 'subheading1' | 'subheading2' | 'body' | 'bodyBold';
   component?: keyof React.JSX.IntrinsicElements;
   children: ReactNode;
   color?: 'white_1000';

@@ -17,7 +17,11 @@ $font_size_36: 36px;
 
 // line-height
 $font_line_height_20: 20px;
+$font_line_height_22: 22px;
 $font_line_height_24: 24px;
+$font_line_height_28: 28px;
+$font_line_height_30: 30px;
+$font_line_height_34: 34px;
 $font_line_height_42: 42px;
 
 // font-weight
@@ -48,3 +52,6 @@ $transition_default: all 0.3s ease-in-out;
 
 // sizes
 $sidebar_width: 280px;
+
+// z-indexes
+$collapser_z_index: 1001;

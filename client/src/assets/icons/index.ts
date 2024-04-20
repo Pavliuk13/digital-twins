@@ -5,6 +5,8 @@ import devices from './devices.svg';
 import users from './users.svg';
 import user_circle from './user_circle.svg';
 import logout from './logout.svg';
+import template from './template.svg';
+import plus from './plus.svg';
 
 export {
   smart_lab_logo,
@@ -14,4 +16,6 @@ export {
   users,
   user_circle,
   logout,
+  template,
+  plus,
 };

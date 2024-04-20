@@ -6,14 +6,14 @@ import { selectSidebar } from '@@store/ui/selectors';
 
 import Collapser from './Collapser';
 
-import styles from './PageLayout.module.scss';
+import styles from './PrivatePageLayout.module.scss';
 
-interface PageLayoutProps {
+interface PrivatePageLayoutProps {
   dataCid?: string;
   children?: ReactNode;
 }
 
-function PageLayout({ dataCid = '', children }: PageLayoutProps) {
+function PrivatePageLayout({ dataCid = '', children }: PrivatePageLayoutProps) {
   const { isCollapsed } = useSelector(selectSidebar);
 
   const pageLayoutClassName = classNames(styles.wrapper, {
@@ -28,4 +28,4 @@ function PageLayout({ dataCid = '', children }: PageLayoutProps) {
   );
 }
 
-export default PageLayout;
+export default PrivatePageLayout;

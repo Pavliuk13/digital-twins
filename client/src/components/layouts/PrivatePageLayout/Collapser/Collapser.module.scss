@@ -3,17 +3,26 @@
 $collapser_offset: 2px;
 
 .wrapper {
-  position: absolute;
-  left: 0;
+  position: fixed;
+  left: $sidebar_width;
   top: 50%;
   padding: 16px;
   transform: translate(0, -50%);
   transition: $transition_default;
   opacity: 0.8;
+  z-index: $collapser_z_index;
   cursor: pointer;
 
   &:hover {
     opacity: 1;
+  }
+
+  &_hide {
+    left: 0;
+  }
+
+  &_show {
+    left: $sidebar_width;
   }
 }
 

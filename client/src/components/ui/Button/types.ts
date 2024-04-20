@@ -6,6 +6,6 @@ export interface ButtonProps
     HTMLButtonElement
   > {
   size?: 'small' | 'medium' | 'large';
-  variant?: 'primary';
+  variant?: 'primary' | 'outline';
   fullWidth?: boolean;
 }

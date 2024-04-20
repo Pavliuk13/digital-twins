@@ -12,6 +12,7 @@ export const VARIANTS_MAP: Record<string, keyof React.JSX.IntrinsicElements> = {
   label: 'label',
   body: 'p',
   bodyBold: 'p',
+  bodyRegular: 'p',
   bodyCompact: 'p',
   bodyCompactBold: 'p',
   caption: 'span',

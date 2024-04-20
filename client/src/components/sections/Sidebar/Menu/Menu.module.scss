@@ -1,10 +1,12 @@
 @import '@@styles/variables';
 
 .menu {
-  margin-top: 60px;
+  margin-top: 32px;
 
   &__group {
-    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
   }
 
   &__item {
@@ -16,7 +18,7 @@
     transition: $transition_default;
 
     &:hover {
-      background-color: rgba($blue_100, 0.15);
+      background-color: rgba($blue_100, 0.07);
     }
 
     &_active {

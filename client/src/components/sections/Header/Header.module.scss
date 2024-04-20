@@ -1,0 +1,9 @@
+@import '@@styles/variables';
+
+.header {
+  padding: 30px;
+  margin: 0 40px;
+  border-bottom-right-radius: 24px;
+  border-bottom-left-radius: 24px;
+  background-color: $grey_1000;
+}

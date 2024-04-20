@@ -20,8 +20,13 @@ function Collapser() {
     return null;
   }
 
+  const wrapperClassName = classNames(styles.wrapper, {
+    [styles.wrapper_show]: isCollapsed,
+    [styles.wrapper_hide]: !isCollapsed,
+  });
+
   return (
-    <div className={styles.wrapper} onClick={handleClick}>
+    <div className={wrapperClassName} onClick={handleClick}>
       <div
         className={classNames(styles.collapser, styles.collapser__top, {
           [styles.collapser__top_show]: !isCollapsed,

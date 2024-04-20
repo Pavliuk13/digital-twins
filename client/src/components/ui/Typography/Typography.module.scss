@@ -10,10 +10,31 @@
     font-weight: $font_weight_600;
   }
 
+  &_subheading1 {
+    font-family: $font_noto_sans;
+    font-size: $font_size_22;
+    line-height: $font_line_height_34;
+    font-weight: $font_weight_600;
+  }
+
+  &_subheading2 {
+    font-family: $font_noto_sans;
+    font-size: $font_size_18;
+    line-height: $font_line_height_30;
+    font-weight: $font_weight_600;
+  }
+
   &_body {
     font-family: $font_noto_sans;
     font-size: $font_size_16;
     line-height: $font_line_height_24;
+    font-weight: $font_weight_400;
+  }
+
+  &_bodyRegular {
+    font-family: $font_noto_sans;
+    font-size: $font_size_16;
+    line-height: $font_line_height_28;
     font-weight: $font_weight_400;
   }
 
