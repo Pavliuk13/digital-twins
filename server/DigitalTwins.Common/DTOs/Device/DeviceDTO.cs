@@ -5,6 +5,8 @@ namespace DigitalTwins.Common.DTOs.Device;
 public class DeviceDTO
 {
     public long Id { get; set; }
+    
+    public Guid UGuid { get; set; }
 
     public long TemplateId { get; set; }
 

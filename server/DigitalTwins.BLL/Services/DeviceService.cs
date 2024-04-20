@@ -33,21 +33,17 @@ public class DeviceService : IDeviceService
     
     private async Task UpdateStatuses(DeviceStatusRequestDTO requestDto)
     {
-        var template = await _context.Templates
-            .Include(x => x.Devices)
+        var device = await _context.Devices
             .FirstOrDefaultAsync(x => x.UGuid == requestDto.Id);
 
-        if (template is null)
+        if (device is null)
         {
             return;
         }
+        
+        device.Status = requestDto.Status;
 
-        foreach (var device in template.Devices)
-        {
-            device.Status = requestDto.Status;
-        }
-
-        _context.Update(template);
+        _context.Update(device);
         await _context.SaveChangesAsync();
     }
 }

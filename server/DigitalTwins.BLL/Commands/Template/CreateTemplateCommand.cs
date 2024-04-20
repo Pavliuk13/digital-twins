@@ -79,7 +79,6 @@ public class CreateTemplateCommandHandler : IRequestHandler<CreateTemplateComman
 
         var templateModel = new DAL.Entities.Template
         {
-            UGuid = Guid.NewGuid(),
             Name = request.Name,
             Description = request.Description,
             Hardware = request.Hardware,

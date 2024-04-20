@@ -5,6 +5,8 @@ namespace DigitalTwins.DAL.Entities;
 public class Device
 {
     public long Id { get; set; }
+    
+    public Guid UGuid { get; set; }
 
     public long TemplateId { get; set; }
 

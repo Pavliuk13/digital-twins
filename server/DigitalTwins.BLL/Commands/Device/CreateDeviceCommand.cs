@@ -51,6 +51,7 @@ public class CreateDeviceCommandHandler : IRequestHandler<CreateDeviceCommand, D
     {
         var deviceModel = new DAL.Entities.Device
         {
+            UGuid = Guid.NewGuid(),
             Name = request.Name,
             CreatedBy = request.UserId,
             Status = Status.Offline,

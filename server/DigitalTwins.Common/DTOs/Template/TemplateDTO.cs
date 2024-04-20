@@ -7,8 +7,6 @@ public class TemplateDTO
 {
     public long Id { get; set; }
 
-    public Guid UGuid { get; set; }
-
     public string Name { get; set; } = string.Empty;
 
     public string Hardware { get; set; } = string.Empty;
