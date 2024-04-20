@@ -21,8 +21,9 @@ public static class ServiceCollectionExtension
     {
         services.Configure<MqttOptions>(configuration.GetSection(MqttOptions.SectionName));
 
-        services.AddHostedService<MqttService>();
-        services.AddSingleton<IMqttService, MqttService>();
+        // comment this for now
+        // services.AddHostedService<MqttService>();
+        // services.AddSingleton<IMqttService, MqttService>();
         services.AddScoped<IDeviceService, DeviceService>();
     }
 }
