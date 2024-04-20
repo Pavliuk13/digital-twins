@@ -23,13 +23,13 @@ jobs:
           dotnet-version: '6.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore ./server.sln
+        run: dotnet restore ./server/server.sln
 
       - name: Build solution
-        run: dotnet build .server/server.sln --configuration Release --no-restore
+        run: dotnet build ./server/server.sln --configuration Release --no-restore
 
       - name: Publish application
-        run: dotnet publish .server/server.sln --configuration Release --no-build --output ${{ env.AZURE_WEB_APP_PACKAGE_PATH }}
+        run: dotnet publish ./server/server.sln --configuration Release --no-build --output ${{ env.AZURE_WEB_APP_PACKAGE_PATH }}
 
       - name: Deploy application
         uses: azure/webapps-deploy@v2
