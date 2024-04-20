@@ -26,10 +26,10 @@ jobs:
         run: dotnet restore ./server.sln
 
       - name: Build solution
-        run: dotnet build ./server.sln --configuration Release --no-restore
+        run: dotnet build .server/server.sln --configuration Release --no-restore
 
       - name: Publish application
-        run: dotnet publish ./server.sln --configuration Release --no-build --output ${{ env.AZURE_WEB_APP_PACKAGE_PATH }}
+        run: dotnet publish .server/server.sln --configuration Release --no-build --output ${{ env.AZURE_WEB_APP_PACKAGE_PATH }}
 
       - name: Deploy application
         uses: azure/webapps-deploy@v2
