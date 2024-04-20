@@ -1,4 +1,5 @@
 using DigitalTwins.BLL.Commands.User;
+using DigitalTwins.Common.DTOs.User;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,11 +16,10 @@ public class UserController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpPost("create")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
+    [HttpPost]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDTO))]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> CreateUser([FromBody] CreateUserCommand command)
+    public async Task<IActionResult> Create([FromBody] CreateUserCommand command)
     {
         return Ok(await _mediator.Send(command));
     }
