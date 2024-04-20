@@ -23,7 +23,7 @@ jobs:
           dotnet-version: '6.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore ./server.sln
+        run: dotnet restore .server/server.sln
 
       - name: Build solution
         run: dotnet build .server/server.sln --configuration Release --no-restore
