@@ -8,10 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\DigitalTwins.Common\DigitalTwins.Common.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Queries" />
+      <ProjectReference Include="..\DigitalTwins.DAL\DigitalTwins.DAL.csproj" />
     </ItemGroup>
 
 </Project>

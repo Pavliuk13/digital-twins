@@ -1,6 +1,9 @@
-namespace DigitalTwins.DAL.Entities;
+using DigitalTwins.Common.DTOs.Datastream;
+using DigitalTwins.Common.DTOs.Device;
 
-public class Template
+namespace DigitalTwins.Common.DTOs.Template;
+
+public class TemplateDTO
 {
     public long Id { get; set; }
 
@@ -15,12 +18,8 @@ public class Template
     public long OrganizationId { get; set; }
 
     public long CreatedBy { get; set; }
-
-    public Organization Organization { get; set; } = null!;
-
-    public User User { get; set; } = null!;
-
-    public IEnumerable<Datastream> Datastreams { get; set; } = null!;
     
-    public IEnumerable<Device> Devices { get; set; } = null!;
+    public IEnumerable<DatastreamDTO> Datastreams { get; set; } = null!;
+    
+    public IEnumerable<DeviceDTO> Devices { get; set; } = null!;
 }

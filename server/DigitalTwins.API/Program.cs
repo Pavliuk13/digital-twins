@@ -1,7 +1,10 @@
 using DigitalTwins.API.Extensions;
+using DigitalTwins.API.Middlewares;
 using DigitalTwins.BLL;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 builder.Configuration
     .SetBasePath(builder.Environment.ContentRootPath)
@@ -21,19 +24,20 @@ builder.Services.AddSwaggerGen();
 builder.Services.RegisterCustomServices(builder.Configuration);
 builder.Services.AddCors();
 builder.Services.AddAutoMapper(typeof(DigitalTwinBllEntryPoint).Assembly);
+builder.Services.AddMediatR(s => s.RegisterServicesFromAssembly(typeof(DigitalTwinBllEntryPoint).Assembly));
+builder.Services.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<DigitalTwinBllEntryPoint>());
 builder.Services.AddHealthChecks();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseDigitalTwinContext();
+
+app.UseMiddleware<GenericExceptionHandlerMiddleware>();
 
 app.UseCors(opt => opt
     .AllowAnyHeader()

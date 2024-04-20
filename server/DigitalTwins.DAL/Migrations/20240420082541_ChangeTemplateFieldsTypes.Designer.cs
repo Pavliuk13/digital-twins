@@ -4,6 +4,7 @@ using DigitalTwins.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DigitalTwins.DAL.Migrations
 {
     [DbContext(typeof(DigitalTwinContext))]
-    partial class DigitalTwinContextModelSnapshot : ModelSnapshot
+    [Migration("20240420082541_ChangeTemplateFieldsTypes")]
+    partial class ChangeTemplateFieldsTypes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,9 +81,6 @@ namespace DigitalTwins.DAL.Migrations
 
                     b.Property<long>("TemplateId")
                         .HasColumnType("bigint");
-
-                    b.Property<Guid>("UGuid")
-                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -401,6 +400,9 @@ namespace DigitalTwins.DAL.Migrations
 
                     b.Property<long>("OrganizationId")
                         .HasColumnType("bigint");
+
+                    b.Property<Guid>("UGuid")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 

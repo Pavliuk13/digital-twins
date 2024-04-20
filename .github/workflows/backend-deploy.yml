@@ -1,0 +1,41 @@
+name: Publish Backend to Azure
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - release
+
+env:
+  AZURE_WEB_APP_NAME: digital-twins-kpi
+  AZURE_WEB_APP_PACKAGE_PATH: "./publish"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore ./server/server.sln
+
+      - name: Build solution
+        run: dotnet build ./server/server.sln --configuration Release --no-restore
+
+      - name: Publish application
+        run: dotnet publish ./server/server.sln --configuration Release --no-build --output ${{ env.AZURE_WEB_APP_PACKAGE_PATH }}
+
+      - name: Deploy application
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEB_APP_NAME }}
+          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
+          package: "${{ env.AZURE_WEB_APP_PACKAGE_PATH }}"
+
+        

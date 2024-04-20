@@ -15,10 +15,12 @@ public class TemplateConfig : IEntityTypeConfiguration<Template>
             .HasMaxLength(100);
 
         builder.Property(x => x.Hardware)
-            .IsRequired();
+            .IsRequired()
+            .HasMaxLength(15);
         
         builder.Property(x => x.ConnectionType)
-            .IsRequired();
+            .IsRequired()
+            .HasMaxLength(15);
         
         builder.Property(x => x.Description)
             .HasMaxLength(500);

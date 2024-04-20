@@ -1,8 +1,8 @@
 using DigitalTwins.Common.Enums;
 
-namespace DigitalTwins.DAL.Entities;
+namespace DigitalTwins.Common.DTOs.Device;
 
-public class Device
+public class DeviceDTO
 {
     public long Id { get; set; }
     
@@ -15,8 +15,4 @@ public class Device
     public long CreatedBy { get; set; }
 
     public Status Status { get; set; }
-
-    public Template Template { get; set; } = null!;
-
-    public User User { get; set; } = null!;
 }
