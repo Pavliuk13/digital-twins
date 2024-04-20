@@ -88,8 +88,12 @@ public class CreateTemplateCommandHandler : IRequestHandler<CreateTemplateComman
             CreatedBy = request.UserId
         };
 
+        await using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
+        
         _context.Templates.Add(templateModel);
         await _context.SaveChangesAsync(cancellationToken);
+        
+        await transaction.CommitAsync(cancellationToken);
 
         return _mapper.Map<TemplateDTO>(templateModel);
     }

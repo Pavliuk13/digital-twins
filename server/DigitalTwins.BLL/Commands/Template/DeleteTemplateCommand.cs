@@ -20,10 +20,14 @@ public class DeleteTemplateCommandHandler : IRequestHandler<DeleteTemplateComman
     
     public async Task Handle(DeleteTemplateCommand request, CancellationToken cancellationToken)
     {
+        await using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
+        
         var template = await _context.Templates.FirstOrDefaultAsync(x => x.Id == request.TemplateId, cancellationToken)
             ?? throw new KeyNotFoundException("Template was not found");
 
         _context.Templates.Remove(template);
         await _context.SaveChangesAsync(cancellationToken);
+        
+        await transaction.CommitAsync(cancellationToken);
     }
 }
