@@ -39,7 +39,7 @@ function Menu() {
               );
             })}
 
-            {index !== menuGroups.length - 1 && <Divider offset={48} />}
+            {index !== menuGroups.length - 1 && <Divider offset={24} />}
           </div>
         ),
       )}

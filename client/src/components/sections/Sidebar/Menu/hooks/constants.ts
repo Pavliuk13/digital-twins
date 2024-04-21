@@ -1,4 +1,5 @@
 export const MENU_GROUP = {
-  general: 'general',
-  settings: 'settings',
+  DEVELOP: 'develop',
+  GENERAL: 'general',
+  SETTINGS: 'settings',
 } as const;

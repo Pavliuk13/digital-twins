@@ -35,7 +35,7 @@ public class MqttService : IMqttService, IHostedService
     {
         if (!_mqttClient.IsConnected)
         {
-            await Reconnect();
+            await Connect();
         }
         
         var topic = string.Format(LightTopicTemplate, requestDto.BoardName, requestDto.Guid);
@@ -54,11 +54,7 @@ public class MqttService : IMqttService, IHostedService
 
     public async Task StartAsync(CancellationToken cancellationToken)
     {
-        var options = new MqttClientOptionsBuilder()
-            .WithTcpServer(_mqttOptions.Value.ServerAddress, _mqttOptions.Value.Port)
-            .Build();
-
-        await _mqttClient.ConnectAsync(options, cancellationToken);
+        await Connect();
 
         await SubscribeToSpecificTopic("device/statuses");
     }
@@ -84,12 +80,13 @@ public class MqttService : IMqttService, IHostedService
         };
     }
     
-    private async Task Reconnect()
+    private async Task Connect()
     {
         var options = new MqttClientOptionsBuilder()
             .WithTcpServer(_mqttOptions.Value.ServerAddress, _mqttOptions.Value.Port)
+            .WithCredentials(_mqttOptions.Value.Username, _mqttOptions.Value.Password)
             .Build();
-
+        
         await _mqttClient.ConnectAsync(options);
     }
 }

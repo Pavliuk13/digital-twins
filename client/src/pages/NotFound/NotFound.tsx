@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import PageLayout from '@@components/layouts/PageLayout';
+import PageLayout from '@@components/layouts/PrivatePageLayout';
 
 import Page from './Page';
 

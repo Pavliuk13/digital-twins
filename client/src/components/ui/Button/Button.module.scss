@@ -1,6 +1,9 @@
 @import '@@styles/variables';
 
 .root {
+  display: flex;
+  align-items: center;
+
   font-size: $font_size_14;
   line-height: $font_line_height_20;
   font-weight: $font_weight_400;
@@ -40,7 +43,6 @@
 .variant {
   &_primary {
     background-color: $blue_500;
-
     transition: $transition_default;
 
     &:hover {
@@ -54,6 +56,25 @@
 
     &:disabled {
       background-color: $blue_700;
+    }
+  }
+
+  &_outline {
+    background-color: $transparent;
+    border: 1px solid $grey_200;
+    transition: $transition_default;
+
+    &:hover {
+      border: 1px solid $grey_200;
+      background-color: rgba($grey_200, 0.05);
+    }
+
+    &:focus {
+      border: 1px solid $grey_600;
+    }
+
+    &:disabled {
+      border: 1px solid $grey_900;
     }
   }
 }

@@ -22,6 +22,7 @@
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-static-element-interactions": "off",
     "camelcase": "off",
+    "class-methods-use-this": "off",
     "react-hooks/exhaustive-deps": "off",
     "react/jsx-no-comment-textnodes": "off",
     "react/jsx-filename-extension": [

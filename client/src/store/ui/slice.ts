@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { LocalStorage } from '@@utils/localStorage';
+
+import { STORAGE_KEY } from '@@constants/storage';
+
 const uiSlice = createSlice({
   name: 'ui',
   initialState: {
@@ -21,7 +25,9 @@ const uiSlice = createSlice({
       state.sidebar.isShowSidebar = true;
     },
     collapseMenu(state) {
+      const updatedIsCollapsed = !state.sidebar.isCollapsed;
       state.sidebar.isCollapsed = !state.sidebar.isCollapsed;
+      LocalStorage.set(STORAGE_KEY.SIDEBAR_IS_COLLAPSED, updatedIsCollapsed);
     },
     setAvatar(state, { payload }) {
       state.avatar = payload;

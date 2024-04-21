@@ -1,5 +1,6 @@
 export const ROUTES = {
   INDEX: '/',
+  TEMPLATES: '/templates',
   LOCATIONS: '/locations',
   ORGANIZATIONS: '/organizations',
   DEVICES: '/devices',

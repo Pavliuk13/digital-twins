@@ -1,0 +1,15 @@
+@import '@@styles/variables';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 30px 70px;
+  transition: $transition_default;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
