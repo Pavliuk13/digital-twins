@@ -3,9 +3,16 @@ import { useDispatch as useReduxDispatch } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 
 import uiReducer from '@@store/ui/slice';
+import modalsReducer from '@@store/modals/slice';
+
+import api from '@@api/rtk';
+
+import { modalAsyncAnimationMiddleware } from '@@store/middlewares/modalAsyncAnimationMiddleware';
 
 const rootReducer = combineReducers({
   ui: uiReducer,
+  modals: modalsReducer,
+  [api.reducerPath]: api.reducer,
 });
 
 export const store = configureStore({
@@ -14,7 +21,9 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
-    }),
+    })
+      .concat(api.middleware)
+      .concat([modalAsyncAnimationMiddleware]),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

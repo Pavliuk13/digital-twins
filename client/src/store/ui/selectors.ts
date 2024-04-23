@@ -1,7 +1,7 @@
 import { STORAGE_KEY } from '@@constants/storage';
 import { type RootState } from '@@store/index';
 
-import { LocalStorage } from '@@utils/localStorage';
+import { LocalStorage } from '@@services/storage';
 
 export const selectSidebar = (state: RootState) => {
   const { isCollapsed, ...restSidebar } = state.ui.sidebar;
