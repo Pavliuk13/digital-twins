@@ -1,0 +1,26 @@
+@import '@@styles/variables';
+
+@keyframes blink {
+  0% {
+    background: none;
+  }
+  50% {
+    background: lighten($yellow_1000, 35%);
+  }
+  100% {
+    background: none;
+  }
+}
+
+.headerClose {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+  padding: 30px;
+  height: 100%;
+}
+
+.blinkYellow {
+  animation: blink 0.5s ease-in-out 3;
+}

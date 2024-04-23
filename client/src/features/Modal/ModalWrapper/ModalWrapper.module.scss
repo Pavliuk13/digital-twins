@@ -1,0 +1,18 @@
+.modalWrapper {
+  display: flex;
+  width: 100%;
+}
+
+.justifyCenter {
+  justify-content: center;
+}
+
+.justifyRight {
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.alignBottom {
+  height: 100%;
+  align-items: flex-end;
+}

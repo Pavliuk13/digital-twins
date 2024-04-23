@@ -1,0 +1,169 @@
+@import '@@styles/mixins';
+@import '@@styles/variables';
+
+$animation_duration: 0.2s;
+
+@mixin animationStyle {
+  animation-duration: $animation_duration;
+  animation-fill-mode: both;
+}
+
+@include keyframes(easeInRight) {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@include keyframes(easeOutRight) {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@include keyframes(easeInCenter) {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@include keyframes(easeOutCenter) {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@include keyframes(easeInBottom) {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@include keyframes(easeOutBottom) {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animationInRight {
+  animation-name: easeInRight;
+  @include animationStyle;
+}
+
+.animationOutRight {
+  animation-name: easeOutRight;
+  @include animationStyle;
+}
+
+.animationInCenter {
+  animation-name: easeInCenter;
+  @include animationStyle;
+}
+
+.animationOutCenter {
+  animation-name: easeOutCenter;
+  @include animationStyle;
+}
+
+.animationInBottom {
+  animation-name: easeInBottom;
+  @include animationStyle;
+}
+
+.animationOutBottom {
+  animation-name: easeOutBottom;
+  @include animationStyle;
+}
+
+.modal {
+  display: flex;
+  box-shadow: 0 0 5px $grey_900;
+  background-color: $grey_900;
+  z-index: 2003;
+  max-width: 100%;
+
+  &__content {
+    min-width: 320px;
+
+    @media (max-width: 480px) {
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    &_size_320 {
+      width: 320px;
+    }
+
+    &_size_480 {
+      width: 480px;
+    }
+
+    &_size_550 {
+      width: 550px;
+    }
+
+    &_size_600 {
+      width: 600px;
+    }
+
+    &_size_680 {
+      width: 680px;
+    }
+
+    &_size_800 {
+      width: 800px;
+    }
+
+    &_size_925 {
+      width: 925px;
+    }
+
+    &_stretch {
+      @media (max-width: 800px) {
+        width: 100%;
+      }
+    }
+  }
+
+  &_borderRadius {
+    border-radius: 16px;
+  }
+
+  &_fullWidth {
+    width: 100%;
+  }
+
+  &_stretch {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+
+    @media (max-width: 800px) {
+      min-width: 100%;
+    }
+  }
+}
+
+.childrenWrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex-grow: 1;
+  height: 100%;
+}

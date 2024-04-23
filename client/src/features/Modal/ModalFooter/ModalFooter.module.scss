@@ -1,0 +1,13 @@
+@import '@@styles/variables';
+
+.modalFooter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 30px;
+  min-height: 66px;
+}
+
+.background {
+  background: $grey_800;
+}
