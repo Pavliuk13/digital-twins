@@ -32,7 +32,12 @@
       "@@constants/*": ["./src/constants/*"],
       "@@store/*": ["./src/store/*"],
       "@@types/*": ["./src/types/*"],
-      "@@utils/*": ["./src/utils/*"]
+      "@@utils/*": ["./src/utils/*"],
+      "@@features/*": ["./src/features/*"],
+      "@@hooks/*": ["./src/hooks/*"],
+      "@@contexts/*": ["./src/contexts/*"],
+      "@@services/*": ["./src/services/*"],
+      "@@api/*": ["./src/api/*"]
     },
 
     "types": ["vite-plugin-svgr/client"]

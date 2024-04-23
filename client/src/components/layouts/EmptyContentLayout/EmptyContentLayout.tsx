@@ -33,6 +33,7 @@ function EmptyContentLayout(props: EmptyContentLayoutProps) {
       {button && (
         <Button
           variant="outline"
+          color="grey_200"
           size="medium"
           onClick={button.onClick}
           className={styles.button}

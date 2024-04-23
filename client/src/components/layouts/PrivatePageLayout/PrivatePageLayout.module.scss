@@ -9,5 +9,9 @@
 
   &_withSidebar {
     margin-left: $sidebar_width;
+
+    @media (max-width: #{$adult}px) {
+      margin-left: 0;
+    }
   }
 }

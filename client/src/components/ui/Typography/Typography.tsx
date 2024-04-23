@@ -6,10 +6,18 @@ import { VARIANTS_MAP } from './constants';
 import styles from './Typography.module.scss';
 
 interface TypographyProps {
-  variant?: 'h1' | 'subheading1' | 'subheading2' | 'body' | 'bodyBold';
+  variant?:
+    | 'h1'
+    | 'subheading1'
+    | 'subheading2'
+    | 'body'
+    | 'bodyRegular'
+    | 'bodyBold'
+    | 'note'
+    | 'description';
   component?: keyof React.JSX.IntrinsicElements;
   children: ReactNode;
-  color?: 'white_1000';
+  color?: 'white_1000' | 'grey_600' | 'grey_200';
   bottomOffset?: 0 | 2 | 4 | 8 | 12 | 16 | 20 | 24;
   block?: boolean;
   inline?: boolean;
@@ -23,7 +31,7 @@ function Typography(props: TypographyProps): React.JSX.Element {
     variant = 'body',
     component = null,
     children,
-    color = 'grey_100',
+    color = 'white_1000',
     bottomOffset = 0,
     block = false,
     inline = false,

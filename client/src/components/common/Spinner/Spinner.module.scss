@@ -1,0 +1,58 @@
+@import '@@styles/variables';
+
+.wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.spinner {
+  display: block;
+  position: relative;
+  margin: (-10px) auto 0;
+  top: 40%;
+  border-radius: 100%;
+  animation: rotation 0.6s infinite linear;
+
+  &_color {
+    &_blue_500 {
+      border-left: 3px solid rgba(0, 174, 239, 0.15);
+      border-right: 3px solid rgba(0, 174, 239, 0.15);
+      border-bottom: 3px solid rgba(0, 174, 239, 0.15);
+      border-top: 3px solid $blue_500;
+    }
+  }
+
+  &_size {
+    &_big {
+      width: 50px;
+      height: 50px;
+      border-width: 5px;
+    }
+
+    &_medium {
+      width: 26px;
+      height: 26px;
+      border-width: 2px;
+    }
+
+    &_small {
+      width: 12px;
+      height: 12px;
+      border-width: 1px;
+    }
+  }
+
+  &_withoutMargin {
+    margin: 0;
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(359deg);
+  }
+}

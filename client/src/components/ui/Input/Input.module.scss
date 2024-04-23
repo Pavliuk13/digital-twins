@@ -1,0 +1,39 @@
+@import '@@styles/variables';
+
+.input {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px;
+
+  font-family: $font_noto_sans;
+  font-size: $font_size_14;
+  line-height: $font_line_height_18;
+  font-weight: $font_weight_400;
+  color: $grey_100;
+
+  border: 1px solid $grey_700;
+  border-radius: 12px;
+  background-color: $grey_900;
+
+  transition: $transition_default;
+
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    border: 1px solid $blue_500;
+  }
+
+  &_error {
+    border: 1px solid $red_500;
+
+    &:focus {
+      border: 1px solid $red_500;
+    }
+  }
+}

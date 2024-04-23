@@ -6,4 +6,9 @@
   border-bottom-right-radius: 24px;
   border-bottom-left-radius: 24px;
   background-color: $grey_1000;
+
+  @media (max-width: #{$adult}px) {
+    margin: 0 12px;
+    padding: 16px;
+  }
 }

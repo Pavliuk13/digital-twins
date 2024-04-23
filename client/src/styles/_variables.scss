@@ -5,6 +5,7 @@ $font_catamaran: 'Catamaran'; // heading
 $font_body: $font_noto_sans, $font_sans_serif;
 
 // font-size
+$font_size_11: 11px;
 $font_size_12: 12px;
 $font_size_14: 14px;
 $font_size_16: 16px;
@@ -16,6 +17,7 @@ $font_size_34: 34px;
 $font_size_36: 36px;
 
 // line-height
+$font_line_height_18: 18px;
 $font_line_height_20: 20px;
 $font_line_height_22: 22px;
 $font_line_height_24: 24px;
@@ -28,6 +30,7 @@ $font_line_height_42: 42px;
 $font_weight_100: 100; // thin
 $font_weight_300: 300; // light
 $font_weight_400: 400; // regular
+$font_weight_500: 500; // medium
 $font_weight_600: 600; // semi-bold
 $font_weight_700: 700; // bold
 
@@ -39,13 +42,28 @@ $blue_500: #1b85f3;
 $blue_700: #1268cc;
 $blue_900: #0c4180;
 
+$grey_100: #f7fafc;
+$grey_150: #eceff2;
 $grey_200: #d9dfe6;
 $grey_600: #666687;
+$grey_700: #606873;
 $grey_800: #40464d;
 $grey_900: #202326;
 $grey_1000: #101113;
 
 $white_1000: #ffffff;
+
+$yellow_1000: #fae312;
+
+$red_500: #fc5a5a;
+
+// breakpoints
+$tine: 375;
+$small: 480;
+$adult: 667;
+$medium: 834;
+$standart: 1024;
+$desktop: 1280;
 
 // transitions
 $transition_default: all 0.3s ease-in-out;

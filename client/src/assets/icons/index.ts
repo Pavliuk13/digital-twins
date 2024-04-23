@@ -7,6 +7,10 @@ import user_circle from './user_circle.svg';
 import logout from './logout.svg';
 import template from './template.svg';
 import plus from './plus.svg';
+import cancel_thin from './cancel_thin.svg';
+import error_shape from './error_shape.svg';
+import chevron from './chevron.svg';
+import edit from './edit.svg';
 
 export {
   smart_lab_logo,
@@ -18,4 +22,8 @@ export {
   logout,
   template,
   plus,
+  cancel_thin,
+  error_shape,
+  chevron,
+  edit,
 };

@@ -12,11 +12,9 @@ import '@@styles/index.scss';
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
 );

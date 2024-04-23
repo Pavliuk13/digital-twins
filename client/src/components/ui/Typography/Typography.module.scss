@@ -45,9 +45,31 @@
     font-weight: $font_weight_600;
   }
 
+  &_note {
+    font-family: $font_noto_sans;
+    font-size: $font_size_14;
+    line-height: $font_line_height_20;
+    font-weight: $font_weight_400;
+  }
+
+  &_description {
+    font-family: $font_noto_sans;
+    font-size: $font_size_11;
+    line-height: $font_line_height_20;
+    font-weight: $font_weight_500;
+  }
+
   &_color {
     &_white_1000 {
       color: $white_1000;
+    }
+
+    &_grey_200 {
+      color: $grey_200;
+    }
+
+    &_grey_600 {
+      color: $grey_600;
     }
   }
 

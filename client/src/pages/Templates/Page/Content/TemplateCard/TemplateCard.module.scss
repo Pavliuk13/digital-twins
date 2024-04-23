@@ -1,0 +1,42 @@
+@import '@@styles/variables';
+
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 32%;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: $grey_800;
+  overflow: hidden;
+}
+
+.image {
+  height: 90px;
+  position: absolute;
+  right: -55px;
+  z-index: 0;
+}
+
+.info {
+  margin-top: 60px;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  border: 2px solid $grey_700;
+  border-radius: 8px;
+  padding: 3px 8px;
+}
+
+.elips {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 3.5px solid $blue_900;
+  background-color: $blue_700;
+  margin-right: 6px;
+}

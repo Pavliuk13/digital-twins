@@ -1,0 +1,70 @@
+@import '@@styles/variables';
+
+$default_offset_step: 2px;
+$large_offset_step: 4px;
+
+.labelWrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0;
+  color: $grey_150;
+
+  &_medium {
+    font-size: $font_size_14;
+    line-height: $font_line_height_20;
+  }
+
+  &_large {
+    font-size: $font_size_16;
+    line-height: $font_line_height_22;
+  }
+}
+
+.required:after {
+  margin-left: $default_offset_step;
+  content: '*';
+  color: $red_500;
+  font-size: 1.1em;
+  line-height: 1em;
+}
+
+.disabled {
+  color: $grey_200;
+}
+
+.withBottomMargin {
+  &_medium {
+    margin-bottom: $default_offset_step;
+  }
+
+  &_large {
+    margin-bottom: $large_offset_step;
+  }
+}
+
+.noWrap {
+  white-space: nowrap;
+}
+
+.labelOffsetRight {
+  padding-right: $default_offset_step * 2;
+}
+
+.forCheckbox {
+  font-weight: $font_weight_400;
+  margin-bottom: 0;
+  display: block;
+  padding-left: 8px;
+}
+
+.bold {
+  font-weight: $font_weight_700;
+}
+
+.marginRight {
+  margin-right: 12px;
+}

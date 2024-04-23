@@ -9,7 +9,7 @@ import Page from './Page';
 import { useTemplates } from './hooks';
 
 function Templates() {
-  const { templates, onAddTemplate } = useTemplates();
+  const { templates, isLoading, onAddTemplate } = useTemplates();
 
   return (
     <PrivatePageLayout dataCid="templates">
@@ -22,7 +22,11 @@ function Templates() {
           onClick: onAddTemplate,
         }}
       >
-        <Page templates={templates} onAddTemplate={onAddTemplate} />
+        <Page
+          templates={templates}
+          isLoading={isLoading}
+          onAddTemplate={onAddTemplate}
+        />
       </PageContentLayout>
     </PrivatePageLayout>
   );

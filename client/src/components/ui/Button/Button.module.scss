@@ -3,6 +3,7 @@
 .root {
   display: flex;
   align-items: center;
+  width: fit-content;
 
   font-size: $font_size_14;
   line-height: $font_line_height_20;
@@ -42,39 +43,62 @@
 
 .variant {
   &_primary {
-    background-color: $blue_500;
-    transition: $transition_default;
+    &_blue_500 {
+      background-color: $blue_500;
+      transition: $transition_default;
 
-    &:hover {
-      background-color: $blue_700;
-    }
+      &:hover {
+        background-color: $blue_700;
+      }
 
-    &:focus {
-      border: 3px solid $blue_500;
-      background-color: $blue_700;
-    }
+      &:focus {
+        border: 3px solid $blue_500;
+        background-color: $blue_700;
+      }
 
-    &:disabled {
-      background-color: $blue_700;
+      &:disabled {
+        background-color: $blue_700;
+      }
     }
   }
 
   &_outline {
-    background-color: $transparent;
-    border: 1px solid $grey_200;
-    transition: $transition_default;
+    &_blue_500 {
+      background-color: $transparent;
+      border: 1px solid $blue_500;
+      transition: $transition_default;
 
-    &:hover {
+      &:hover {
+        border: 1px solid $blue_500;
+        background-color: rgba($blue_500, 0.05);
+      }
+
+      &:focus {
+        border: 1px solid $blue_700;
+      }
+
+      &:disabled {
+        border: 1px solid $blue_900;
+      }
+    }
+
+    &_grey_200 {
+      background-color: $transparent;
       border: 1px solid $grey_200;
-      background-color: rgba($grey_200, 0.05);
-    }
+      transition: $transition_default;
 
-    &:focus {
-      border: 1px solid $grey_600;
-    }
+      &:hover {
+        border: 1px solid $grey_200;
+        background-color: rgba($grey_200, 0.05);
+      }
 
-    &:disabled {
-      border: 1px solid $grey_900;
+      &:focus {
+        border: 1px solid $grey_600;
+      }
+
+      &:disabled {
+        border: 1px solid $grey_900;
+      }
     }
   }
 }
