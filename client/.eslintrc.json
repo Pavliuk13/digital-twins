@@ -17,11 +17,13 @@
     "react/react-in-jsx-scope": 0,
     "import/extensions": "off",
     "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "react/button-has-type": "off",
     "react/jsx-props-no-spreading": "off",
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-static-element-interactions": "off",
     "camelcase": "off",
+    "default-param-last": "off",
     "class-methods-use-this": "off",
     "react-hooks/exhaustive-deps": "off",
     "react/jsx-no-comment-textnodes": "off",
@@ -40,7 +42,8 @@
       "rules": {
         "react/require-default-props": "off",
         "no-shadow": "off",
-        "@typescript-eslint/no-shadow": ["error"]
+        "no-redeclare": "off",
+        "@typescript-eslint/no-shadow": "error"
       }
     },
     {

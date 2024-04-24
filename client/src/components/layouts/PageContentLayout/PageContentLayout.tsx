@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import Typography from '@@components/ui/Typography';
 import Button from '@@components/ui/Button';
 import Image from '@@components/ui/Image';
+import Spinner from '@@components/common/Spinner';
 
 import PlusSvg from '@@assets/icons/plus.svg';
 
@@ -17,10 +18,11 @@ interface PageContentLayoutProps {
     onClick: () => void;
   };
   children: ReactNode;
+  isLoading?: boolean;
 }
 
 function PageContentLayout(props: PageContentLayoutProps) {
-  const { title, description, button, children } = props;
+  const { title, description, button, children, isLoading = false } = props;
 
   const pageContentLayoutClassName = classNames(styles.wrapper);
 
@@ -34,7 +36,12 @@ function PageContentLayout(props: PageContentLayoutProps) {
           )}
         </div>
         {button && (
-          <Button variant="outline" size="large" onClick={button.onClick}>
+          <Button
+            variant="outline"
+            color="grey_200"
+            size="large"
+            onClick={button.onClick}
+          >
             <Image
               image={PlusSvg}
               size={12}
@@ -46,7 +53,13 @@ function PageContentLayout(props: PageContentLayoutProps) {
           </Button>
         )}
       </div>
-      {children}
+      {isLoading ? (
+        <div className={styles.spinner}>
+          <Spinner size="big" />
+        </div>
+      ) : (
+        children
+      )}
     </div>
   );
 }

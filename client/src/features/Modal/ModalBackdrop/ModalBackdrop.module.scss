@@ -1,0 +1,59 @@
+@import '@@styles/mixins';
+@import '@@styles/variables';
+
+$animation_duration: 0.2s;
+
+@mixin animationStyle {
+  animation-duration: $animation_duration;
+  animation-fill-mode: both;
+}
+
+@include keyframes(fadeIn) {
+  0% {
+    background: rgba($grey_1000, 0);
+  }
+  100% {
+    background: rgba($grey_1000, 0.5);
+  }
+}
+
+@include keyframes(fadeOut) {
+  0% {
+    background: rgba($grey_1000, 0.5);
+  }
+  100% {
+    background: rgba($grey_1000, 0);
+  }
+}
+
+.backdropAnimationIn {
+  animation-name: fadeIn;
+  @include animationStyle;
+}
+
+.backdropAnimationOut {
+  animation-name: fadeOut;
+  @include animationStyle;
+}
+
+.backdrop {
+  position: fixed;
+  background: rgba($grey_700, 0.5);
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2003;
+  -webkit-tap-highlight-color: transparent;
+
+  @media (max-width: 480px) {
+    display: block;
+  }
+}
+
+.invisible {
+  background-color: transparent;
+}

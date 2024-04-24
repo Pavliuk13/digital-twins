@@ -9,6 +9,7 @@ function Button(props: ButtonProps) {
   const {
     size = 'small',
     variant = 'primary',
+    color = 'blue_500',
     fullWidth = false,
     disabled,
     className,
@@ -19,7 +20,7 @@ function Button(props: ButtonProps) {
   const buttonClassName = classNames(
     styles.root,
     styles[`size_${size}`],
-    styles[`variant_${variant}`],
+    styles[`variant_${variant}_${color}`],
     className,
     {
       [styles.fullWidth]: fullWidth,

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { LocalStorage } from '@@utils/localStorage';
+import { LocalStorage } from '@@services/storage';
 
 import { STORAGE_KEY } from '@@constants/storage';
 

@@ -1,0 +1,39 @@
+@import '@@styles/variables';
+
+.modalHeader {
+  display: flex;
+  flex-direction: column;
+}
+
+.innerWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.headerChildren {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  padding: 0 30px;
+
+  &_overflow {
+    overflow: hidden;
+  }
+
+  & > * {
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+}
+
+.divider {
+  border-bottom: 1px solid $grey_700;
+}
+
+.subHeader {
+  padding: 8px 16px;
+}

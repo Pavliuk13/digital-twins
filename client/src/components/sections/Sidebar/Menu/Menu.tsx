@@ -14,8 +14,6 @@ function Menu() {
 
   const menu = useMenu();
 
-  console.log({ location });
-
   return (
     <div className={styles.menu}>
       {Object.entries(menu).map(

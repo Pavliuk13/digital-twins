@@ -1,0 +1,79 @@
+$medium_bottom_margin: 16px;
+$large_bottom_margin: 20px;
+
+$default_offset_step: 2px;
+$large_offset_step: 4px;
+
+.formControl {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  &_medium {
+    &:not(:last-of-type) {
+      margin-bottom: $medium_bottom_margin;
+    }
+  }
+
+  &_large {
+    &:not(:last-of-type) {
+      margin-bottom: $large_bottom_margin;
+    }
+  }
+
+  &.withoutBottomMargin {
+    margin-bottom: 0;
+  }
+
+  &.isFullWidth {
+    width: 100%;
+  }
+
+  &.isHidden {
+    display: none;
+  }
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  flex: 1;
+
+  &.forCheckbox {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &.isInlineRow {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex: 1;
+
+  &_isInlineRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &_forCheckbox {
+    flex: 0;
+
+    &_medium {
+      margin-bottom: $default_offset_step;
+    }
+
+    &_large {
+      margin-bottom: $large_offset_step;
+    }
+  }
+}

@@ -8,6 +8,7 @@
   background-color: $grey_1000;
   overflow: auto;
   transition: $transition_default;
+  z-index: 1;
 
   &_show {
     left: 0;

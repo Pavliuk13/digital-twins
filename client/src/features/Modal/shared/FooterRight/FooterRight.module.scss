@@ -1,0 +1,13 @@
+.footerRight {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+
+  & > * {
+    margin-bottom: 8px;
+
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+}

@@ -6,10 +6,22 @@
   flex: 1;
   padding: 30px 70px;
   transition: $transition_default;
+
+  @media (max-width: #{$adult}px) {
+    padding: 16px 36px;
+  }
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 30px;
+}
+
+.spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
 }
