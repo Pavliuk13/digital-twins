@@ -24,10 +24,11 @@ public class GetDevicesByOrganizationQueryHandler : IRequestHandler<GetDevicesBy
     
     public async Task<List<DeviceDTO>> Handle(GetDevicesByOrganizationQuery request, CancellationToken cancellationToken)
     {
-        var devices = await _context.Organizations.AsNoTracking()
-            .Include(x => x.Templates)
-            .ThenInclude(x => x.Devices)
-            .SelectMany(x => x.Templates.SelectMany(y => y.Devices)).ToListAsync(cancellationToken);
+        var devices = await _context.Devices.AsNoTracking()
+            .Where(x => x.Template.OrganizationId == request.OrganizationId)
+                .Include(x => x.Template)
+                .Include(x => x.User)
+            .ToListAsync(cancellationToken);
         
         return _mapper.Map<List<DeviceDTO>>(devices);
     }
