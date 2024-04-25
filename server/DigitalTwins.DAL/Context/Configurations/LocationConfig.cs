@@ -37,5 +37,10 @@ public class LocationConfig : IEntityTypeConfiguration<Location>
             .WithMany(y => y.Locations)
             .HasForeignKey(x => x.OrganizationId)
             .OnDelete(DeleteBehavior.NoAction);
+        
+        builder.HasOne(x => x.Owner)
+            .WithMany(y => y.CreatedLocations)
+            .HasForeignKey(x => x.CreatedBy)
+            .OnDelete(DeleteBehavior.NoAction);
     }
 }
