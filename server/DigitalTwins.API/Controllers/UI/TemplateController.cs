@@ -50,10 +50,10 @@ public class TemplateController : ControllerBase
         return Ok(await _mediator.Send(command));
     }
     
-    [HttpDelete("{templateId}")]
+    [HttpDelete]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Delete(long templateId)
+    public async Task<IActionResult> Delete([FromQuery] long templateId)
     {
         await _mediator.Send(new DeleteTemplateCommand { TemplateId = templateId });
         return NoContent();

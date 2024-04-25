@@ -13,6 +13,7 @@ public sealed class DigitalTwinContext : DbContext
     public DbSet<Role> Roles { get; }
     public DbSet<Template> Templates { get; }
     public DbSet<User> Users { get; }
+    public DbSet<UserLocation> UserLocations { get; }
     public DbSet<UserOrganizationRole> UserOrganizationRoles { get; }
     public DbSet<OrganizationPermissionRole> OrganizationPermissionRoles { get; }
 
@@ -26,6 +27,7 @@ public sealed class DigitalTwinContext : DbContext
         Roles = Set<Role>();
         Templates = Set<Template>();
         Users = Set<User>();
+        UserLocations = Set<UserLocation>();
         UserOrganizationRoles = Set<UserOrganizationRole>();
         OrganizationPermissionRoles = Set<OrganizationPermissionRole>();
     }

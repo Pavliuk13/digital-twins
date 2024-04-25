@@ -42,10 +42,10 @@ public class DatastreamController : ControllerBase
         return Ok(await _mediator.Send(command));
     }
     
-    [HttpDelete("{datastreamId}")]
+    [HttpDelete]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Delete(long datastreamId)
+    public async Task<IActionResult> Delete([FromQuery] long datastreamId)
     {
         await _mediator.Send(new DeleteDatastreamCommand { DatastreamId = datastreamId });
         

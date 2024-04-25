@@ -1,4 +1,5 @@
 using DigitalTwins.BLL.Commands.User;
+using DigitalTwins.BLL.Queries.User;
 using DigitalTwins.Common.DTOs.User;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,13 @@ public class UserController : ControllerBase
     public UserController(IMediator mediator)
     {
         _mediator = mediator;
+    }
+    
+    [HttpGet("list")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<UserDTO>))]
+    public async Task<IActionResult> Get([FromQuery] long organizationId)
+    {
+        return Ok(await _mediator.Send(new GetUsersListQuery { OrganizationId = organizationId }));
     }
 
     [HttpPost]
