@@ -1,6 +1,8 @@
-namespace DigitalTwins.DAL.Entities;
+using DigitalTwins.Common.DTOs.User;
 
-public class Location
+namespace DigitalTwins.Common.DTOs.Location;
+
+public class LocationDTO
 {
     public long Id { get; set; }
 
@@ -21,12 +23,10 @@ public class Location
     public DateTime UpdatedAt { get; set; }
 
     public long OrganizationId { get; set; }
-    
+
     public long CreatedBy { get; set; }
-
-    public Organization Organization { get; set; } = null!;
-
-    public IEnumerable<User> Users { get; set; } = null!;
     
-    public User Owner { get; set; } = null!;
+    public IEnumerable<long> UsersIds { get; set; } = null!;
+    
+    public UserDTO Owner { get; set; } = null!;
 }

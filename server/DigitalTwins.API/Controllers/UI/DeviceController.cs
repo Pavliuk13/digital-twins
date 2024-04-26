@@ -41,10 +41,10 @@ public class DeviceController : ControllerBase
         return Ok(await _mediator.Send(command));
     }
     
-    [HttpDelete("{deviceId}")]
+    [HttpDelete]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Delete(long deviceId)
+    public async Task<IActionResult> Delete([FromQuery] long deviceId)
     {
         await _mediator.Send(new DeleteDeviceCommand { DeviceId = deviceId });
         

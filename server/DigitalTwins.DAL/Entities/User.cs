@@ -26,5 +26,7 @@ public class User
     
     public IEnumerable<Location> Locations { get; set; } = null!;
     
+    public IEnumerable<Location> CreatedLocations { get; set; } = null!;
+    
     public IEnumerable<UserOrganizationRole> UserOrganizationRoles { get; set; } = null!;
 }
