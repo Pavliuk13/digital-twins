@@ -1,0 +1,17 @@
+@import '@@styles/variables';
+
+.image {
+  height: 90px;
+  position: absolute;
+  right: -20px;
+  z-index: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.info {
+  margin-top: 32px;
+}

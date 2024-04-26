@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import classNames from 'classnames';
 
+import PageTabs from '@@features/PageTabs';
 import Typography from '@@components/ui/Typography';
 import Button from '@@components/ui/Button';
 import Image from '@@components/ui/Image';
@@ -22,36 +23,46 @@ interface PageContentLayoutProps {
 }
 
 function PageContentLayout(props: PageContentLayoutProps) {
-  const { title, description, button, children, isLoading = false } = props;
+  const {
+    title,
+    description,
+    button,
+    tabs,
+    children,
+    isLoading = false,
+  } = props;
 
   const pageContentLayoutClassName = classNames(styles.wrapper);
 
   return (
     <div className={pageContentLayoutClassName}>
-      <div className={styles.header}>
-        <div>
-          <Typography variant="subheading2">{title}</Typography>
-          {description && (
-            <Typography variant="bodyRegular">{description}</Typography>
+      <div>
+        {tabs && <PageTabs tabs={tabs} className={styles.tabs} />}
+        <div className={styles.header}>
+          <div>
+            <Typography variant="subheading2">{title}</Typography>
+            {description && (
+              <Typography variant="bodyRegular">{description}</Typography>
+            )}
+          </div>
+          {button && (
+            <Button
+              variant="outline"
+              color="grey_200"
+              size="large"
+              onClick={button.onClick}
+            >
+              <Image
+                image={PlusSvg}
+                size={12}
+                fill="grey_200"
+                position="left_8"
+                cursor="pointer"
+              />
+              {button.text}
+            </Button>
           )}
         </div>
-        {button && (
-          <Button
-            variant="outline"
-            color="grey_200"
-            size="large"
-            onClick={button.onClick}
-          >
-            <Image
-              image={PlusSvg}
-              size={12}
-              fill="grey_200"
-              position="left_8"
-              cursor="pointer"
-            />
-            {button.text}
-          </Button>
-        )}
       </div>
       {isLoading ? (
         <div className={styles.spinner}>

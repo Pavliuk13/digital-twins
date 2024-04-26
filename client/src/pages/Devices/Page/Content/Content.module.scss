@@ -1,0 +1,11 @@
+@import '@@styles/variables';
+
+.wrapper {
+  width: 100%;
+}
+
+.devices {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+}

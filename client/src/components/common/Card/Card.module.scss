@@ -1,0 +1,39 @@
+@import '@@styles/variables';
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: $transition_default;
+
+  &:hover {
+    box-shadow: 0px 4px 16px $grey_1000;
+  }
+
+  &_color {
+    &_grey_800 {
+      background-color: $grey_800;
+    }
+  }
+
+  &_cursor {
+    &_pointer {
+      cursor: pointer;
+    }
+
+    &_default {
+      cursor: default;
+    }
+
+    &_not-allowed {
+      cursor: not-allowed;
+    }
+
+    &_wait {
+      cursor: wait;
+    }
+  }
+}

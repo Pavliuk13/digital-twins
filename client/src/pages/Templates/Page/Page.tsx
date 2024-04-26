@@ -1,41 +1,43 @@
-import { memo, useEffect } from 'react';
+import { memo } from 'react';
 
 import { useDispatch } from '@@store/index';
-import { showSidebar } from '@@store/ui/slice';
+import { showModal } from '@@store/modals/slice';
 
 import EmptyContentLayout from '@@components/layouts/EmptyContentLayout';
 
+import { usePageContentContext } from '@@contexts/PageContentContext';
+
 import { Template } from '@@types/template';
+
+import { TemplateModalName } from '@@constants/modal';
 
 import Content from './Content';
 
 import styles from './Page.module.scss';
 
-interface PageProps {
-  templates: Template[];
-  isLoading: boolean;
-  onAddTemplate: () => void;
-}
-
-function Page(props: PageProps) {
-  const { templates, isLoading, onAddTemplate } = props;
-
+function Page() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(showSidebar());
-  }, []);
+  const { data, isLoading, refetch } = usePageContentContext<Template[]>();
+
+  const handleAddTemplate = () => {
+    dispatch(
+      showModal(TemplateModalName, {
+        onSubmit: refetch,
+      }),
+    );
+  };
 
   return (
     <div className={styles.wrapper}>
-      <Content templates={templates} />
-      {!templates?.length && !isLoading && (
+      <Content />
+      {!data?.length && !isLoading && (
         <EmptyContentLayout
           title="Start by creating your first template"
           description="Template is a digital model of a physical object. It is used in SmartLab platform as a template to be assigned to devices."
           button={{
             text: 'Add template',
-            onClick: onAddTemplate,
+            onClick: handleAddTemplate,
           }}
         />
       )}

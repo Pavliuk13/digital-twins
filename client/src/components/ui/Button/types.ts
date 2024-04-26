@@ -7,6 +7,6 @@ export interface ButtonProps
   > {
   size?: 'small' | 'medium' | 'large';
   variant?: 'primary' | 'outline';
-  color: 'blue_500' | 'grey_200';
+  color: 'blue_500' | 'grey_200' | 'red_500';
   fullWidth?: boolean;
 }

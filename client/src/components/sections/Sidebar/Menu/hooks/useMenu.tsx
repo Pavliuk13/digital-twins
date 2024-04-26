@@ -21,11 +21,16 @@ export const useMenu = () => {
         {
           title: 'Templates',
           icon: () => <Image image={TemplateSvg} size={16} fill="grey_200" />,
-          route: ROUTES.TEMPLATES,
+          route: ROUTES.TEMPLATES.INDEX,
         },
       ],
 
       [MENU_GROUP.GENERAL]: [
+        {
+          title: 'Devices',
+          icon: () => <Image image={DevicesSvg} size={16} />,
+          route: ROUTES.DEVICES,
+        },
         {
           title: 'Locations',
           icon: () => <Image image={SmartLabSvg} size={16} />,
@@ -35,11 +40,6 @@ export const useMenu = () => {
           title: 'Organizations',
           icon: () => <Image image={SquaresFilledSvg} size={16} />,
           route: ROUTES.ORGANIZATIONS,
-        },
-        {
-          title: 'Devices',
-          icon: () => <Image image={DevicesSvg} size={16} />,
-          route: ROUTES.DEVICES,
         },
         {
           title: 'Members',

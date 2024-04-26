@@ -1,16 +1,5 @@
 @import '@@styles/variables';
 
-.wrapper {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  flex-basis: 32%;
-  padding: 20px;
-  border-radius: 20px;
-  background-color: $grey_800;
-  overflow: hidden;
-}
-
 .image {
   height: 90px;
   position: absolute;

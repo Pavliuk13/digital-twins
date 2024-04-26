@@ -34,7 +34,7 @@
   &_bodyRegular {
     font-family: $font_noto_sans;
     font-size: $font_size_16;
-    line-height: $font_line_height_28;
+    line-height: $font_line_height_20;
     font-weight: $font_weight_400;
   }
 
@@ -66,6 +66,10 @@
 
     &_grey_200 {
       color: $grey_200;
+    }
+
+    &_grey_700 {
+      color: $grey_700;
     }
 
     &_grey_600 {

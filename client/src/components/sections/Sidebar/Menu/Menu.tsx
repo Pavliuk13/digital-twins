@@ -21,8 +21,9 @@ function Menu() {
           <div key={menuGroupName} className={styles.menu__group}>
             {menuGroup.map((menuItem) => {
               const menuItemClassName = classNames(styles.menu__item, {
-                [styles.menu__item_active]:
-                  location.pathname === menuItem.route,
+                [styles.menu__item_active]: location.pathname.includes(
+                  menuItem.route,
+                ),
               });
 
               return (

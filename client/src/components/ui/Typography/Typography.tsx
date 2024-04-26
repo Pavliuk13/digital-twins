@@ -17,13 +17,14 @@ interface TypographyProps {
     | 'description';
   component?: keyof React.JSX.IntrinsicElements;
   children: ReactNode;
-  color?: 'white_1000' | 'grey_600' | 'grey_200';
+  color?: 'white_1000' | 'grey_700' | 'grey_600' | 'grey_200';
   bottomOffset?: 0 | 2 | 4 | 8 | 12 | 16 | 20 | 24;
   block?: boolean;
   inline?: boolean;
   className?: string;
   style?: React.CSSProperties;
   dataCid?: string;
+  onClick?: () => void;
 }
 
 function Typography(props: TypographyProps): React.JSX.Element {
@@ -38,6 +39,7 @@ function Typography(props: TypographyProps): React.JSX.Element {
     className,
     style,
     dataCid,
+    onClick,
   } = props;
 
   const Variant = component ?? VARIANTS_MAP[variant];
@@ -57,6 +59,7 @@ function Typography(props: TypographyProps): React.JSX.Element {
       )}
       style={style}
       data-cid={dataCid}
+      onClick={onClick}
     >
       {children}
     </Variant>

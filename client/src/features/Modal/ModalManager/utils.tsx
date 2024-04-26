@@ -4,8 +4,11 @@ import { store } from '@@store/index';
 import { setIsLoadingModal } from '@@store/modals/slice';
 
 import {
-  CreateTemplateModalName,
   ConfirmCloseModalName,
+  TemplateModalName,
+  DeviceModalName,
+  ConfirmDeleteModalName,
+  DatastreamModalName,
 } from '@@constants/modal';
 
 const loadModal = async (importPromise) => {
@@ -18,15 +21,30 @@ const loadModal = async (importPromise) => {
   return modal;
 };
 
-const CreateTemplateModal = lazy(() => {
-  return loadModal(import('../ModalComponents/CreateTemplateModal'));
-});
-
 const ConfirmCloseModal = lazy(() => {
   return loadModal(import('../ModalComponents/ConfirmCloseModal'));
 });
 
+const TemplateModal = lazy(() => {
+  return loadModal(import('../ModalComponents/TemplateModal'));
+});
+
+const DeviceModal = lazy(() => {
+  return loadModal(import('../ModalComponents/DeviceModal'));
+});
+
+const ConfirmDeleteModal = lazy(() => {
+  return loadModal(import('../ModalComponents/ConfirmDeleteModal'));
+});
+
+const DatastreamModal = lazy(() => {
+  return loadModal(import('../ModalComponents/DatastreamModal'));
+});
+
 export const modalComponentLookupTable = {
-  [CreateTemplateModalName]: CreateTemplateModal,
   [ConfirmCloseModalName]: ConfirmCloseModal,
+  [TemplateModalName]: TemplateModal,
+  [DeviceModalName]: DeviceModal,
+  [ConfirmDeleteModalName]: ConfirmDeleteModal,
+  [DatastreamModalName]: DatastreamModal,
 };

@@ -100,5 +100,24 @@
         border: 1px solid $grey_900;
       }
     }
+
+    &_red_500 {
+      background-color: $transparent;
+      border: 1px solid $red_500;
+      transition: $transition_default;
+
+      &:hover {
+        border: 1px solid $red_500;
+        background-color: rgba($red_500, 0.05);
+      }
+
+      &:focus {
+        border: 1px solid $red_700;
+      }
+
+      &:disabled {
+        border: 1px solid $red_100;
+      }
+    }
   }
 }

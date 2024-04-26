@@ -1,16 +1,12 @@
-export enum Hardware {
-  Arduino,
-  ESP32,
-  ESP8266,
-  Microduino,
-  Raspberry,
-}
+import { Device } from '@@types/device';
+import { Hardware } from '@@types/hardware';
+import { Datastream } from '@@types/datastream';
 
 export enum ConnectionType {
-  Ethernet = '0',
-  WiFi = '1',
-  Satellite = '2',
-  GSM = '3',
+  Ethernet = 'Ethernet',
+  WiFi = 'WiFi',
+  Satellite = 'Satellite',
+  GSM = 'GSM',
 }
 
 export interface Template {
@@ -21,7 +17,6 @@ export interface Template {
   description: string;
   organizationId: number;
   createdBy: number;
-  // TODO
-  datastreams: [];
-  devices: [];
+  datastreams: Datastream[];
+  devices: Device[];
 }
