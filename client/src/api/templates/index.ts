@@ -16,6 +16,18 @@ const templatesApi = api.injectEndpoints({
           };
         },
       }),
+      getTemplate: build.query<
+        Template,
+        AxiosRequestConfig<{ id: Template['id'] }>
+      >({
+        query: (config) => {
+          return {
+            url: '/template',
+            method: 'get',
+            ...config,
+          };
+        },
+      }),
       createTemplate: build.mutation<Template, AxiosRequestConfig>({
         query: (config) => {
           return {
@@ -26,11 +38,36 @@ const templatesApi = api.injectEndpoints({
         },
         invalidatesTags: ['Template'],
       }),
+      updateTemplate: build.mutation<Template, AxiosRequestConfig>({
+        query: (config) => {
+          return {
+            url: '/template',
+            method: 'put',
+            ...config,
+          };
+        },
+        invalidatesTags: ['Template'],
+      }),
+      deleteTemplate: build.mutation<Template, AxiosRequestConfig>({
+        query: (config) => {
+          return {
+            url: '/template',
+            method: 'delete',
+            ...config,
+          };
+        },
+        invalidatesTags: ['Template'],
+      }),
     };
   },
 });
 
-export const { useGetUserTemplatesQuery, useCreateTemplateMutation } =
-  templatesApi;
+export const {
+  useGetUserTemplatesQuery,
+  useGetTemplateQuery,
+  useCreateTemplateMutation,
+  useUpdateTemplateMutation,
+  useDeleteTemplateMutation,
+} = templatesApi;
 
 export default templatesApi;

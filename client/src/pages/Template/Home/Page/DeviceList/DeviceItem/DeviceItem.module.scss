@@ -1,0 +1,18 @@
+@import '@@styles/variables';
+
+.wrapper {
+  &:not(:last-child) {
+    padding-bottom: 8px;
+    border-bottom: 1px solid $grey_900;
+  }
+}
+
+.device {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  padding: 8px 8px;
+  border-radius: 12px;
+  transition: $transition_default;
+  cursor: pointer;
+}

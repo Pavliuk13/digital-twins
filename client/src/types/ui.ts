@@ -7,3 +7,13 @@ export type ModalSize =
   | 'size_680'
   | 'size_800'
   | 'size_925';
+
+export interface SelectOption {
+  label: string;
+  value: string;
+}
+
+export interface TabOption {
+  label: string;
+  route: string;
+}

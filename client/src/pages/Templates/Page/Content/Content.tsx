@@ -1,34 +1,26 @@
 import { memo } from 'react';
 
+import { usePageContentContext } from '@@contexts/PageContentContext';
+
 import { Template } from '@@types/template';
 
 import TemplateCard from './TemplateCard';
 
 import styles from './Content.module.scss';
 
-interface ContentProps {
-  templates: Template[];
-}
-
-function Content(props: ContentProps) {
-  const { templates } = props;
+function Content() {
+  const { data } = usePageContentContext<Template[]>();
 
   return (
-    <div className={styles.wrapper}>
-      {!!templates?.length && (
+    !!data?.length && (
+      <div className={styles.wrapper}>
         <div className={styles.templates}>
-          {templates.map((template) => {
-            return (
-              <TemplateCard
-                title={template.name}
-                hardware={template.hardware}
-                devicesQuantity={template.devices.length}
-              />
-            );
+          {data.map((template) => {
+            return <TemplateCard template={template} />;
           })}
         </div>
-      )}
-    </div>
+      </div>
+    )
   );
 }
 

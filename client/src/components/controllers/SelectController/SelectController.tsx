@@ -15,7 +15,7 @@ function SelectController(props: SelectControllerProps) {
   } = useFormContext();
 
   const {
-    field: { onChange },
+    field: { value, onChange },
   } = useController({
     name,
     control,
@@ -24,6 +24,7 @@ function SelectController(props: SelectControllerProps) {
   return (
     <Select
       name={name}
+      value={value}
       error={!!_get(errors, name)}
       onChange={onChange}
       {...restProps}

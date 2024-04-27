@@ -7,7 +7,6 @@ import { modalComponentLookupTable } from './utils';
 
 function ModalManager() {
   const currentModals = useSelector(selectCurrentModals);
-  console.log({ currentModals });
 
   return currentModals.map(
     ({ _modalId, modalType, modalProps = {} }, index) => {

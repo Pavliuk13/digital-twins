@@ -1,4 +1,4 @@
-import { memo, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 
 import { useClickOutside } from '@@hooks/common/useClickOutside';
@@ -8,7 +8,9 @@ import Image from '@@components/ui/Image';
 
 import ChevronSvg from '@@assets/icons/chevron.svg';
 
-import { SelectOption, SelectProps } from './types';
+import { SelectOption } from '@@types/ui';
+
+import { SelectProps } from './types';
 
 import { NOT_SELETED } from './constants';
 
@@ -16,6 +18,7 @@ import styles from './Select.module.scss';
 
 function Select(props: SelectProps) {
   const {
+    value,
     options = [],
     error = false,
     disabled = false,
@@ -38,12 +41,6 @@ function Select(props: SelectProps) {
     toggle();
   };
 
-  useClickOutside(selectRef, () => {
-    if (isOpen) {
-      toggle();
-    }
-  });
-
   const selectClassName = classNames(styles.select, className);
 
   const chevronClassName = classNames(styles.select__chevron, {
@@ -52,6 +49,18 @@ function Select(props: SelectProps) {
 
   const listClassName = classNames(styles.list, {
     [styles.list_open]: isOpen,
+  });
+
+  useEffect(() => {
+    if (value && options.length) {
+      setSelected(options.find((option) => option.value === value));
+    }
+  }, [options]);
+
+  useClickOutside(selectRef, () => {
+    if (isOpen) {
+      toggle();
+    }
   });
 
   return (

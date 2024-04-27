@@ -1,0 +1,36 @@
+@import '@@styles/variables';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.tab {
+  position: relative;
+  padding: 6px 64px 12px 64px;
+
+  font-family: $font_noto_sans;
+  font-size: $font_size_16;
+  line-height: $font_line_height_24;
+  font-weight: $font_weight_600;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background-color: $grey_700;
+  }
+
+  &_active {
+    color: $blue_500;
+
+    &::after {
+      background-color: $blue_500;
+    }
+  }
+}

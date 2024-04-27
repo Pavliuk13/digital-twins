@@ -11,6 +11,9 @@ import cancel_thin from './cancel_thin.svg';
 import error_shape from './error_shape.svg';
 import chevron from './chevron.svg';
 import edit from './edit.svg';
+import trash from './trash.svg';
+import copy from './copy.svg';
+import settings from './settings.svg';
 
 export {
   smart_lab_logo,
@@ -26,4 +29,7 @@ export {
   error_shape,
   chevron,
   edit,
+  trash,
+  copy,
+  settings,
 };

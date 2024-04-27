@@ -1,7 +1,7 @@
 import { memo } from 'react';
 
 import PrivatePageLayout from '@@components/layouts/PrivatePageLayout';
-import Header from '@@components/sections/Header/Header';
+import Header from '@@components/sections/Header';
 
 import Page from './Page';
 

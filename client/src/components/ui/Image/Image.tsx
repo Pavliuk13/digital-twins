@@ -35,7 +35,7 @@ export type ImageSize =
 
 export interface ImageProps extends Omit<SVGProps<SVGSVGElement>, 'ref'> {
   size?: ImageSize;
-  fill?: 'white_1000' | 'blue_500' | 'grey_200' | 'currentColor';
+  fill?: 'white_1000' | 'blue_500' | 'grey_200' | 'red_500' | 'currentColor';
   className?: string;
   dataCid?: string | null;
   position?: ImagePositions;

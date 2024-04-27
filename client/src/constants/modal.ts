@@ -1,2 +1,5 @@
-export const CreateTemplateModalName = 'create-template';
 export const ConfirmCloseModalName = 'confirm-close';
+export const TemplateModalName = 'template';
+export const DeviceModalName = 'device';
+export const ConfirmDeleteModalName = 'confirm-delete';
+export const DatastreamModalName = 'datastream';
