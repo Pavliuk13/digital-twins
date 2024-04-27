@@ -12,9 +12,15 @@ public static class ServiceCollectionExtension
     {
         var connectionsString = configuration.GetConnectionString("DigitalTwinDBConnection");
         services.AddDbContext<DigitalTwinContext>(options =>
-            options.UseSqlServer(
-                connectionsString,
-                opt => opt.MigrationsAssembly(typeof(DigitalTwinContext).Assembly.GetName().Name)));
+        options.UseSqlServer(
+            connectionString,
+            sqlServerOptions => sqlServerOptions
+                .MigrationsAssembly(typeof(DigitalTwinContext).Assembly.GetName().Name)
+                .EnableRetryOnFailure(
+                    maxRetryCount: 5,
+                    maxRetryDelay: TimeSpan.FromSeconds(10),
+                    errorNumbersToAdd: null)
+        ));
     }
     
     public static void RegisterCustomServices(this IServiceCollection services, IConfiguration configuration)
