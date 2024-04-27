@@ -13,7 +13,7 @@ public static class ServiceCollectionExtension
         var connectionsString = configuration.GetConnectionString("DigitalTwinDBConnection");
         services.AddDbContext<DigitalTwinContext>(options =>
         options.UseSqlServer(
-            connectionString,
+            connectionsString,
             sqlServerOptions => sqlServerOptions
                 .MigrationsAssembly(typeof(DigitalTwinContext).Assembly.GetName().Name)
                 .EnableRetryOnFailure(
