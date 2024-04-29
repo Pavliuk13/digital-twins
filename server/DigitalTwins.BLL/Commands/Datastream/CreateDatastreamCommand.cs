@@ -69,13 +69,9 @@ public class CreateDatastreamCommandHandler : IRequestHandler<CreateDatastreamCo
             Pin = request.Pin,
             TemplateId = request.TemplateId
         };
-
-        await using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
         
         _context.Datastreams.Add(datastreamModel);
         await _context.SaveChangesAsync(cancellationToken);
-        
-        await transaction.CommitAsync(cancellationToken);
 
         return _mapper.Map<DatastreamDTO>(datastreamModel);
     }

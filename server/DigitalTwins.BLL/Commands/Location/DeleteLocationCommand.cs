@@ -20,14 +20,10 @@ public class DeleteLocationCommandHandler : IRequestHandler<DeleteLocationComman
     
     public async Task Handle(DeleteLocationCommand request, CancellationToken cancellationToken)
     {
-        await using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
-        
         var location = await _context.Locations.FirstOrDefaultAsync(x => x.Id == request.LocationId, cancellationToken)
                        ?? throw new KeyNotFoundException("Location was not found");
 
         _context.Locations.Remove(location);
         await _context.SaveChangesAsync(cancellationToken);
-        
-        await transaction.CommitAsync(cancellationToken);
     }
 }

@@ -20,14 +20,10 @@ public class DeleteDatastreamCommandHandler : IRequestHandler<DeleteDatastreamCo
     
     public async Task Handle(DeleteDatastreamCommand request, CancellationToken cancellationToken)
     {
-        await using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
-        
         var datastream = await _context.Datastreams.FirstOrDefaultAsync(x => x.Id == request.DatastreamId, cancellationToken)
                        ?? throw new KeyNotFoundException("Datastream was not found");
 
         _context.Datastreams.Remove(datastream);
         await _context.SaveChangesAsync(cancellationToken);
-        
-        await transaction.CommitAsync(cancellationToken);
     }
 }

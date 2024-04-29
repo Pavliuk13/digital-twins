@@ -71,8 +71,6 @@ public class UpdateTemplateCommandHandler : IRequestHandler<UpdateTemplateComman
     
     public async Task<TemplateDTO> Handle(UpdateTemplateCommand request, CancellationToken cancellationToken)
     {
-        await using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
-        
         var template = await _context.Templates.FirstOrDefaultAsync(x => x.Id == request.TemplateId, cancellationToken)
             ?? throw new KeyNotFoundException("Template was not found");
 
@@ -82,7 +80,6 @@ public class UpdateTemplateCommandHandler : IRequestHandler<UpdateTemplateComman
         template.Hardware = request.Hardware;
         
         await _context.SaveChangesAsync(cancellationToken);
-        await transaction.CommitAsync(cancellationToken);
 
         return _mapper.Map<TemplateDTO>(template);
     }
