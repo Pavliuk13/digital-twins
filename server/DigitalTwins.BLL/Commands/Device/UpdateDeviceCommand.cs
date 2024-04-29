@@ -43,15 +43,12 @@ public class UpdateDeviceCommandHandler : IRequestHandler<UpdateDeviceCommand, D
     
     public async Task<DeviceDTO> Handle(UpdateDeviceCommand request, CancellationToken cancellationToken)
     {
-        await using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
-        
         var device = await _context.Devices.FirstOrDefaultAsync(x => x.Id == request.DeviceId, cancellationToken)
                        ?? throw new KeyNotFoundException("Device was not found");
 
         device.Name = request.Name;
         
         await _context.SaveChangesAsync(cancellationToken);
-        await transaction.CommitAsync(cancellationToken);
 
         return _mapper.Map<DeviceDTO>(device);
     }

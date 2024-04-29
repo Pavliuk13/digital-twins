@@ -93,12 +93,8 @@ public class CreateLocationCommandHandler : IRequestHandler<CreateLocationComman
             OrganizationId = request.OrganizationId
         };
         
-        await using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
-        
         _context.Locations.Add(locationModel);
         await _context.SaveChangesAsync(cancellationToken);
-        
-        await transaction.CommitAsync(cancellationToken);
 
         var owner = await _context.Users.AsNoTracking().FirstOrDefaultAsync(x => x.Id == request.UserId, cancellationToken);
         locationModel.Owner = owner ?? throw new KeyNotFoundException("User doesn't exist");

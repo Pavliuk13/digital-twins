@@ -58,12 +58,8 @@ public class CreateDeviceCommandHandler : IRequestHandler<CreateDeviceCommand, D
             TemplateId = request.TemplateId
         };
         
-        await using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
-        
         _context.Devices.Add(deviceModel);
         await _context.SaveChangesAsync(cancellationToken);
-        
-        await transaction.CommitAsync(cancellationToken);
 
         return _mapper.Map<DeviceDTO>(deviceModel);
     }

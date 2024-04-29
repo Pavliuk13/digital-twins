@@ -26,8 +26,6 @@ public class UpdateUsersInLocationCommandHandler : IRequestHandler<UpdateUsersIn
     
     public async Task<LocationDTO> Handle(UpdateUsersInLocationCommand request, CancellationToken cancellationToken)
     {
-        await using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
-        
         var location = await _context.Locations
                            .Include(x => x.Owner)
                            .FirstOrDefaultAsync(x => x.Id == request.LocationId, cancellationToken)
@@ -53,7 +51,6 @@ public class UpdateUsersInLocationCommandHandler : IRequestHandler<UpdateUsersIn
         
         _context.UserLocations.RemoveRange(usersLocationToDelete);
         await _context.SaveChangesAsync(cancellationToken);
-        await transaction.CommitAsync(cancellationToken);
 
         var responseModel = _mapper.Map<LocationDTO>(location);
         responseModel.UsersIds = request.IncludedUsersIds;
