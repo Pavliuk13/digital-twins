@@ -1,9 +1,18 @@
-import { memo } from 'react';
+import { memo, DetailedHTMLProps, ButtonHTMLAttributes } from 'react';
 import classNames from 'classnames';
 
-import { ButtonProps } from './types';
-
 import styles from './Button.module.scss';
+
+export interface ButtonProps
+  extends DetailedHTMLProps<
+    ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
+  size?: 'small' | 'medium' | 'large';
+  variant?: 'primary' | 'outline';
+  color: 'blue_500' | 'grey_200' | 'red_500';
+  fullWidth?: boolean;
+}
 
 function Button(props: ButtonProps) {
   const {

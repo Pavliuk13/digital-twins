@@ -16,18 +16,22 @@ function PageTabs(props: PageTabsProps) {
   const location = useLocation();
 
   return (
-    <div className={classNames(styles.wrapper, className)}>
-      {tabs.map((tab) => {
-        const tabItemClassName = classNames(styles.tab, {
-          [styles.tab_active]: location.pathname === tab.route,
-        });
+    <div className={styles.container}>
+      <div className={classNames(styles.wrapper, className)}>
+        {tabs.map((tab) => {
+          const tabItemClassName = classNames(styles.tab, {
+            [styles.tab_active]: location.pathname === tab.route,
+          });
 
-        return (
-          <Link key={tab.route} to={tab.route} className={tabItemClassName}>
-            {tab.label}
-          </Link>
-        );
-      })}
+          return (
+            <div className={tabItemClassName}>
+              <Link key={tab.route} to={tab.route}>
+                {tab.label}
+              </Link>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

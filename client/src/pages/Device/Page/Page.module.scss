@@ -1,0 +1,11 @@
+@import '@@styles/variables';
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 30px;
+
+  @media (max-width: #{$desktop}px) {
+    grid-template-columns: 1fr;
+  }
+}

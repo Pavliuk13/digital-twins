@@ -1,12 +1,19 @@
 @import '@@styles/variables';
 
 .menu {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   margin-top: 32px;
 
   &__group {
     display: flex;
     flex-direction: column;
     gap: 2px;
+
+    &:last-child {
+      flex: 1;
+    }
   }
 
   &__item {
@@ -19,6 +26,10 @@
 
     &:hover {
       background-color: rgba($blue_100, 0.07);
+    }
+
+    &:last-child {
+      margin-top: auto;
     }
 
     &_active {

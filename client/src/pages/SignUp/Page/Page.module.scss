@@ -1,0 +1,18 @@
+@import '@@styles/variables';
+@import '@@styles/mixins';
+
+.wrapper {
+  height: 100vh;
+  @include flexCenter;
+  flex-direction: column;
+}
+
+.signIn {
+  font-weight: $font_weight_300;
+  margin-top: 14px;
+
+  a {
+    color: $blue_500;
+    font-weight: $font_weight_700;
+  }
+}

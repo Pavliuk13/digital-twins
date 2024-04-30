@@ -1,9 +1,15 @@
-import { memo } from 'react';
+import { memo, DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import classNames from 'classnames';
 
-import { InputProps } from './types';
-
 import styles from './Input.module.scss';
+
+export interface InputProps
+  extends DetailedHTMLProps<
+    InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  > {
+  error?: boolean;
+}
 
 function Input(props: InputProps) {
   const { error = false, className, ...restProps } = props;

@@ -4,7 +4,16 @@ import _get from 'lodash/get';
 
 import Select from '@@components/ui/Select';
 
-import { SelectControllerProps } from './types';
+import { SelectOption } from '@@types/ui';
+
+export interface SelectControllerProps {
+  name: string;
+  value: string;
+  options: SelectOption[];
+  error?: boolean;
+  disabled?: boolean;
+  classname?: string;
+}
 
 function SelectController(props: SelectControllerProps) {
   const { name, ...restProps } = props;

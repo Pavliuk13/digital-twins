@@ -16,7 +16,7 @@ function Content() {
       <div className={styles.wrapper}>
         <div className={styles.templates}>
           {data.map((template) => {
-            return <TemplateCard template={template} />;
+            return <TemplateCard key={template.id} template={template} />;
           })}
         </div>
       </div>

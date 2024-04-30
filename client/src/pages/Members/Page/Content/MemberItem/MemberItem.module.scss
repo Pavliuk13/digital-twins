@@ -1,0 +1,25 @@
+@import '@@styles/variables';
+@import '@@styles/mixins';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  @include flexCenter;
+  font-size: $font_size_24;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: $grey_200;
+}
+
+.welcome {
+  font-family: $font_noto_sans;
+  font-size: $font_size_14;
+  line-height: $font_line_height_22;
+  font-weight: $font_weight_400;
+  color: $grey_200;
+}

@@ -49,9 +49,16 @@ function TemplateSettings() {
       <div className={styles.header}>
         <div>
           <Typography variant="subheading2">Template settings</Typography>
-          <Typography variant="bodyRegular" color="grey_200">
-            {data?.connectionType}, {data?.hardware}
-          </Typography>
+          {data && (
+            <>
+              <Typography variant="bodyRegular" color="grey_200">
+                {data?.connectionType}, {data?.hardware}
+              </Typography>
+              <Typography variant="note" color="grey_200">
+                {data?.description}
+              </Typography>
+            </>
+          )}
         </div>
         <Image
           image={SettingsSvg}
