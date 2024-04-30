@@ -77,8 +77,6 @@ public class UpdateLocationCommandHandler : IRequestHandler<UpdateLocationComman
     
     public async Task<LocationDTO> Handle(UpdateLocationCommand request, CancellationToken cancellationToken)
     {
-        await using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
-        
         var location = await _context.Locations
             .Include(x => x.Owner)
             .FirstOrDefaultAsync(x => x.Id == request.LocationId, cancellationToken)
@@ -93,7 +91,6 @@ public class UpdateLocationCommandHandler : IRequestHandler<UpdateLocationComman
         location.UpdatedAt = DateTime.Now;
         
         await _context.SaveChangesAsync(cancellationToken);
-        await transaction.CommitAsync(cancellationToken);
 
         return _mapper.Map<LocationDTO>(location);
     }

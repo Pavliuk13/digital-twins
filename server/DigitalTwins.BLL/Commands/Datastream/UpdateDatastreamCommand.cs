@@ -62,8 +62,6 @@ public class UpdateDatastreamCommandHandler : IRequestHandler<UpdateDatastreamCo
     
     public async Task<DatastreamDTO> Handle(UpdateDatastreamCommand request, CancellationToken cancellationToken)
     {
-        await using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
-        
         var datastream =
             await _context.Datastreams.FirstOrDefaultAsync(x => x.Id == request.DatastreamId, cancellationToken)
             ?? throw new KeyNotFoundException("Datastream not found");
@@ -74,7 +72,6 @@ public class UpdateDatastreamCommandHandler : IRequestHandler<UpdateDatastreamCo
         datastream.PinMode = request.PinMode;
         
         await _context.SaveChangesAsync(cancellationToken);
-        await transaction.CommitAsync(cancellationToken);
 
         return _mapper.Map<DatastreamDTO>(datastream);
     }
