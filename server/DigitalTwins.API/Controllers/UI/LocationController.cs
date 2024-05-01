@@ -3,10 +3,12 @@ using DigitalTwins.BLL.Queries.Location;
 using DigitalTwins.Common.DTOs.Location;
 using DigitalTwins.Common.DTOs.Template;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DigitalTwins.API.Controllers.UI;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class LocationController : ControllerBase

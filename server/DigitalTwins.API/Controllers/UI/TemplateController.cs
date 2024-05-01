@@ -2,10 +2,12 @@ using DigitalTwins.BLL.Commands.Template;
 using DigitalTwins.BLL.Queries.Template;
 using DigitalTwins.Common.DTOs.Template;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DigitalTwins.API.Controllers.UI;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class TemplateController : ControllerBase

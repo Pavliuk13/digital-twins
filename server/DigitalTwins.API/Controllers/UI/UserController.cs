@@ -2,10 +2,12 @@ using DigitalTwins.BLL.Commands.User;
 using DigitalTwins.BLL.Queries.User;
 using DigitalTwins.Common.DTOs.User;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DigitalTwins.API.Controllers.UI;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class UserController : ControllerBase

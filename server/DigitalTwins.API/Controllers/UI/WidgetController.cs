@@ -2,10 +2,12 @@ using DigitalTwins.BLL.Commands.Widget;
 using DigitalTwins.BLL.Queries.Widget;
 using DigitalTwins.Common.DTOs.Widget;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DigitalTwins.API.Controllers.UI;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class WidgetController : ControllerBase

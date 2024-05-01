@@ -1,9 +1,11 @@
 using DigitalTwins.BLL.Interfaces;
 using DigitalTwins.Common.DTOs.Mqtt;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DigitalTwins.API.Controllers.Mqtt;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class MqttController : ControllerBase

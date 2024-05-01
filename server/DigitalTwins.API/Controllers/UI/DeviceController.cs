@@ -2,10 +2,12 @@ using DigitalTwins.BLL.Commands.Device;
 using DigitalTwins.BLL.Queries.Device;
 using DigitalTwins.Common.DTOs.Device;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DigitalTwins.API.Controllers.UI;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class DeviceController : ControllerBase
