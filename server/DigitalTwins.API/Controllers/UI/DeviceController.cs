@@ -21,9 +21,9 @@ public class DeviceController : ControllerBase
     
     [HttpGet("list")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<DeviceDTO>))]
-    public async Task<IActionResult> Get([FromQuery] long organizationId)
+    public async Task<IActionResult> Get()
     {
-        return Ok(await _mediator.Send(new GetDevicesByOrganizationQuery { OrganizationId = organizationId }));
+        return Ok(await _mediator.Send(new GetDevicesByOrganizationQuery()));
     }
     
     [HttpPost]

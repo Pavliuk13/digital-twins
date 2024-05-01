@@ -21,9 +21,9 @@ public class UserController : ControllerBase
     
     [HttpGet("list")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<UserDTO>))]
-    public async Task<IActionResult> Get([FromQuery] long organizationId)
+    public async Task<IActionResult> Get()
     {
-        return Ok(await _mediator.Send(new GetUsersListQuery { OrganizationId = organizationId }));
+        return Ok(await _mediator.Send(new GetUsersListQuery()));
     }
 
     [HttpPost]

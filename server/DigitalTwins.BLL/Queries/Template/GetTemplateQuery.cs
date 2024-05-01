@@ -1,4 +1,5 @@
 using AutoMapper;
+using DigitalTwins.BLL.Interfaces;
 using DigitalTwins.Common.DTOs.Template;
 using DigitalTwins.DAL.Context;
 using MediatR;
@@ -15,15 +16,19 @@ public class GetTemplateQueryHandler : IRequestHandler<GetTemplateQuery, Templat
 {
     private readonly DigitalTwinContext _context;
     private readonly IMapper _mapper;
+    private readonly ICurrentUserService _currentUserService;
 
-    public GetTemplateQueryHandler(DigitalTwinContext context, IMapper mapper)
+    public GetTemplateQueryHandler(DigitalTwinContext context, IMapper mapper, ICurrentUserService currentUserService)
     {
         _context = context;
         _mapper = mapper;
+        _currentUserService = currentUserService;
     }
     
     public async Task<TemplateDTO> Handle(GetTemplateQuery request, CancellationToken cancellationToken)
     {
+        var test = await _currentUserService.GetCurrentUserEmail();
+        
         var template = await _context.Templates.AsNoTracking()
                 .Include(x => x.Datastreams)
                 .Include(x => x.Devices)

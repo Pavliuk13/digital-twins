@@ -22,9 +22,9 @@ public class LocationController : ControllerBase
     
     [HttpGet("list")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<TemplateDTO>))]
-    public async Task<IActionResult> Get([FromQuery] long organizationId)
+    public async Task<IActionResult> Get()
     {
-        return Ok(await _mediator.Send(new GetLocationsListQuery { OrganizationId = organizationId }));
+        return Ok(await _mediator.Send(new GetLocationsListQuery()));
     }
     
     [HttpPost]

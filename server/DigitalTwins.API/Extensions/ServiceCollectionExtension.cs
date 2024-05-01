@@ -37,8 +37,9 @@ public static class ServiceCollectionExtension
         
         services.AddHostedService<MqttSubscriber>();
         services.AddSingleton<IMqttSubscriber, MqttSubscriber>();
-        services.AddScoped<IMqttPublisher, MqttPublisher>();
-        services.AddScoped<IDeviceService, DeviceService>();
+        services.AddTransient<IMqttPublisher, MqttPublisher>();
+        services.AddTransient<IDeviceService, DeviceService>();
+        services.AddTransient<ICurrentUserService, CurrentUserService>();
     }
     
     public static void ConfigureJwt(this IServiceCollection services, IConfiguration configuration)
