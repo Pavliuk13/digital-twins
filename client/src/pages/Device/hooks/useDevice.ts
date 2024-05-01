@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 
 import { useGetDevicesQuery } from '@@api/devices';
+import { useGetDeviceWidgetsQuery } from '@@api/widgets';
 
 export const useDevice = () => {
   const { deviceId } = useParams();
@@ -8,16 +9,18 @@ export const useDevice = () => {
   const {
     refetch,
     data: devices = [],
-    isLoading,
-  } = useGetDevicesQuery({
-    params: { organizationId: 2 },
-  });
+    isLoading: isLoadingDevices,
+  } = useGetDevicesQuery();
 
-  console.log({ deviceId, devices });
+  const { data: deviceWidgets = [], isLoading: isLoadingDeviceWidgets } =
+    useGetDeviceWidgetsQuery({ params: { deviceId } });
 
   return {
-    device: devices.find(({ id }) => id === +deviceId),
-    isLoading,
+    data: {
+      device: devices.find(({ id }) => id === +deviceId),
+      deviceWidgets,
+    },
+    isLoading: isLoadingDevices || isLoadingDeviceWidgets,
     refetch,
   };
 };

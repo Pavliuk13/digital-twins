@@ -10,7 +10,7 @@ const mqttApi = api.injectEndpoints({
       createMqttTask: build.mutation<void, AxiosRequestConfig<MqttTask>>({
         query: (config) => {
           return {
-            url: '/mqqt',
+            url: '/mqtt',
             method: 'post',
             ...config,
           };

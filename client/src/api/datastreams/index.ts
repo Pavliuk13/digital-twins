@@ -19,6 +19,7 @@ const datastreamsApi = api.injectEndpoints({
             ...config,
           };
         },
+        providesTags: ['Datastream'],
       }),
       createDatastream: build.mutation<
         Omit<Datastream, 'id'>,

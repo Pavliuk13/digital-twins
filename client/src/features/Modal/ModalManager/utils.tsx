@@ -10,6 +10,7 @@ import {
   ConfirmDeleteModalName,
   DatastreamModalName,
   LocationModalName,
+  WidgetModalName,
 } from '@@constants/modal';
 
 const loadModal = async (importPromise) => {
@@ -46,6 +47,10 @@ const LocationModal = lazy(() => {
   return loadModal(import('../ModalComponents/LocationModal'));
 });
 
+const WidgetModal = lazy(() => {
+  return loadModal(import('../ModalComponents/WidgetModal'));
+});
+
 export const modalComponentLookupTable = {
   [ConfirmCloseModalName]: ConfirmCloseModal,
   [TemplateModalName]: TemplateModal,
@@ -54,4 +59,5 @@ export const modalComponentLookupTable = {
   [DatastreamModalName]: DatastreamModal,
   [DatastreamModalName]: DatastreamModal,
   [LocationModalName]: LocationModal,
+  [WidgetModalName]: WidgetModal,
 };

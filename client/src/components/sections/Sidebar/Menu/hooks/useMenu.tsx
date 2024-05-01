@@ -1,6 +1,9 @@
 import { useMemo } from 'react';
 
+import api from '@@api/rtk';
 import { doSignOut } from '@@api/auth';
+
+import { useDispatch } from '@@store/index';
 
 import Image from '@@components/ui/Image';
 
@@ -16,6 +19,8 @@ import { ROUTES } from '@@constants/routes';
 import { MENU_GROUP } from './constants';
 
 export const useMenu = () => {
+  const dispatch = useDispatch();
+
   return useMemo(() => {
     return {
       [MENU_GROUP.DEVELOP]: [
@@ -54,6 +59,7 @@ export const useMenu = () => {
           title: 'Log out',
           icon: () => <Image image={LogoutSvg} size={16} />,
           onClick: async () => {
+            dispatch(api.util.resetApiState());
             await doSignOut();
           },
         },

@@ -1,8 +1,6 @@
 export const prepareCreatePayload = (formData) => {
   return {
     ...formData,
-    organizationId: 2,
-    userId: 2,
   };
 };
 

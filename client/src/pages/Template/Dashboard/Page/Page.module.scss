@@ -1,4 +1,11 @@
+@import '@@styles/variables';
+
 .wrapper {
-  display: flex;
-  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+
+  @media (max-width: #{$desktop}px) {
+    grid-template-columns: 1fr;
+  }
 }
