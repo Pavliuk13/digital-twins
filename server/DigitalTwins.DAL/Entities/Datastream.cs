@@ -17,4 +17,6 @@ public class Datastream
     public long TemplateId { get; set; }
 
     public Template Template { get; set; } = null!;
+
+    public IEnumerable<Widget> Widgets { get; set; } = null!;
 }

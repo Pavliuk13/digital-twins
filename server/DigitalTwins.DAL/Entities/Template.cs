@@ -23,4 +23,6 @@ public class Template
     public IEnumerable<Datastream> Datastreams { get; set; } = null!;
     
     public IEnumerable<Device> Devices { get; set; } = null!;
+    
+    public IEnumerable<Widget> Widgets { get; set; } = null!;
 }

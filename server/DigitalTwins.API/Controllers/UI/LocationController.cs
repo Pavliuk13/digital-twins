@@ -3,10 +3,12 @@ using DigitalTwins.BLL.Queries.Location;
 using DigitalTwins.Common.DTOs.Location;
 using DigitalTwins.Common.DTOs.Template;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DigitalTwins.API.Controllers.UI;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class LocationController : ControllerBase
@@ -20,9 +22,9 @@ public class LocationController : ControllerBase
     
     [HttpGet("list")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<TemplateDTO>))]
-    public async Task<IActionResult> Get([FromQuery] long organizationId)
+    public async Task<IActionResult> Get()
     {
-        return Ok(await _mediator.Send(new GetLocationsListQuery { OrganizationId = organizationId }));
+        return Ok(await _mediator.Send(new GetLocationsListQuery()));
     }
     
     [HttpPost]

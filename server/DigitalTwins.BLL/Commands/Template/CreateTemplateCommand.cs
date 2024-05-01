@@ -1,4 +1,5 @@
 using AutoMapper;
+using DigitalTwins.BLL.Interfaces;
 using DigitalTwins.Common.DTOs.Template;
 using DigitalTwins.DAL.Context;
 using FluentValidation;
@@ -16,8 +17,6 @@ public class CreateTemplateCommand : IRequest<TemplateDTO>
     public string ConnectionType { get; set; } = string.Empty;
 
     public string Description { get; set; } = string.Empty;
-
-    public long UserId { get; set; }
 }
 
 public class CreateTemplateCommandValidator : AbstractValidator<CreateTemplateCommand>
@@ -51,10 +50,6 @@ public class CreateTemplateCommandValidator : AbstractValidator<CreateTemplateCo
         RuleFor(x => x.Description)
             .MaximumLength(500)
             .WithMessage("Description can't be more than 500 symbols");
-        
-        RuleFor(x => x.UserId)
-            .NotNull()
-            .WithMessage("User Id can't be null");
     }
 }
 
@@ -62,16 +57,20 @@ public class CreateTemplateCommandHandler : IRequestHandler<CreateTemplateComman
 {
     private readonly DigitalTwinContext _context;
     private readonly IMapper _mapper;
+    private readonly ICurrentUserService _currentUserService;
 
-    public CreateTemplateCommandHandler(DigitalTwinContext context, IMapper mapper)
+    public CreateTemplateCommandHandler(DigitalTwinContext context, IMapper mapper, ICurrentUserService currentUserService)
     {
         _context = context;
         _mapper = mapper;
+        _currentUserService = currentUserService;
     }
     
     public async Task<TemplateDTO> Handle(CreateTemplateCommand request, CancellationToken cancellationToken)
     {
-        var organizationId = (await _context.Users.AsNoTracking().Where(x => x.Id == request.UserId)
+        var user = await _currentUserService.GetCurrentUser();
+        
+        var organizationId = (await _context.Users.AsNoTracking().Where(x => x.Id == user.Id)
                             .Include(x => x.UserOrganizationRoles)
                             .Select(x => x.UserOrganizationRoles.FirstOrDefault())
                             .FirstOrDefaultAsync(cancellationToken))?.OrganizationId 
@@ -84,7 +83,7 @@ public class CreateTemplateCommandHandler : IRequestHandler<CreateTemplateComman
             Hardware = request.Hardware,
             ConnectionType = request.ConnectionType,
             OrganizationId = organizationId,
-            CreatedBy = request.UserId
+            CreatedBy = user.Id
         };
         
         _context.Templates.Add(templateModel);

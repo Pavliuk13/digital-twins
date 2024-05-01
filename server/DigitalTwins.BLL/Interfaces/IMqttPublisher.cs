@@ -1,8 +1,8 @@
-using DigitalTwins.Common.DTOs;
+using DigitalTwins.Common.DTOs.Mqtt;
 
 namespace DigitalTwins.BLL.Interfaces;
 
-public interface IMqttService
+public interface IMqttPublisher
 {
     Task PublishAsync(MqttRequestDTO requestDto);
 }

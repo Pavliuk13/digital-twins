@@ -1,16 +1,18 @@
 using DigitalTwins.BLL.Interfaces;
-using DigitalTwins.Common.DTOs;
+using DigitalTwins.Common.DTOs.Mqtt;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DigitalTwins.API.Controllers.Mqtt;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
-public class MqqtController : ControllerBase
+public class MqttController : ControllerBase
 {
-    private readonly IMqttService _service;
+    private readonly IMqttPublisher _service;
     
-    public MqqtController(IMqttService service)
+    public MqttController(IMqttPublisher service)
     {
         _service = service;
     }

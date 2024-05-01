@@ -1,9 +1,9 @@
 using AutoMapper;
+using DigitalTwins.BLL.Interfaces;
 using DigitalTwins.Common.DTOs.Location;
 using DigitalTwins.DAL.Context;
 using FluentValidation;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace DigitalTwins.BLL.Commands.Location;
 
@@ -20,10 +20,6 @@ public class CreateLocationCommand : IRequest<LocationDTO>
     public string City { get; set; } = string.Empty;
     
     public string Country { get; set; } = string.Empty;
-
-    public long OrganizationId { get; set; }
-
-    public long UserId { get; set; }
 }
 
 public class CreateLocationCommandValidator : AbstractValidator<CreateLocationCommand>
@@ -70,15 +66,20 @@ public class CreateLocationCommandHandler : IRequestHandler<CreateLocationComman
 {
     private readonly DigitalTwinContext _context;
     private readonly IMapper _mapper;
+    private readonly ICurrentUserService _currentUserService;
 
-    public CreateLocationCommandHandler(DigitalTwinContext context, IMapper mapper)
+    public CreateLocationCommandHandler(DigitalTwinContext context, IMapper mapper, ICurrentUserService currentUserService)
     {
         _context = context;
         _mapper = mapper;
+        _currentUserService = currentUserService;
     }
     
     public async Task<LocationDTO> Handle(CreateLocationCommand request, CancellationToken cancellationToken)
     {
+        var user = await _currentUserService.GetCurrentUser();
+        var organizationId = await _currentUserService.GetCurrentOrganizationId();
+        
         var locationModel = new DAL.Entities.Location
         {
             Name = request.Name,
@@ -87,18 +88,18 @@ public class CreateLocationCommandHandler : IRequestHandler<CreateLocationComman
             City = request.City,
             Zip = request.Zip,
             Country = request.Country,
-            CreatedBy = request.UserId,
+            CreatedBy = user.Id,
             CreatedAt = DateTime.Now,
             UpdatedAt = DateTime.Now,
-            OrganizationId = request.OrganizationId
+            OrganizationId = organizationId
         };
         
         _context.Locations.Add(locationModel);
         await _context.SaveChangesAsync(cancellationToken);
 
-        var owner = await _context.Users.AsNoTracking().FirstOrDefaultAsync(x => x.Id == request.UserId, cancellationToken);
-        locationModel.Owner = owner ?? throw new KeyNotFoundException("User doesn't exist");
+        var result = _mapper.Map<LocationDTO>(locationModel);
+        result.Owner = user;
 
-        return _mapper.Map<LocationDTO>(locationModel);
+        return result;
     }
 }

@@ -20,7 +20,6 @@ public class UserConfig : IEntityTypeConfiguration<User>
         builder.Property(x => x.Email)
             .IsRequired()
             .HasMaxLength(150);
-
         
         builder.HasMany(x => x.Locations)
             .WithMany(y => y.Users)

@@ -2,10 +2,12 @@ using DigitalTwins.BLL.Commands.Device;
 using DigitalTwins.BLL.Queries.Device;
 using DigitalTwins.Common.DTOs.Device;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DigitalTwins.API.Controllers.UI;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class DeviceController : ControllerBase
@@ -19,9 +21,9 @@ public class DeviceController : ControllerBase
     
     [HttpGet("list")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<DeviceDTO>))]
-    public async Task<IActionResult> Get([FromQuery] long organizationId)
+    public async Task<IActionResult> Get()
     {
-        return Ok(await _mediator.Send(new GetDevicesByOrganizationQuery { OrganizationId = organizationId }));
+        return Ok(await _mediator.Send(new GetDevicesByOrganizationQuery()));
     }
     
     [HttpPost]

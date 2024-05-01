@@ -1,5 +1,5 @@
 using AutoMapper;
-using DigitalTwins.Common.DTOs;
+using DigitalTwins.Common.DTOs.Mqtt;
 
 namespace DigitalTwins.BLL.MappingProfiles;
 

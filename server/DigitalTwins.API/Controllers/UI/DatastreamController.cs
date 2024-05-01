@@ -2,10 +2,12 @@ using DigitalTwins.BLL.Commands.Datastream;
 using DigitalTwins.BLL.Queries.Datastream;
 using DigitalTwins.Common.DTOs.Datastream;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DigitalTwins.API.Controllers.UI;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class DatastreamController : ControllerBase

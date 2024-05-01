@@ -21,6 +21,7 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
 });
 
 builder.Services.AddDigitalTwinContext(builder.Configuration);
+builder.Services.ConfigureJwt(builder.Configuration);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -32,6 +33,7 @@ builder.Services.AddMediatR(s => s.RegisterServicesFromAssembly(typeof(DigitalTw
 builder.Services.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<DigitalTwinBllEntryPoint>());
 builder.Services.AddHealthChecks();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
+builder.Services.AddFirebaseAdmin(builder.Configuration);
 
 var app = builder.Build();
 
@@ -50,6 +52,10 @@ app.UseCors(opt => opt
 
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
