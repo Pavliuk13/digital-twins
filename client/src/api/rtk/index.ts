@@ -18,7 +18,7 @@ const axiosBaseQuery = (): AxiosBaseQuery => async (axiosConfig) => {
 const api = createApi({
   reducerPath: 'api',
   baseQuery: axiosBaseQuery(),
-  tagTypes: ['Template', 'Device', 'Datastream'],
+  tagTypes: ['Template', 'Device', 'Datastream', 'Location'],
   endpoints: () => ({}),
 });
 

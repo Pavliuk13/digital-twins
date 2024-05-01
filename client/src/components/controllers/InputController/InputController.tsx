@@ -1,10 +1,14 @@
-import { memo } from 'react';
+import { memo, DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
 import _get from 'lodash/get';
 
 import Input from '@@components/ui/Input';
 
-import { InputControllerProps } from './types';
+export interface InputControllerProps
+  extends DetailedHTMLProps<
+    InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  > {}
 
 function InputController(props: InputControllerProps) {
   const { name, type = 'text', ...restProps } = props;

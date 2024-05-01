@@ -10,14 +10,22 @@ import ChevronSvg from '@@assets/icons/chevron.svg';
 
 import { SelectOption } from '@@types/ui';
 
-import { SelectProps } from './types';
-
-import { NOT_SELETED } from './constants';
+import { NOT_SELECTED } from './constants';
 
 import styles from './Select.module.scss';
 
+export interface SelectProps {
+  name: string;
+  value: string;
+  options: SelectOption[];
+  error?: boolean;
+  disabled?: boolean;
+  className?: string;
+}
+
 function Select(props: SelectProps) {
   const {
+    name,
     value,
     options = [],
     error = false,
@@ -29,9 +37,9 @@ function Select(props: SelectProps) {
   const selectRef = useRef(null);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState<SelectOption>(NOT_SELETED);
+  const [selected, setSelected] = useState<SelectOption>(NOT_SELECTED);
 
-  const selectOptions = [NOT_SELETED, ...options];
+  const selectOptions = [NOT_SELECTED, ...options];
 
   const toggle = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
@@ -67,6 +75,7 @@ function Select(props: SelectProps) {
     <div ref={selectRef} className={selectClassName}>
       <Image image={ChevronSvg} className={chevronClassName} />
       <Input
+        name={name}
         readOnly
         disabled={disabled}
         error={error}

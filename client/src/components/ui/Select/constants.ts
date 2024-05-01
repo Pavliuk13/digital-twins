@@ -1,4 +1,4 @@
-export const NOT_SELETED = {
+export const NOT_SELECTED = {
   label: '- Not selected -',
   value: '',
 };

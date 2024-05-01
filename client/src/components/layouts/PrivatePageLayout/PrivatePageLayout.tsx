@@ -1,10 +1,14 @@
 import { ReactNode, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { selectSidebar } from '@@store/ui/selectors';
 import { useDispatch } from '@@store/index';
+import { selectSidebar } from '@@store/ui/selectors';
+import { selectUser } from '@@store/user/selectors';
 import { showSidebar } from '@@store/ui/slice';
+
+import { ROUTES } from '@@constants/routes';
 
 import Collapser from './Collapser';
 
@@ -16,6 +20,7 @@ interface PrivatePageLayoutProps {
 }
 
 function PrivatePageLayout({ dataCid = '', children }: PrivatePageLayoutProps) {
+  const { isAuthenticated } = useSelector(selectUser);
   const { isCollapsed } = useSelector(selectSidebar);
 
   const dispatch = useDispatch();
@@ -25,8 +30,14 @@ function PrivatePageLayout({ dataCid = '', children }: PrivatePageLayoutProps) {
   });
 
   useEffect(() => {
-    dispatch(showSidebar());
+    if (isAuthenticated) {
+      dispatch(showSidebar());
+    }
   }, []);
+
+  if (!isAuthenticated) {
+    return <Navigate to={ROUTES.SIGN_IN} />;
+  }
 
   return (
     <div data-cid={dataCid} className={pageLayoutClassName}>

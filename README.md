@@ -23,6 +23,8 @@ dotnet ef database update --project DigitalTwins.DAL --startup-project DigitalTw
   }
 ```
 
+Scheme: https://drawsql.app/teams/bsa2021/diagrams/digital-twin
+
 # MQTT
 
 This project is using MQTT protocol and EMQX as message broker.

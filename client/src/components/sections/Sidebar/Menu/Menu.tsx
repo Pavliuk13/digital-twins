@@ -31,6 +31,7 @@ function Menu() {
                   key={menuItem.title}
                   to={menuItem.route}
                   className={menuItemClassName}
+                  onClick={menuItem.onClick}
                 >
                   {menuItem.icon()}
                   <Typography variant="bodyBold">{menuItem.title}</Typography>

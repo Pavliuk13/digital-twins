@@ -80,6 +80,11 @@ namespace DigitalTwins.DAL.Migrations
                     b.Property<long>("TemplateId")
                         .HasColumnType("bigint");
 
+                    b.Property<string>("TopicName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<Guid>("UGuid")
                         .HasColumnType("uniqueidentifier");
 
@@ -505,12 +510,62 @@ namespace DigitalTwins.DAL.Migrations
                     b.ToTable("UserRole");
                 });
 
+            modelBuilder.Entity("DigitalTwins.DAL.Entities.Widget", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<long?>("DatastreamId")
+                        .IsRequired()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("TemplateId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DatastreamId");
+
+                    b.HasIndex("TemplateId");
+
+                    b.ToTable("Widgets");
+                });
+
+            modelBuilder.Entity("DigitalTwins.DAL.Entities.WidgetDevice", b =>
+                {
+                    b.Property<long>("DeviceId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("WidgetId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("Value")
+                        .HasColumnType("bit");
+
+                    b.HasKey("DeviceId", "WidgetId");
+
+                    b.HasIndex("WidgetId");
+
+                    b.ToTable("WidgetDevices");
+                });
+
             modelBuilder.Entity("DigitalTwins.DAL.Entities.Datastream", b =>
                 {
                     b.HasOne("DigitalTwins.DAL.Entities.Template", "Template")
                         .WithMany("Datastreams")
                         .HasForeignKey("TemplateId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Template");
@@ -527,7 +582,7 @@ namespace DigitalTwins.DAL.Migrations
                     b.HasOne("DigitalTwins.DAL.Entities.Template", "Template")
                         .WithMany("Devices")
                         .HasForeignKey("TemplateId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Template");
@@ -642,6 +697,53 @@ namespace DigitalTwins.DAL.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("DigitalTwins.DAL.Entities.Widget", b =>
+                {
+                    b.HasOne("DigitalTwins.DAL.Entities.Datastream", "Datastream")
+                        .WithMany("Widgets")
+                        .HasForeignKey("DatastreamId")
+                        .IsRequired();
+
+                    b.HasOne("DigitalTwins.DAL.Entities.Template", "Template")
+                        .WithMany("Widgets")
+                        .HasForeignKey("TemplateId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Datastream");
+
+                    b.Navigation("Template");
+                });
+
+            modelBuilder.Entity("DigitalTwins.DAL.Entities.WidgetDevice", b =>
+                {
+                    b.HasOne("DigitalTwins.DAL.Entities.Device", "Device")
+                        .WithMany("WidgetDevices")
+                        .HasForeignKey("DeviceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DigitalTwins.DAL.Entities.Widget", "Widget")
+                        .WithMany("WidgetDevices")
+                        .HasForeignKey("WidgetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Device");
+
+                    b.Navigation("Widget");
+                });
+
+            modelBuilder.Entity("DigitalTwins.DAL.Entities.Datastream", b =>
+                {
+                    b.Navigation("Widgets");
+                });
+
+            modelBuilder.Entity("DigitalTwins.DAL.Entities.Device", b =>
+                {
+                    b.Navigation("WidgetDevices");
+                });
+
             modelBuilder.Entity("DigitalTwins.DAL.Entities.Organization", b =>
                 {
                     b.Navigation("Locations");
@@ -670,6 +772,8 @@ namespace DigitalTwins.DAL.Migrations
                     b.Navigation("Datastreams");
 
                     b.Navigation("Devices");
+
+                    b.Navigation("Widgets");
                 });
 
             modelBuilder.Entity("DigitalTwins.DAL.Entities.User", b =>
@@ -681,6 +785,11 @@ namespace DigitalTwins.DAL.Migrations
                     b.Navigation("Templates");
 
                     b.Navigation("UserOrganizationRoles");
+                });
+
+            modelBuilder.Entity("DigitalTwins.DAL.Entities.Widget", b =>
+                {
+                    b.Navigation("WidgetDevices");
                 });
 #pragma warning restore 612, 618
         }

@@ -16,7 +16,11 @@ public class Device
 
     public Status Status { get; set; }
 
+    public string TopicName { get; set; } = string.Empty;
+
     public Template Template { get; set; } = null!;
 
     public User User { get; set; } = null!;
+
+    public IEnumerable<WidgetDevice> WidgetDevices { get; set; } = null!;
 }

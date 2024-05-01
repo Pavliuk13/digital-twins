@@ -24,6 +24,10 @@ $collapser_offset: 2px;
   &_show {
     left: $sidebar_width;
   }
+
+  @media (max-width: #{$adult}px) {
+    padding: 10px;
+  }
 }
 
 .collapser {

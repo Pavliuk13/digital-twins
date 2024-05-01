@@ -8,6 +8,7 @@ interface CardProps {
   color?: 'grey_800';
   cursor?: 'default' | 'pointer' | 'not-allowed' | 'wait';
   className?: string;
+  isScale?: boolean;
   onClick?: () => void;
 }
 
@@ -17,12 +18,14 @@ function Card(props: CardProps) {
     color = 'grey_800',
     cursor,
     className = '',
+    isScale = true,
     onClick,
   } = props;
 
   const cardClassName = classNames(styles.card, className, {
     [styles[`card_color_${color}`]]: color,
     [styles[`card_cursor_${cursor}`]]: cursor,
+    [styles.card_scale]: isScale,
   });
 
   return (

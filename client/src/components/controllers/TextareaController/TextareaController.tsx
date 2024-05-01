@@ -1,10 +1,14 @@
-import { memo } from 'react';
+import { memo, DetailedHTMLProps, TextareaHTMLAttributes } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
 import _get from 'lodash/get';
 
 import Textarea from '@@components/ui/Textarea';
 
-import { TextareaControllerProps } from './types';
+export interface TextareaControllerProps
+  extends DetailedHTMLProps<
+    TextareaHTMLAttributes<HTMLTextAreaElement>,
+    HTMLTextAreaElement
+  > {}
 
 function TextareaController(props: TextareaControllerProps) {
   const { name, ...restProps } = props;

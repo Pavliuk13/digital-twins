@@ -2,10 +2,12 @@ using DigitalTwins.BLL.Commands.Template;
 using DigitalTwins.BLL.Queries.Template;
 using DigitalTwins.Common.DTOs.Template;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DigitalTwins.API.Controllers.UI;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class TemplateController : ControllerBase
@@ -27,9 +29,9 @@ public class TemplateController : ControllerBase
     
     [HttpGet("current-user-templates")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<TemplateDTO>))]
-    public async Task<IActionResult> GetCurrentUserTemplates([FromQuery] long id)
+    public async Task<IActionResult> GetCurrentUserTemplates()
     {
-        return Ok(await _mediator.Send(new GetCurrentUserTemplatesQuery { UserId = id }));
+        return Ok(await _mediator.Send(new GetCurrentUserTemplatesQuery()));
     }
 
     [HttpPost]

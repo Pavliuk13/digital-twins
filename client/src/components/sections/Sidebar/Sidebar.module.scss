@@ -1,6 +1,8 @@
 @import '@@styles/variables';
 
 .sidebar {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   width: $sidebar_width;
   height: 100vh;

@@ -15,13 +15,16 @@ public class DeviceConfig : IEntityTypeConfiguration<Device>
             .IsRequired()
             .HasMaxLength(100);
         
+        builder.Property(x => x.TopicName)
+            .HasMaxLength(50);
+        
         builder.Property(x => x.Status)
             .HasDefaultValue(Status.Offline);
 
         builder.HasOne(x => x.Template)
             .WithMany(y => y.Devices)
             .HasForeignKey(x => x.TemplateId)
-            .OnDelete(DeleteBehavior.NoAction);
+            .OnDelete(DeleteBehavior.Cascade);
         
         builder.HasOne(x => x.User)
             .WithMany(y => y.Devices)

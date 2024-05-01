@@ -123,6 +123,7 @@ function DatastreamForm(props: DatastreamFormProps) {
             label: 'Pin',
             isRequired: true,
           }}
+          description="Select your device's pin that is set in the sketch/firmware and will get the data"
         >
           <PinSelect name={FIELD_NAME.PIN} />
         </FormControl>
