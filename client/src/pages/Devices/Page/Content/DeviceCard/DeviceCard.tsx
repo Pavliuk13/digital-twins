@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 import { useDispatch } from '@@store/index';
@@ -22,6 +23,7 @@ import { Device } from '@@types/device';
 
 import { ConfirmDeleteModalName, DeviceModalName } from '@@constants/modal';
 import { HARDWARE_IMAGE } from '@@constants/hardware';
+import { ROUTES } from '@@constants/routes';
 
 import styles from './DeviceCard.module.scss';
 
@@ -32,13 +34,17 @@ interface DeviceCardProps {
 function DeviceCard(props: DeviceCardProps) {
   const { device } = props;
 
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
 
   const { refetch } = usePageContentContext();
 
   const [deleteDevice] = useDeleteDeviceMutation();
 
-  const handleEditDevice = () => {
+  const handleEditDevice = (e) => {
+    e.stopPropagation();
+
     dispatch(
       showModal(DeviceModalName, {
         data: device,
@@ -47,7 +53,9 @@ function DeviceCard(props: DeviceCardProps) {
     );
   };
 
-  const handleDeleteDevice = () => {
+  const handleDeleteDevice = (e) => {
+    e.stopPropagation();
+
     dispatch(
       showModal(ConfirmDeleteModalName, {
         title: 'Delete device?',
@@ -64,12 +72,18 @@ function DeviceCard(props: DeviceCardProps) {
     );
   };
 
-  const handleCopyUGuid = () => {
+  const handleCopyUGuid = (e) => {
+    e.stopPropagation();
+
     copyToClipboard(device.uGuid);
   };
 
+  const handleDeviceClick = () => {
+    navigate(`${ROUTES.DEVICES}/${device.id}`);
+  };
+
   return (
-    <Card>
+    <Card cursor="pointer" onClick={handleDeviceClick}>
       <img
         src={HARDWARE_IMAGE[device.template.hardware]}
         alt="Hardware"

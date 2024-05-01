@@ -1,31 +1,46 @@
-import { memo, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { memo } from 'react';
 
 import { useDispatch } from '@@store/index';
-import { showSidebar } from '@@store/ui/slice';
+import { showModal } from '@@store/modals/slice';
 
-import Typography from '@@components/ui/Typography';
-import Button from '@@components/ui/Button';
+import EmptyContentLayout from '@@components/layouts/EmptyContentLayout';
 
-import { ROUTES } from '@@constants/routes';
+import { usePageContentContext } from '@@contexts/PageContentContext';
+
+import { LocationModalName } from '@@constants/modal';
+
+import { Location } from '@@types/locations';
+
+import Content from './Content';
 
 import styles from './Page.module.scss';
 
 function Page() {
+  const { data, isLoading, refetch } = usePageContentContext<Location[]>();
+
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(showSidebar());
-  }, []);
+  const handleAddLocation = () => {
+    dispatch(
+      showModal(LocationModalName, {
+        onSubmit: refetch,
+      }),
+    );
+  };
 
   return (
     <div className={styles.wrapper}>
-      <Typography variant="h1" bottomOffset={20}>
-        Locations
-      </Typography>
-      <Link to={ROUTES.INDEX}>
-        <Button>Go home</Button>
-      </Link>
+      <Content />
+      {!data?.length && !isLoading && (
+        <EmptyContentLayout
+          title="Use locations to organize your devices better"
+          description="Start by creating location. Once created, you can assign users and devices to a location"
+          button={{
+            text: 'New location',
+            onClick: handleAddLocation,
+          }}
+        />
+      )}
     </div>
   );
 }

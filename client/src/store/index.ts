@@ -4,6 +4,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import uiReducer from '@@store/ui/slice';
 import modalsReducer from '@@store/modals/slice';
+import userReducer from '@@store/user/slice';
 
 import api from '@@api/rtk';
 
@@ -12,6 +13,7 @@ import { modalAsyncAnimationMiddleware } from '@@store/middlewares/modalAsyncAni
 const rootReducer = combineReducers({
   ui: uiReducer,
   modals: modalsReducer,
+  user: userReducer,
   [api.reducerPath]: api.reducer,
 });
 

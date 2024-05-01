@@ -27,6 +27,7 @@
     "class-methods-use-this": "off",
     "react-hooks/exhaustive-deps": "off",
     "react/jsx-no-comment-textnodes": "off",
+    "jsx-a11y/label-has-associated-control": "off",
     "react/jsx-filename-extension": [
       1,
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }

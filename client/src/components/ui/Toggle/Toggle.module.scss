@@ -1,0 +1,54 @@
+@import '@@styles/variables';
+
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  outline: none;
+
+  input {
+    display: none;
+
+    &:checked + .slider {
+      background-color: $blue_500;
+    }
+
+    &:focus + .slider {
+      box-shadow: 0 0 1px $blue_500;
+    }
+
+    &:checked + .slider:before {
+      transform: translateX(26px);
+    }
+  }
+
+  &_error {
+    border-radius: 34px;
+    border: 1px solid $red_500;
+  }
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $grey_700;
+  transition: 0.4s;
+  border-radius: 34px;
+
+  &:before {
+    position: absolute;
+    content: '';
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: $grey_100;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+}

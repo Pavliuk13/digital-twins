@@ -1,9 +1,15 @@
-import { memo } from 'react';
+import { memo, DetailedHTMLProps, TextareaHTMLAttributes } from 'react';
 import classNames from 'classnames';
 
-import { TextareaProps } from './types';
-
 import styles from './Textarea.module.scss';
+
+export interface TextareaProps
+  extends DetailedHTMLProps<
+    TextareaHTMLAttributes<HTMLTextAreaElement>,
+    HTMLTextAreaElement
+  > {
+  error?: boolean;
+}
 
 function Textarea(props: TextareaProps) {
   const { error = false, className, ...restProps } = props;

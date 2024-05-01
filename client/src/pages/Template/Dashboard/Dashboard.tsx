@@ -27,7 +27,11 @@ function Dashboard() {
 
   return (
     <PrivatePageLayout dataCid="datastreams">
-      <PageContentLayout title={`Template - ${template?.name}`} tabs={tabs}>
+      <PageContentLayout
+        title={`Template - ${template?.name}`}
+        description="The Web Dashboard allows you to visualize data from a device or control the device using Widgets. The widgets may be organized in the dashboard by one or more tabs."
+        tabs={tabs}
+      >
         <PageContentContextProvider value={pageContentContext}>
           <Page />
         </PageContentContextProvider>

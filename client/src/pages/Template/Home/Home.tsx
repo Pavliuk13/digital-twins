@@ -27,7 +27,10 @@ function Home() {
 
   return (
     <PrivatePageLayout dataCid="home">
-      <PageContentLayout title={`Template - ${template?.name}`} tabs={tabs}>
+      <PageContentLayout
+        title={`Template - ${template?.name || '...'}`}
+        tabs={tabs}
+      >
         <PageContentContextProvider value={pageContentContext}>
           <Page />
         </PageContentContextProvider>

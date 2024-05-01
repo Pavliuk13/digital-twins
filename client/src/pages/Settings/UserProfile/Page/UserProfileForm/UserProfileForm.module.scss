@@ -1,0 +1,11 @@
+@import '@@styles/variables';
+@import '@@styles/mixins';
+
+.wrapper {
+  max-width: 560px;
+  width: 100%;
+}
+
+.submit {
+  margin-top: 24px;
+}

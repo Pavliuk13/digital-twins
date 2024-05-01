@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import { useCreateMqqtTaskMutation } from '@@api/mqqt';
+import { useCreateMqttTaskMutation } from '@@api/mqtt';
 
 import EmptyContentLayout from '@@components/layouts/EmptyContentLayout';
 import Button from '@@components/ui/Button';
@@ -17,10 +17,10 @@ import styles from './Page.module.scss';
 function Page() {
   const { data, isLoading } = usePageContentContext<Template>();
 
-  const [createMqqtTask] = useCreateMqqtTaskMutation();
+  const [createMqttTask] = useCreateMqttTaskMutation();
 
   const handleTest = async () => {
-    await createMqqtTask({
+    await createMqttTask({
       data: {
         boardName: Hardware.ESP32,
         guid: '306898f7-f129-4c11-bf2a-ee755eae4a1e',

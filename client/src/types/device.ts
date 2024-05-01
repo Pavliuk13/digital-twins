@@ -8,6 +8,7 @@ export interface Device {
   template: {
     id: number;
     hardware: Hardware;
+    name: string;
   };
   user: User;
   name: string;

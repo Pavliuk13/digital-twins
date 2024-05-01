@@ -1,9 +1,10 @@
 import { useMemo } from 'react';
 
+import { doSignOut } from '@@api/auth';
+
 import Image from '@@components/ui/Image';
 
 import SmartLabSvg from '@@assets/icons/smart_lab.svg';
-import SquaresFilledSvg from '@@assets/icons/squares_filled.svg';
 import DevicesSvg from '@@assets/icons/devices.svg';
 import UsersSvg from '@@assets/icons/users.svg';
 import UserCircleSvg from '@@assets/icons/user_circle.svg';
@@ -37,11 +38,6 @@ export const useMenu = () => {
           route: ROUTES.LOCATIONS,
         },
         {
-          title: 'Organizations',
-          icon: () => <Image image={SquaresFilledSvg} size={16} />,
-          route: ROUTES.ORGANIZATIONS,
-        },
-        {
           title: 'Members',
           icon: () => <Image image={UsersSvg} size={16} />,
           route: ROUTES.MEMBERS,
@@ -57,6 +53,9 @@ export const useMenu = () => {
         {
           title: 'Log out',
           icon: () => <Image image={LogoutSvg} size={16} />,
+          onClick: async () => {
+            await doSignOut();
+          },
         },
       ],
     };

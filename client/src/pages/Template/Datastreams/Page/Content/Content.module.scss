@@ -1,5 +1,3 @@
-@import '@@styles/variables';
-
 .wrapper {
   width: 100%;
 }
@@ -8,8 +6,4 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 10px;
-
-  @media (max-width: #{$standart}px) {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
 }

@@ -1,10 +1,14 @@
 @import '@@styles/variables';
+@import '@@styles/mixins';
+
+.container {
+  @include flexCenter;
+  width: 100%;
+}
 
 .wrapper {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+  overflow: auto;
 }
 
 .tab {
