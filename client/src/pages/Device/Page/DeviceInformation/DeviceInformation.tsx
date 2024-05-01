@@ -8,6 +8,8 @@ import Image from '@@components/ui/Image';
 
 import CopySvg from '@@assets/icons/copy.svg';
 
+import { Hardware } from '@@types/hardware';
+
 import { HARDWARE_IMAGE } from '@@constants/hardware';
 
 import { Data } from '../types';
@@ -23,6 +25,10 @@ function DeviceInformation() {
     copyToClipboard(device.uGuid);
   };
 
+  const handleCopyTopic = () => {
+    copyToClipboard(`${Hardware[device.template.hardware]}/${device.uGuid}`);
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.image}>
@@ -36,6 +42,13 @@ function DeviceInformation() {
           uGuid:
           <Typography variant="subheading2" onClick={handleCopyUGuid}>
             {device.uGuid} <Image image={CopySvg} cursor="pointer" size={18} />
+          </Typography>
+        </div>
+        <div className={styles.information__row}>
+          Topic:
+          <Typography variant="subheading2" onClick={handleCopyTopic}>
+            {Hardware[device.template.hardware]}/{device.uGuid}{' '}
+            <Image image={CopySvg} cursor="pointer" size={18} />
           </Typography>
         </div>
         <div className={styles.information__row}>
