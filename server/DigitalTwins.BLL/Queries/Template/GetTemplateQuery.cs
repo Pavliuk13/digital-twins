@@ -25,8 +25,8 @@ public class GetTemplateQueryHandler : IRequestHandler<GetTemplateQuery, Templat
     public async Task<TemplateDTO> Handle(GetTemplateQuery request, CancellationToken cancellationToken)
     {
         var template = await _context.Templates.AsNoTracking()
-            .Include(x => x.Datastreams)
-            .Include(x => x.Devices)
+                .Include(x => x.Datastreams)
+                .Include(x => x.Devices)
             .FirstOrDefaultAsync(x => x.Id == request.TemplateId, cancellationToken)
             ?? throw new KeyNotFoundException("Template was not found");
         

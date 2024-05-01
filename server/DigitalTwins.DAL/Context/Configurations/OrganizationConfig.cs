@@ -19,6 +19,5 @@ public class OrganizationConfig : IEntityTypeConfiguration<Organization>
         
         builder.Property(x => x.LogoUrl)
             .HasMaxLength(300);
-
     }
 }

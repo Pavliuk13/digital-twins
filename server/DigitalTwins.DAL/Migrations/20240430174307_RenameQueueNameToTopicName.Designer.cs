@@ -4,6 +4,7 @@ using DigitalTwins.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DigitalTwins.DAL.Migrations
 {
     [DbContext(typeof(DigitalTwinContext))]
-    partial class DigitalTwinContextModelSnapshot : ModelSnapshot
+    [Migration("20240430174307_RenameQueueNameToTopicName")]
+    partial class RenameQueueNameToTopicName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -565,7 +567,7 @@ namespace DigitalTwins.DAL.Migrations
                     b.HasOne("DigitalTwins.DAL.Entities.Template", "Template")
                         .WithMany("Datastreams")
                         .HasForeignKey("TemplateId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Template");
@@ -582,7 +584,7 @@ namespace DigitalTwins.DAL.Migrations
                     b.HasOne("DigitalTwins.DAL.Entities.Template", "Template")
                         .WithMany("Devices")
                         .HasForeignKey("TemplateId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Template");
@@ -702,6 +704,7 @@ namespace DigitalTwins.DAL.Migrations
                     b.HasOne("DigitalTwins.DAL.Entities.Datastream", "Datastream")
                         .WithMany("Widgets")
                         .HasForeignKey("DatastreamId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("DigitalTwins.DAL.Entities.Template", "Template")
@@ -720,13 +723,13 @@ namespace DigitalTwins.DAL.Migrations
                     b.HasOne("DigitalTwins.DAL.Entities.Device", "Device")
                         .WithMany("WidgetDevices")
                         .HasForeignKey("DeviceId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("DigitalTwins.DAL.Entities.Widget", "Widget")
                         .WithMany("WidgetDevices")
                         .HasForeignKey("WidgetId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Device");

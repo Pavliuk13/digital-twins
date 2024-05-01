@@ -1,4 +1,4 @@
-namespace DigitalTwins.Common.DTOs;
+namespace DigitalTwins.Common.DTOs.Mqtt;
 
 public class MqttResponseDTO
 {

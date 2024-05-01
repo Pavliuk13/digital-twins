@@ -4,6 +4,7 @@ using DigitalTwins.Common.Enums;
 using DigitalTwins.DAL.Context;
 using FluentValidation;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace DigitalTwins.BLL.Commands.Device;
 
@@ -49,6 +50,10 @@ public class CreateDeviceCommandHandler : IRequestHandler<CreateDeviceCommand, D
     
     public async Task<DeviceDTO> Handle(CreateDeviceCommand request, CancellationToken cancellationToken)
     {
+        var template = await _context.Templates.AsNoTracking()
+            .FirstOrDefaultAsync(x => x.Id == request.TemplateId, cancellationToken)
+            ?? throw new KeyNotFoundException("Template doesn't exist");
+        
         var deviceModel = new DAL.Entities.Device
         {
             UGuid = Guid.NewGuid(),
@@ -57,6 +62,8 @@ public class CreateDeviceCommandHandler : IRequestHandler<CreateDeviceCommand, D
             Status = Status.Offline,
             TemplateId = request.TemplateId
         };
+
+        deviceModel.TopicName = $"{template.Hardware}/{deviceModel.UGuid}";
         
         _context.Devices.Add(deviceModel);
         await _context.SaveChangesAsync(cancellationToken);

@@ -27,6 +27,6 @@ public class DatastreamConfig : IEntityTypeConfiguration<Datastream>
         builder.HasOne(x => x.Template)
             .WithMany(y => y.Datastreams)
             .HasForeignKey(x => x.TemplateId)
-            .OnDelete(DeleteBehavior.NoAction);
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

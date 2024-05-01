@@ -25,8 +25,8 @@ public class GetCurrentUserTemplatesQueryHandler : IRequestHandler<GetCurrentUse
     public async Task<List<TemplateDTO>> Handle(GetCurrentUserTemplatesQuery request, CancellationToken cancellationToken)
     {
         var templates = await _context.Templates.AsNoTracking()
-            .Include(x => x.Datastreams)
-            .Include(x => x.Devices)
+                .Include(x => x.Datastreams)
+                .Include(x => x.Devices)
             .Where(x => x.CreatedBy == request.UserId)
             .ToListAsync(cancellationToken);
         
