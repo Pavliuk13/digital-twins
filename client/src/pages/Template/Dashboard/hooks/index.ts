@@ -1,0 +1,1 @@
+export { useTemplateWidgets } from './useTemplateWidgets';

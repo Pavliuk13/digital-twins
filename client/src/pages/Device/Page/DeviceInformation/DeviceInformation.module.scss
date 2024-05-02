@@ -10,6 +10,22 @@
   align-items: center;
   justify-content: center;
   padding: 32px 0;
+
+  img {
+    width: 50%;
+  }
+
+  @media (max-width: #{$desktop}px) {
+    img {
+      width: 50%;
+    }
+  }
+
+  @media (max-width: #{$small}px) {
+    img {
+      width: 80%;
+    }
+  }
 }
 
 .information {

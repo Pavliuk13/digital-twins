@@ -1,5 +1,5 @@
 export const prepareCreatePayload = (formData) => {
-  return { ...formData, userId: 2 };
+  return { ...formData };
 };
 
 export const prepareUpdatePayload = (formData) => {

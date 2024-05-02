@@ -10,22 +10,20 @@ import Page from './Page';
 import { useDevice } from './hooks';
 
 function Device() {
-  const { device, isLoading, refetch } = useDevice();
-
-  console.log({ device });
+  const { data, isLoading, refetch } = useDevice();
 
   const pageContentContext = useMemo(() => {
     return {
-      data: device,
+      data,
       isLoading,
       refetch,
     };
-  }, [device, isLoading]);
+  }, [data, isLoading]);
 
   return (
     <PrivatePageLayout dataCid="device">
       <PageContentLayout
-        title={`Device - ${device?.name} | ${device?.template.name}`}
+        title={`Device - ${data.device?.name} | ${data.device?.template.name}`}
         withBackward
         isLoading={isLoading}
       >

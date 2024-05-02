@@ -26,6 +26,7 @@ function Toggle(props: ToggleProps) {
 
   const toggleClassName = classNames(styles.toggle, className, {
     [styles.toggle_error]: error,
+    [styles.toggle_checked]: isChecked,
   });
 
   const handleChange = () => {

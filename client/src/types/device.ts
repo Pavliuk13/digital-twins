@@ -1,9 +1,15 @@
 import { User } from '@@types/user';
 import { Hardware } from '@@types/hardware';
 
+export enum Status {
+  off,
+  on,
+}
+
 export interface Device {
   id: number;
   uGuid: string;
+  topicName: string;
   templateId: number;
   template: {
     id: number;
@@ -13,7 +19,7 @@ export interface Device {
   user: User;
   name: string;
   createdBy: User['id'];
-  status: number;
+  status: Status;
 }
 
 export interface CreateDeviceArgs {

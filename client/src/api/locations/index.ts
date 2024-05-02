@@ -19,6 +19,7 @@ const locationsApi = api.injectEndpoints({
             ...config,
           };
         },
+        providesTags: ['Location'],
       }),
       createLocation: build.mutation<
         Omit<LocationArgs, 'id'>,
@@ -31,7 +32,7 @@ const locationsApi = api.injectEndpoints({
             ...config,
           };
         },
-        invalidatesTags: ['Datastream'],
+        invalidatesTags: ['Location'],
       }),
       updateLocation: build.mutation<
         Location,
@@ -46,7 +47,7 @@ const locationsApi = api.injectEndpoints({
             ...config,
           };
         },
-        invalidatesTags: ['Datastream'],
+        invalidatesTags: ['Location'],
       }),
       deleteLocation: build.mutation<
         void,

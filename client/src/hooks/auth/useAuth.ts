@@ -1,20 +1,32 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { onAuthStateChanged } from 'firebase/auth';
+import { User, onAuthStateChanged } from 'firebase/auth';
 
 import { auth } from '@@services/auth/firebase';
-import { useDispatch } from '@@store/index';
+import { store, useDispatch } from '@@store/index';
 import { setIsAuthenticated, setIsLoadingUser } from '@@store/user/slice';
 
 import { ROUTES } from '@@constants/routes';
+import userApi from '@@api/user';
 
 export const useAuth = () => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
-  const handleUser = (user) => {
+  const handleUser = async (user: User) => {
     if (user) {
+      const isNewUser =
+        user.metadata.creationTime === user.metadata.lastSignInTime;
+
+      if (isNewUser) {
+        await store.dispatch(
+          userApi.endpoints.createUser.initiate({
+            data: { name: user.displayName || user.email, email: user.email },
+          }),
+        );
+      }
+
       dispatch(setIsAuthenticated(true));
       navigate(ROUTES.TEMPLATES.INDEX);
     } else {

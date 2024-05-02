@@ -8,42 +8,57 @@ import Image from '@@components/ui/Image';
 
 import CopySvg from '@@assets/icons/copy.svg';
 
-import { Device } from '@@types/device';
+import { Hardware } from '@@types/hardware';
 
 import { HARDWARE_IMAGE } from '@@constants/hardware';
+
+import { Data } from '../types';
 
 import styles from './DeviceInformation.module.scss';
 
 function DeviceInformation() {
-  const { data } = usePageContentContext<Device>();
+  const {
+    data: { device },
+  } = usePageContentContext<Data>();
 
   const handleCopyUGuid = () => {
-    copyToClipboard(data.uGuid);
+    copyToClipboard(device.uGuid);
+  };
+
+  const handleCopyTopic = () => {
+    copyToClipboard(`${Hardware[device.template.hardware]}/${device.uGuid}`);
   };
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.image}>
-        <img src={HARDWARE_IMAGE[data.template.hardware]} alt="Hardware" />
+        <img src={HARDWARE_IMAGE[device.template.hardware]} alt="Hardware" />
       </div>
       <div className={styles.information}>
         <div className={styles.information__row}>
-          Name: <Typography variant="subheading2">{data.name}</Typography>
+          Name: <Typography variant="subheading2">{device.name}</Typography>
         </div>
         <div className={styles.information__row}>
           uGuid:
           <Typography variant="subheading2" onClick={handleCopyUGuid}>
-            {data.uGuid} <Image image={CopySvg} cursor="pointer" size={18} />
+            {device.uGuid} <Image image={CopySvg} cursor="pointer" size={18} />
+          </Typography>
+        </div>
+        <div className={styles.information__row}>
+          Topic:
+          <Typography variant="subheading2" onClick={handleCopyTopic}>
+            {Hardware[device.template.hardware]}/{device.uGuid}{' '}
+            <Image image={CopySvg} cursor="pointer" size={18} />
           </Typography>
         </div>
         <div className={styles.information__row}>
           Template:
-          <Typography variant="subheading2">{data.template.name}</Typography>
+          <Typography variant="subheading2">{device.template.name}</Typography>
         </div>
         <div className={styles.information__row}>
           Created by:
           <Typography variant="subheading2">
-            {data.user.name} ({data.user.email})
+            {device.user.name} ({device.user.email})
           </Typography>
         </div>
       </div>

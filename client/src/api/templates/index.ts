@@ -15,6 +15,7 @@ const templatesApi = api.injectEndpoints({
             ...config,
           };
         },
+        providesTags: ['Template'],
       }),
       getTemplate: build.query<
         Template,
@@ -27,6 +28,7 @@ const templatesApi = api.injectEndpoints({
             ...config,
           };
         },
+        providesTags: ['Template'],
       }),
       createTemplate: build.mutation<Template, AxiosRequestConfig>({
         query: (config) => {

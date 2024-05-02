@@ -19,6 +19,7 @@ const devicesApi = api.injectEndpoints({
             ...config,
           };
         },
+        providesTags: ['Device'],
       }),
       createDevice: build.mutation<
         Device,

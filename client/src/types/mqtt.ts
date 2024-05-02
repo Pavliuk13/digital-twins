@@ -1,10 +1,8 @@
 import { Device } from '@@types/device';
-import { Pin } from '@@types/pin';
-import { Hardware } from '@@types/hardware';
+import { Widget } from '@@types/widget';
 
 export interface MqttTask {
-  boardName: Hardware;
-  pin: Pin;
+  deviceId: Device['id'];
+  widgetId: Widget['id'];
   value: string | number | boolean;
-  guid: Device['uGuid'];
 }

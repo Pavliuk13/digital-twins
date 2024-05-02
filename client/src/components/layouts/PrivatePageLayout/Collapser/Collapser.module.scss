@@ -25,7 +25,7 @@ $collapser_offset: 2px;
     left: $sidebar_width;
   }
 
-  @media (max-width: #{$adult}px) {
+  @media (max-width: #{$medium}px) {
     padding: 10px;
   }
 }

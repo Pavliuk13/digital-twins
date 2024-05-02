@@ -1,41 +1,46 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
+import { useParams } from 'react-router-dom';
 
-import { useCreateMqttTaskMutation } from '@@api/mqtt';
-
-import Button from '@@components/ui/Button';
+import Typography from '@@components/ui/Typography';
 import Card from '@@components/common/Card';
-import Toggle from '@@components/ui/Toggle/Toggle';
+import Widget from '@@features/Widget';
 
 import { usePageContentContext } from '@@contexts/PageContentContext';
 
-import { Device } from '@@types/device';
-import { Hardware } from '@@types/hardware';
+import { Data } from '../types';
 
 import styles from './DeviceWidgets.module.scss';
 
 function DeviceWidgets() {
-  const { data } = usePageContentContext<Device>();
+  const { deviceId } = useParams();
 
-  const [createMqttTask] = useCreateMqttTaskMutation();
-
-  const [state, setState] = useState();
-
-  const handleTest = async () => {
-    await createMqttTask({
-      data: {
-        boardName: Hardware.ESP32,
-        guid: data.uGuid,
-        pin: 23,
-        value: state,
-      },
-    });
-  };
+  const {
+    data: { deviceWidgets, device },
+  } = usePageContentContext<Data>();
 
   return (
     <div className={styles.wrapper}>
       <Card isScale={false}>
-        <Toggle onChange={(isCheck) => setState(isCheck)} />
-        <Button onClick={handleTest}>Test</Button>
+        <div className={styles.header}>
+          <Typography variant="subheading2" bottomOffset={16}>
+            Widgets
+          </Typography>
+        </div>
+        <div className={styles.list}>
+          {deviceWidgets?.map((widget) => {
+            return (
+              <Widget
+                key={widget.id}
+                title={widget.title}
+                type={widget.type}
+                widget={widget}
+                templateId={device.templateId}
+                deviceId={deviceId}
+                isEditable={false}
+              />
+            );
+          })}
+        </div>
       </Card>
     </div>
   );

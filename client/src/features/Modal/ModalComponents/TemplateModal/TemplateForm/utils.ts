@@ -1,7 +1,7 @@
 import { ConnectionType } from '@@types/template';
 
 export const prepareCreatePayload = (formData) => {
-  return { ...formData, connectionType: ConnectionType.WiFi, userId: 2 };
+  return { ...formData, connectionType: ConnectionType.WiFi };
 };
 
 export const prepareUpdatePayload = (formData) => {

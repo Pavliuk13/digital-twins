@@ -52,7 +52,7 @@ public class CurrentUserService : ICurrentUserService
         return userOrganization.OrganizationId;
     }
 
-    public async Task<string> GetCurrentUserEmail()
+    private async Task<string> GetCurrentUserEmail()
     {
         var userId = GetFirebaseUserId();
         var user = await _firebaseAuth.GetUserAsync(userId);
