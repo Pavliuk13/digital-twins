@@ -34,6 +34,7 @@ builder.Services.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyCont
 builder.Services.AddHealthChecks();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddFirebaseAdmin(builder.Configuration);
+builder.Services.ConfigureSendingBlue(builder.Configuration);
 
 var app = builder.Build();
 

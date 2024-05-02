@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using sib_api_v3_sdk.Client;
 
 namespace DigitalTwins.API.Extensions;
 
@@ -40,6 +41,7 @@ public static class ServiceCollectionExtension
         services.AddTransient<IMqttPublisher, MqttPublisher>();
         services.AddTransient<IDeviceService, DeviceService>();
         services.AddTransient<ICurrentUserService, CurrentUserService>();
+        services.AddTransient<IEmailService, EmailService>();
     }
     
     public static void ConfigureJwt(this IServiceCollection services, IConfiguration configuration)
@@ -84,5 +86,10 @@ public static class ServiceCollectionExtension
         });
 
         services.AddTransient<FirebaseAuth>(_ => FirebaseAuth.DefaultInstance);
+    }
+    
+    public static void ConfigureSendingBlue(this IServiceCollection _, IConfiguration configuration)
+    {
+        Configuration.Default.ApiKey.Add("api-key", configuration["SendingBlue_api_key"]);
     }
 }
