@@ -1,6 +1,5 @@
 using DigitalTwins.Common.DTOs.Template;
 using DigitalTwins.Common.DTOs.User;
-using DigitalTwins.Common.DTOs.Widget;
 using DigitalTwins.Common.Enums;
 
 namespace DigitalTwins.Common.DTOs.Device;
@@ -16,6 +15,8 @@ public class DeviceDTO
     public string Name { get; set; } = string.Empty;
     
     public string TopicName { get; set; } = string.Empty;
+    
+    public string AzureDigitalTwinUrl { get; set; } = string.Empty;
 
     public long CreatedBy { get; set; }
 
