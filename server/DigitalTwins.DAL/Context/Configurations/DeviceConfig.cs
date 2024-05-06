@@ -18,6 +18,9 @@ public class DeviceConfig : IEntityTypeConfiguration<Device>
         builder.Property(x => x.TopicName)
             .HasMaxLength(50);
         
+        builder.Property(x => x.AzureDigitalTwinUrl)
+            .HasMaxLength(200);
+        
         builder.Property(x => x.Status)
             .HasDefaultValue(Status.Offline);
 

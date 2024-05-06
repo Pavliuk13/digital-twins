@@ -12,6 +12,8 @@ public class UpdateDeviceCommand : IRequest<DeviceDTO>
     public long DeviceId { get; set; }
 
     public string Name { get; set; } = string.Empty;
+    
+    public string AzureDigitalTwinUrl { get; set; } = string.Empty;
 }
 
 public class UpdateDeviceCommandValidator : AbstractValidator<UpdateDeviceCommand>
@@ -27,6 +29,10 @@ public class UpdateDeviceCommandValidator : AbstractValidator<UpdateDeviceComman
             .WithMessage("Device name can't be empty")
             .MaximumLength(50)
             .WithMessage("Device name can't be longer than 50 symbols");
+        
+        RuleFor(x => x.AzureDigitalTwinUrl)
+            .MaximumLength(200)
+            .WithMessage("Digital Twins Url can't be longer than 200 symbols");
     }
 }
 
@@ -47,6 +53,7 @@ public class UpdateDeviceCommandHandler : IRequestHandler<UpdateDeviceCommand, D
                        ?? throw new KeyNotFoundException("Device was not found");
 
         device.Name = request.Name;
+        device.AzureDigitalTwinUrl = request.AzureDigitalTwinUrl;
         
         await _context.SaveChangesAsync(cancellationToken);
 
