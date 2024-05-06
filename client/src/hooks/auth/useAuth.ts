@@ -3,28 +3,34 @@ import { useNavigate } from 'react-router-dom';
 import { User, onAuthStateChanged } from 'firebase/auth';
 
 import { auth } from '@@services/auth/firebase';
-import { store, useDispatch } from '@@store/index';
-import { setIsAuthenticated, setIsLoadingUser } from '@@store/user/slice';
+import { useDispatch } from '@@store/index';
+import {
+  setIsAuthenticated,
+  setIsLoadingUser,
+  setUser,
+} from '@@store/user/slice';
+import { useCreateUserMutation, useLazyGetCurrentUserQuery } from '@@api/user';
 
 import { ROUTES } from '@@constants/routes';
-import userApi from '@@api/user';
 
 export const useAuth = () => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
+  const [createUser] = useCreateUserMutation();
+  const [getCurrentUser] = useLazyGetCurrentUserQuery();
+
   const handleUser = async (user: User) => {
     if (user) {
-      const isNewUser =
-        user.metadata.creationTime === user.metadata.lastSignInTime;
-
-      if (isNewUser) {
-        await store.dispatch(
-          userApi.endpoints.createUser.initiate({
-            data: { name: user.displayName || user.email, email: user.email },
-          }),
-        );
+      try {
+        const currentUser = await getCurrentUser().unwrap();
+        dispatch(setUser(currentUser));
+      } catch {
+        const currentUser = await createUser({
+          data: { name: user.displayName || user.email, email: user.email },
+        }).unwrap();
+        dispatch(setUser(currentUser));
       }
 
       dispatch(setIsAuthenticated(true));

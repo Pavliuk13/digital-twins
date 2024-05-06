@@ -3,5 +3,9 @@ export const prepareCreatePayload = (formData) => {
 };
 
 export const prepareUpdatePayload = (formData) => {
-  return { deviceId: formData.id, name: formData.name };
+  return {
+    deviceId: formData.id,
+    name: formData.name,
+    azureDigitalTwinUrl: formData.azureDigitalTwinUrl,
+  };
 };

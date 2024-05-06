@@ -8,7 +8,7 @@ const userApi = api.injectEndpoints({
   endpoints: (build) => {
     return {
       createUser: build.mutation<
-        void,
+        User,
         AxiosRequestConfig<Pick<User, 'name' | 'email'>>
       >({
         query: (config) => {
@@ -19,10 +19,33 @@ const userApi = api.injectEndpoints({
           };
         },
       }),
+      getCurrentUser: build.query<User, AxiosRequestConfig>({
+        query: (config) => {
+          return {
+            url: '/user/current',
+            method: 'get',
+            ...config,
+          };
+        },
+      }),
+      updateUser: build.mutation<User, AxiosRequestConfig<Pick<User, 'name'>>>({
+        query: (config) => {
+          return {
+            url: '/user',
+            method: 'put',
+            ...config,
+          };
+        },
+        invalidatesTags: ['Members'],
+      }),
     };
   },
 });
 
-export const { useCreateUserMutation } = userApi;
+export const {
+  useCreateUserMutation,
+  useLazyGetCurrentUserQuery,
+  useUpdateUserMutation,
+} = userApi;
 
 export default userApi;

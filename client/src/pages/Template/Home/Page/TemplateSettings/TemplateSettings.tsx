@@ -13,10 +13,11 @@ import Image from '@@components/ui/Image';
 
 import SettingsSvg from '@@assets/icons/settings.svg';
 
+import { Hardware } from '@@types/hardware';
 import { Template } from '@@types/template';
+import { getHardwareSnippet } from '@@utils/hardware/getHardwareSnippet';
 
 import { TemplateModalName } from '@@constants/modal';
-import { EXAMPLE_ARDUINO_CODE } from '@@constants/hardware';
 import { ROUTES } from '@@constants/routes';
 
 import styles from './TemplateSettings.module.scss';
@@ -89,7 +90,7 @@ function TemplateSettings() {
         }}
         onCopy={handleCopyCode}
       >
-        {EXAMPLE_ARDUINO_CODE}
+        {getHardwareSnippet({ topic: `${Hardware[data?.hardware]}/deviceId` })}
       </CodeBlock>
     </div>
   );

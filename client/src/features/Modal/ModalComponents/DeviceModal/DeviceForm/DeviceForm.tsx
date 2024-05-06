@@ -107,6 +107,16 @@ function DeviceForm(props: DeviceFormProps) {
           <InputController name={FIELD_NAME.NAME} />
         </FormControl>
         <FormControl
+          name={FIELD_NAME.AZURE_DIGITAL_TWIN_URL}
+          errors={errors}
+          labelProps={{
+            htmlFor: FIELD_NAME.AZURE_DIGITAL_TWIN_URL,
+            label: 'Digital twin url',
+          }}
+        >
+          <InputController name={FIELD_NAME.AZURE_DIGITAL_TWIN_URL} />
+        </FormControl>
+        <FormControl
           name={FIELD_NAME.TEMPLATE_ID}
           errors={errors}
           labelProps={{

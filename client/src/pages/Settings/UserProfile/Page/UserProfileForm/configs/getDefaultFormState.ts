@@ -1,8 +1,8 @@
 import { FIELD_NAMES } from '../constants';
 
-export const getDefaultFormState = () => {
+export const getDefaultFormState = (user) => {
   return {
-    [FIELD_NAMES.EMAIL]: '',
-    [FIELD_NAMES.PASSWORD]: '',
+    [FIELD_NAMES.EMAIL]: user.email || '',
+    [FIELD_NAMES.NAME]: user.name || '',
   };
 };

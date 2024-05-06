@@ -33,6 +33,7 @@ interface WidgetProps {
   widget: TypeWidget;
   deviceId: Device['id'];
   templateId: Template['id'];
+  disabled?: boolean;
   isEditable?: boolean;
   onAssign?: () => void;
   onEdit?: () => void;
@@ -46,6 +47,7 @@ function Widget(props: WidgetProps) {
     deviceId,
     templateId,
     widget,
+    disabled = false,
     isEditable = true,
     onAssign,
     onEdit,
@@ -108,7 +110,7 @@ function Widget(props: WidgetProps) {
     >
       <div className={styles.widget}>
         <Typography bottomOffset={8}>{title}</Typography>
-        <WidgetByType deviceId={deviceId} widget={widget} />
+        <WidgetByType deviceId={deviceId} widget={widget} disabled={disabled} />
       </div>
       <div className={styles.actions}>
         {widget ? (

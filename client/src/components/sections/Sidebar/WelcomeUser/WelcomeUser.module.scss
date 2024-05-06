@@ -1,4 +1,5 @@
 @import '@@styles/variables';
+@import '@@styles/mixins';
 
 .wrapper {
   display: flex;
@@ -8,6 +9,9 @@
 }
 
 .avatar {
+  @include flexCenter;
+  flex-shrink: 0;
+  font-size: $font_size_24;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -22,9 +26,18 @@
   color: $grey_200;
 }
 
+.user {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
 .name {
   font-family: $font_noto_sans;
   font-size: $font_size_18;
   line-height: $font_size_26;
   font-weight: $font_weight_600;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

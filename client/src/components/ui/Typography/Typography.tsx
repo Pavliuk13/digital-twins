@@ -17,7 +17,7 @@ interface TypographyProps {
     | 'description';
   component?: keyof React.JSX.IntrinsicElements;
   children: ReactNode;
-  color?: 'white_1000' | 'grey_700' | 'grey_600' | 'grey_200';
+  color?: 'white_1000' | 'grey_700' | 'grey_600' | 'grey_200' | 'blue_700';
   bottomOffset?: 0 | 2 | 4 | 8 | 12 | 16 | 20 | 24;
   block?: boolean;
   inline?: boolean;

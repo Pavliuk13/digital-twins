@@ -6,20 +6,29 @@ import FormControl from '@@components/form/FormControl';
 import InputController from '@@components/controllers/InputController';
 import Button from '@@components/ui/Button';
 
+import { setUser } from '@@store/user/slice';
+import { useDispatch } from '@@store/index';
+import { useUpdateUserMutation } from '@@api/user';
+
 import { FIELD_NAMES } from './constants';
 
 import styles from './UserProfileForm.module.scss';
 
 function UserProfileForm() {
+  const dispatch = useDispatch();
+
   const {
     formState: { errors, isSubmitting },
     handleSubmit,
   } = useFormContext();
 
+  const [updateUser] = useUpdateUserMutation();
+
   const handleSubmitForm = async (formData) => {
     try {
-      // const { email, password } = formData;
-      // await doCreateUserWithEmailAndPassword(email, password);
+      const { name } = formData;
+      const { data: updatedUser } = await updateUser({ data: { name } });
+      dispatch(setUser(updatedUser));
     } catch (error) {
       toast.error('Something went wrong!');
     }
@@ -37,7 +46,7 @@ function UserProfileForm() {
         }}
         isFullWidth
       >
-        <InputController name={FIELD_NAMES.NAME} type="password" />
+        <InputController name={FIELD_NAMES.NAME} />
       </FormControl>
       <FormControl
         name={FIELD_NAMES.EMAIL}
