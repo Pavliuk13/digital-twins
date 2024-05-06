@@ -11,6 +11,8 @@ public class Device
     public long TemplateId { get; set; }
 
     public string Name { get; set; } = string.Empty;
+    
+    public string AzureDigitalTwinUrl { get; set; } = string.Empty;
 
     public long CreatedBy { get; set; }
 

@@ -14,6 +14,8 @@ public class CreateDeviceCommand : IRequest<DeviceDTO>
     public long TemplateId { get; set; }
 
     public string Name { get; set; } = string.Empty;
+
+    public string AzureDigitalTwinUrl { get; set; } = string.Empty;
 }
 
 public class CreateDeviceCommandValidator : AbstractValidator<CreateDeviceCommand>
@@ -29,6 +31,10 @@ public class CreateDeviceCommandValidator : AbstractValidator<CreateDeviceComman
             .WithMessage("Device name can't be empty")
             .MaximumLength(50)
             .WithMessage("Device name can't be longer than 50 symbols");
+        
+        RuleFor(x => x.AzureDigitalTwinUrl)
+            .MaximumLength(200)
+            .WithMessage("Digital Twins Url can't be longer than 200 symbols");
     }
 }
 
@@ -59,7 +65,8 @@ public class CreateDeviceCommandHandler : IRequestHandler<CreateDeviceCommand, D
             Name = request.Name,
             CreatedBy = user.Id,
             Status = Status.Offline,
-            TemplateId = request.TemplateId
+            TemplateId = request.TemplateId,
+            AzureDigitalTwinUrl = request.AzureDigitalTwinUrl
         };
 
         deviceModel.TopicName = $"{template.Hardware}/{deviceModel.UGuid}";
