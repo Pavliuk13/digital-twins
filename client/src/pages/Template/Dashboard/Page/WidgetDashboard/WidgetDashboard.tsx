@@ -29,6 +29,7 @@ function WidgetDashboard() {
               type={widget.type}
               widget={widget}
               templateId={templateId}
+              disabled
               onAssign={refetch}
               onEdit={refetch}
               onDelete={refetch}

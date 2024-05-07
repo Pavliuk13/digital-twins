@@ -10,6 +10,7 @@ export interface Device {
   id: number;
   uGuid: string;
   topicName: string;
+  azureDigitalTwinUrl: string;
   templateId: number;
   template: {
     id: number;

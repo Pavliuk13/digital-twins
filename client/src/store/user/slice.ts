@@ -8,6 +8,9 @@ const userSlice = createSlice({
     isLoadingUser: true,
   },
   reducers: {
+    setUser(state, { payload }) {
+      state.user = payload;
+    },
     setIsLoadingUser(state, { payload }) {
       state.isLoadingUser = payload;
     },
@@ -17,6 +20,7 @@ const userSlice = createSlice({
   },
 });
 
-export const { setIsLoadingUser, setIsAuthenticated } = userSlice.actions;
+export const { setUser, setIsLoadingUser, setIsAuthenticated } =
+  userSlice.actions;
 
 export default userSlice.reducer;

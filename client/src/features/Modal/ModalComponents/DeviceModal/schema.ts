@@ -11,4 +11,5 @@ export const schema = yup.object().shape({
     .max(256, ERROR_MESSAGES.maxSymbols(256))
     .required(ERROR_MESSAGES.required),
   [FIELD_NAME.TEMPLATE_ID]: yup.string().required(ERROR_MESSAGES.required),
+  [FIELD_NAME.AZURE_DIGITAL_TWIN_URL]: yup.string().trim(),
 });

@@ -41,7 +41,6 @@ function WidgetForm(props: WidgetFormProps) {
   const {
     formState: { errors },
     handleSubmit,
-    getValues,
   } = useFormContext();
 
   const { closeModal } = useModalContext();

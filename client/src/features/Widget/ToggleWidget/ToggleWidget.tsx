@@ -13,10 +13,11 @@ import styles from './ToggleWidget.module.scss';
 interface ToggleWidgetProps {
   deviceId: Device['id'];
   widget: TypeWidget;
+  disabled?: boolean;
 }
 
 function ToggleWidget(props: ToggleWidgetProps) {
-  const { deviceId, widget } = props;
+  const { deviceId, widget, disabled } = props;
 
   const [createMqttTask, { isLoading }] = useCreateMqttTaskMutation();
 
@@ -35,8 +36,8 @@ function ToggleWidget(props: ToggleWidgetProps) {
   return (
     <div className={styles.wrapper}>
       <Toggle
-        disabled={!widget}
         value={widget?.value}
+        disabled={disabled || !widget}
         onChange={handleChange}
       />
       {isLoading && <Spinner size="medium" />}

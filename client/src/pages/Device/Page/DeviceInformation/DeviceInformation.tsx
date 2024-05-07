@@ -56,6 +56,23 @@ function DeviceInformation() {
           <Typography variant="subheading2">{device.template.name}</Typography>
         </div>
         <div className={styles.information__row}>
+          Digital twin url:
+          <Typography variant="subheading2">
+            {device.azureDigitalTwinUrl ? (
+              <a
+                href={device.azureDigitalTwinUrl}
+                target="_blank"
+                rel="noreferrer"
+                className={styles.link}
+              >
+                {device.azureDigitalTwinUrl}
+              </a>
+            ) : (
+              '-'
+            )}
+          </Typography>
+        </div>
+        <div className={styles.information__row}>
           Created by:
           <Typography variant="subheading2">
             {device.user.name} ({device.user.email})
