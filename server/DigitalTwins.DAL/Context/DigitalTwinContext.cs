@@ -18,6 +18,8 @@ public sealed class DigitalTwinContext : DbContext
     public DbSet<OrganizationPermissionRole> OrganizationPermissionRoles { get; }
     public DbSet<Widget> Widgets { get; }
     public DbSet<WidgetDevice> WidgetDevices { get; }
+    public DbSet<Statistic> Statistics { get; }
+    public DbSet<ErrorLog> ErrorLogs { get; }
 
     public DigitalTwinContext(DbContextOptions<DigitalTwinContext> options) : base(options)
     {
@@ -34,6 +36,8 @@ public sealed class DigitalTwinContext : DbContext
         OrganizationPermissionRoles = Set<OrganizationPermissionRole>();        
         Widgets = Set<Widget>();
         WidgetDevices = Set<WidgetDevice>();
+        Statistics = Set<Statistic>();
+        ErrorLogs = Set<ErrorLog>();
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

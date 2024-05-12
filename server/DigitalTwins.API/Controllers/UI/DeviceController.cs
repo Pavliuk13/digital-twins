@@ -26,6 +26,20 @@ public class DeviceController : ControllerBase
         return Ok(await _mediator.Send(new GetDevicesByOrganizationQuery()));
     }
     
+    [HttpGet("stats")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<StatisticDTO>))]
+    public async Task<IActionResult> GetStats([FromQuery] long deviceId)
+    {
+        return Ok(await _mediator.Send(new GetDeviceStatisticsQuery { DeviceId = deviceId }));
+    }
+    
+    [HttpGet("error-logs")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<ErrorLogDTO>))]
+    public async Task<IActionResult> GetErrorLogs([FromQuery] long deviceId)
+    {
+        return Ok(await _mediator.Send(new GetDeviceErrorLogsQuery { DeviceId = deviceId }));
+    }
+    
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(DeviceDTO))]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

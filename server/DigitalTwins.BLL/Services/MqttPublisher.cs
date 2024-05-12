@@ -44,7 +44,6 @@ public class MqttPublisher : IMqttPublisher
         
         var response = new MqttResponseDTO
         {
-            Guid = device.UGuid,
             Pin = (int)widget.Datastream.Pin,
             Value = requestDto.Value
         };

@@ -34,6 +34,11 @@ public static class ServiceCollectionExtension
     
     public static void RegisterCustomServices(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddLogging(config =>
+        {
+            config.AddConsole();
+        });
+        
         services.Configure<MqttOptions>(configuration.GetSection(MqttOptions.SectionName));
         
         services.AddHostedService<MqttSubscriber>();
