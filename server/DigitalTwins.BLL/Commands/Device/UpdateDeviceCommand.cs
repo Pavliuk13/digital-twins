@@ -31,8 +31,8 @@ public class UpdateDeviceCommandValidator : AbstractValidator<UpdateDeviceComman
             .WithMessage("Device name can't be longer than 50 symbols");
         
         RuleFor(x => x.AzureDigitalTwinUrl)
-            .MaximumLength(200)
-            .WithMessage("Digital Twins Url can't be longer than 200 symbols");
+            .MaximumLength(900)
+            .WithMessage("Digital Twins Url can't be longer than 900 symbols");
     }
 }
 

@@ -4,6 +4,7 @@ using DigitalTwins.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DigitalTwins.DAL.Migrations
 {
     [DbContext(typeof(DigitalTwinContext))]
-    partial class DigitalTwinContextModelSnapshot : ModelSnapshot
+    [Migration("20240507051941_EncreaseUrlLimit")]
+    partial class EncreaseUrlLimit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,37 +102,6 @@ namespace DigitalTwins.DAL.Migrations
                     b.HasIndex("TemplateId");
 
                     b.ToTable("Devices");
-                });
-
-            modelBuilder.Entity("DigitalTwins.DAL.Entities.ErrorLog", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(600)
-                        .HasColumnType("nvarchar(600)");
-
-                    b.Property<long>("DeviceId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DeviceId");
-
-                    b.ToTable("ErrorLogs");
                 });
 
             modelBuilder.Entity("DigitalTwins.DAL.Entities.Location", b =>
@@ -414,39 +385,6 @@ namespace DigitalTwins.DAL.Migrations
                         });
                 });
 
-            modelBuilder.Entity("DigitalTwins.DAL.Entities.Statistic", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<long>("DeviceId")
-                        .HasColumnType("bigint");
-
-                    b.Property<double>("HeapUsage")
-                        .HasColumnType("float");
-
-                    b.Property<int>("LightSwitchCount")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Rssi")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("StatsTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<double>("Uptime")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DeviceId");
-
-                    b.ToTable("Statistics");
-                });
-
             modelBuilder.Entity("DigitalTwins.DAL.Entities.Template", b =>
                 {
                     b.Property<long>("Id")
@@ -659,17 +597,6 @@ namespace DigitalTwins.DAL.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("DigitalTwins.DAL.Entities.ErrorLog", b =>
-                {
-                    b.HasOne("DigitalTwins.DAL.Entities.Device", "Device")
-                        .WithMany("ErrorLogs")
-                        .HasForeignKey("DeviceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Device");
-                });
-
             modelBuilder.Entity("DigitalTwins.DAL.Entities.Location", b =>
                 {
                     b.HasOne("DigitalTwins.DAL.Entities.User", "Owner")
@@ -714,17 +641,6 @@ namespace DigitalTwins.DAL.Migrations
                     b.Navigation("Permission");
 
                     b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("DigitalTwins.DAL.Entities.Statistic", b =>
-                {
-                    b.HasOne("DigitalTwins.DAL.Entities.Device", "Device")
-                        .WithMany("Statistics")
-                        .HasForeignKey("DeviceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Device");
                 });
 
             modelBuilder.Entity("DigitalTwins.DAL.Entities.Template", b =>
@@ -832,10 +748,6 @@ namespace DigitalTwins.DAL.Migrations
 
             modelBuilder.Entity("DigitalTwins.DAL.Entities.Device", b =>
                 {
-                    b.Navigation("ErrorLogs");
-
-                    b.Navigation("Statistics");
-
                     b.Navigation("WidgetDevices");
                 });
 

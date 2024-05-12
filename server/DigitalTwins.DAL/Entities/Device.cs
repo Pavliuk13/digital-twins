@@ -25,4 +25,8 @@ public class Device
     public User User { get; set; } = null!;
 
     public IEnumerable<WidgetDevice> WidgetDevices { get; set; } = null!;
+    
+    public IEnumerable<Statistic> Statistics { get; set; } = null!;
+    
+    public IEnumerable<ErrorLog> ErrorLogs { get; set; } = null!;
 }
