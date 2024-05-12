@@ -28,3 +28,20 @@ export interface CreateDeviceArgs {
   templateId: number;
   userId: User['id'];
 }
+
+export interface DeviceStatLog {
+  id: number;
+  statsTime: string;
+  uptime: number;
+  heapUsage: number;
+  rssi: number;
+  deviceId: Device['id'];
+}
+
+export interface DeviceErrorLog {
+  id: number;
+  name: string;
+  description: string;
+  dateTime: string;
+  deviceId: Device['id'];
+}

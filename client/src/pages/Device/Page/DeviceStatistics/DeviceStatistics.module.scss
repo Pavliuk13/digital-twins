@@ -1,0 +1,41 @@
+@import '@@styles/variables';
+
+.wrapper {
+  margin-top: 30px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.statistics {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.xAxis {
+  text {
+    font-family: $font_noto_sans;
+    fill: $white_1000;
+    font-size: $font_size_12;
+  }
+}
+
+.yAxis {
+  text {
+    font-family: $font_noto_sans;
+    fill: $white_1000;
+    font-size: $font_size_12;
+  }
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}

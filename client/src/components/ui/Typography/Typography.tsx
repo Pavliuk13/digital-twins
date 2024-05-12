@@ -19,6 +19,7 @@ interface TypographyProps {
   children: ReactNode;
   color?: 'white_1000' | 'grey_700' | 'grey_600' | 'grey_200' | 'blue_700';
   bottomOffset?: 0 | 2 | 4 | 8 | 12 | 16 | 20 | 24;
+  wrap?: boolean;
   block?: boolean;
   inline?: boolean;
   className?: string;
@@ -36,6 +37,7 @@ function Typography(props: TypographyProps): React.JSX.Element {
     bottomOffset = 0,
     block = false,
     inline = false,
+    wrap = false,
     className,
     style,
     dataCid,
@@ -55,6 +57,7 @@ function Typography(props: TypographyProps): React.JSX.Element {
         {
           [styles.typography_block]: block,
           [styles.typography_inline]: inline,
+          [styles.typography_wrap]: wrap,
         },
       )}
       style={style}

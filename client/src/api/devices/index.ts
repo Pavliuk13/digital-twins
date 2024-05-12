@@ -2,7 +2,12 @@ import { AxiosRequestConfig } from 'axios';
 
 import api from '@@api/rtk';
 
-import { CreateDeviceArgs, Device } from '@@types/device';
+import {
+  CreateDeviceArgs,
+  Device,
+  DeviceErrorLog,
+  DeviceStatLog,
+} from '@@types/device';
 import { Organization } from '@@types/organization';
 
 const devicesApi = api.injectEndpoints({
@@ -57,6 +62,24 @@ const devicesApi = api.injectEndpoints({
         },
         invalidatesTags: ['Device', 'Template'],
       }),
+      getDeviceErrorLogs: build.query<DeviceErrorLog[], AxiosRequestConfig>({
+        query: (config) => {
+          return {
+            url: '/device/error-logs',
+            method: 'get',
+            ...config,
+          };
+        },
+      }),
+      getDeviceStatistics: build.query<DeviceStatLog[], AxiosRequestConfig>({
+        query: (config) => {
+          return {
+            url: '/device/stats',
+            method: 'get',
+            ...config,
+          };
+        },
+      }),
     };
   },
 });
@@ -66,6 +89,8 @@ export const {
   useCreateDeviceMutation,
   useUpdateDeviceMutation,
   useDeleteDeviceMutation,
+  useGetDeviceErrorLogsQuery,
+  useGetDeviceStatisticsQuery,
 } = devicesApi;
 
 export default devicesApi;

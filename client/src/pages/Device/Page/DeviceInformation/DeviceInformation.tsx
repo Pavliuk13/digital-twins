@@ -40,13 +40,13 @@ function DeviceInformation() {
         </div>
         <div className={styles.information__row}>
           uGuid:
-          <Typography variant="subheading2" onClick={handleCopyUGuid}>
+          <Typography variant="subheading2" wrap onClick={handleCopyUGuid}>
             {device.uGuid} <Image image={CopySvg} cursor="pointer" size={18} />
           </Typography>
         </div>
         <div className={styles.information__row}>
           Topic:
-          <Typography variant="subheading2" onClick={handleCopyTopic}>
+          <Typography variant="subheading2" wrap onClick={handleCopyTopic}>
             {Hardware[device.template.hardware]}/{device.uGuid}{' '}
             <Image image={CopySvg} cursor="pointer" size={18} />
           </Typography>
@@ -57,7 +57,7 @@ function DeviceInformation() {
         </div>
         <div className={styles.information__row}>
           Digital twin url:
-          <Typography variant="subheading2">
+          <Typography variant="subheading2" className={styles.link}>
             {device.azureDigitalTwinUrl ? (
               <a
                 href={device.azureDigitalTwinUrl}
