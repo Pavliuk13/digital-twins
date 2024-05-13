@@ -47,7 +47,7 @@ app.UseDigitalTwinContext();
 app.UseMiddleware<GenericExceptionHandlerMiddleware>();
 
 app.UseCors(opt => opt
-    .WithOrigins("https://digital-twins-kpi-ui.azurewebsites.net/accept-invitation?invitationCode={}")
+    .WithOrigins("https://digital-twins-kpi-ui.azurewebsites.net")
     .AllowAnyHeader()
     .AllowAnyMethod()
     .AllowCredentials());
