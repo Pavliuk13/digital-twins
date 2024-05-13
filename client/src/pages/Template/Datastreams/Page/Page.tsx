@@ -2,6 +2,7 @@ import { memo } from 'react';
 
 import { useDispatch } from '@@store/index';
 import { showModal } from '@@store/modals/slice';
+import { useEditPermission } from '@@hooks/permissions/useEditPermission';
 
 import EmptyContentLayout from '@@components/layouts/EmptyContentLayout';
 
@@ -20,6 +21,8 @@ function Page() {
 
   const { data, isLoading, refetch } = usePageContentContext<Template>();
 
+  const canEdit = useEditPermission(data?.createdBy);
+
   const handleAddDatastream = () => {
     dispatch(
       showModal(DatastreamModalName, {
@@ -36,10 +39,12 @@ function Page() {
         <EmptyContentLayout
           title="Datastreams"
           description="Datastreams is a way to structure data that regularly flows in and out from device. Use it for sensor data, any telemetry, or actuators."
-          button={{
-            text: 'Add datastream',
-            onClick: handleAddDatastream,
-          }}
+          {...(canEdit && {
+            button: {
+              text: 'Add datastream',
+              onClick: handleAddDatastream,
+            },
+          })}
         />
       )}
     </div>

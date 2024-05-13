@@ -2,6 +2,7 @@ import { memo } from 'react';
 
 import { useDispatch } from '@@store/index';
 import { showModal } from '@@store/modals/slice';
+import { useEditPermission } from '@@hooks/permissions/useEditPermission';
 
 import { copyToClipboard } from '@@utils/common/copyToClipboard';
 
@@ -32,7 +33,9 @@ function DatastreamItem(props: DatastreamItemProps) {
 
   const dispatch = useDispatch();
 
-  const { refetch } = usePageContentContext<Template>();
+  const { data, refetch } = usePageContentContext<Template>();
+
+  const canEdit = useEditPermission(data?.createdBy);
 
   const handleEditDevice = () => {
     dispatch(
@@ -68,9 +71,11 @@ function DatastreamItem(props: DatastreamItemProps) {
           />
         </Typography>
       </div>
-      <Button variant="outline" color="blue_500" onClick={handleEditDevice}>
-        <Image image={EditSvg} cursor="pointer" />
-      </Button>
+      {canEdit && (
+        <Button variant="outline" color="blue_500" onClick={handleEditDevice}>
+          <Image image={EditSvg} cursor="pointer" />
+        </Button>
+      )}
     </Card>
   );
 }

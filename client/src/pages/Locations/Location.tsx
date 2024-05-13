@@ -2,6 +2,7 @@ import { memo, useMemo } from 'react';
 
 import { useDispatch } from '@@store/index';
 import { showModal } from '@@store/modals/slice';
+import { useEditPermission } from '@@hooks/permissions/useEditPermission';
 
 import { PageContentContextProvider } from '@@contexts/PageContentContext';
 
@@ -19,6 +20,8 @@ function Locations() {
   const { locations, isLoading, refetch } = useLocations();
 
   const dispatch = useDispatch();
+
+  const canEdit = useEditPermission();
 
   const pageContentContextValue = useMemo(() => {
     return {
@@ -42,10 +45,12 @@ function Locations() {
       <PageContentLayout
         title="Locations"
         description="Start by creating location. Once created, you can assign users and devices to a location"
-        button={{
-          text: 'New location',
-          onClick: handleAddLocation,
-        }}
+        {...(canEdit && {
+          button: {
+            text: 'New location',
+            onClick: handleAddLocation,
+          },
+        })}
         isLoading={isLoading}
       >
         <PageContentContextProvider value={pageContentContextValue}>

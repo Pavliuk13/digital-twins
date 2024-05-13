@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { useDispatch } from '@@store/index';
 import { showModal } from '@@store/modals/slice';
+import { useEditPermission } from '@@hooks/permissions/useEditPermission';
 
 import { PageContentContextProvider } from '@@contexts/PageContentContext';
 
@@ -23,6 +24,8 @@ function Datastreams() {
   const tabs = usePageTabs(templateId);
 
   const { template, isLoading, refetch } = useTemplate();
+
+  const canEdit = useEditPermission(template?.createdBy);
 
   const pageContentContext = useMemo(() => {
     return {
@@ -46,10 +49,12 @@ function Datastreams() {
       <PageContentLayout
         title={`Template - ${template?.name}`}
         tabs={tabs}
-        button={{
-          text: 'Add datastream',
-          onClick: handleAddDatastream,
-        }}
+        {...(canEdit && {
+          button: {
+            text: 'Add datastream',
+            onClick: handleAddDatastream,
+          },
+        })}
       >
         <PageContentContextProvider value={pageContentContext}>
           <Page />

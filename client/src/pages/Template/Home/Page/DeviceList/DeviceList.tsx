@@ -2,6 +2,7 @@ import { memo } from 'react';
 
 import { useDispatch } from '@@store/index';
 import { showModal } from '@@store/modals/slice';
+import { useEditPermission } from '@@hooks/permissions/useEditPermission';
 
 import { usePageContentContext } from '@@contexts/PageContentContext';
 
@@ -20,10 +21,12 @@ import DeviceItem from './DeviceItem';
 import styles from './DeviceList.module.scss';
 
 function DeviceList() {
-  const { data: { id, devices } = {}, refetch } =
+  const { data: { id, devices, createdBy } = {}, refetch } =
     usePageContentContext<Template>();
 
   const dispatch = useDispatch();
+
+  const canEdit = useEditPermission(createdBy);
 
   const handleAddDevice = () => {
     dispatch(
@@ -42,21 +45,23 @@ function DeviceList() {
         <Typography variant="subheading2">
           Devices <span className={styles.count}>{devices?.length || 0}</span>
         </Typography>
-        <Button
-          variant="outline"
-          color="grey_200"
-          size="small"
-          onClick={handleAddDevice}
-        >
-          <Image
-            image={PlusSvg}
-            size={12}
-            fill="grey_200"
-            position="left_8"
-            cursor="pointer"
-          />
-          New device
-        </Button>
+        {canEdit && (
+          <Button
+            variant="outline"
+            color="grey_200"
+            size="small"
+            onClick={handleAddDevice}
+          >
+            <Image
+              image={PlusSvg}
+              size={12}
+              fill="grey_200"
+              position="left_8"
+              cursor="pointer"
+            />
+            New device
+          </Button>
+        )}
       </div>
       <div className={styles.list}>
         {devices?.map((device) => {

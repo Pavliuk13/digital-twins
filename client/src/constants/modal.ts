@@ -5,3 +5,4 @@ export const ConfirmDeleteModalName = 'confirm-delete';
 export const DatastreamModalName = 'datastream';
 export const LocationModalName = 'location';
 export const WidgetModalName = 'widget';
+export const InviteMemberModalName = 'invite-member';

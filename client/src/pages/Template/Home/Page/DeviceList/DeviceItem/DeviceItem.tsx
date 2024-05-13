@@ -2,6 +2,7 @@ import { memo } from 'react';
 
 import { useDispatch } from '@@store/index';
 import { showModal } from '@@store/modals/slice';
+import { useEditPermission } from '@@hooks/permissions/useEditPermission';
 
 import { copyToClipboard } from '@@utils/common/copyToClipboard';
 
@@ -30,7 +31,12 @@ function DeviceItem(props: DeviceItemProps) {
 
   const dispatch = useDispatch();
 
-  const { refetch } = usePageContentContext<Template>();
+  const {
+    data: { createdBy },
+    refetch,
+  } = usePageContentContext<Template>();
+
+  const canEdit = useEditPermission(createdBy);
 
   const handleEditDevice = () => {
     dispatch(
@@ -61,9 +67,11 @@ function DeviceItem(props: DeviceItemProps) {
             {device.uGuid} <Image image={CopySvg} cursor="pointer" size={16} />
           </Typography>
         </div>
-        <Button variant="outline" color="blue_500" onClick={handleEditDevice}>
-          <Image image={EditSvg} cursor="pointer" />
-        </Button>
+        {canEdit && (
+          <Button variant="outline" color="blue_500" onClick={handleEditDevice}>
+            <Image image={EditSvg} cursor="pointer" />
+          </Button>
+        )}
       </div>
     </div>
   );

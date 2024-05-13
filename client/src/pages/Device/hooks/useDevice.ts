@@ -20,7 +20,10 @@ export const useDevice = () => {
     refetch: refetchDeviceWidgets,
     data: deviceWidgets = [],
     isLoading: isLoadingDeviceWidgets,
-  } = useGetDeviceWidgetsQuery({ params: { deviceId } });
+  } = useGetDeviceWidgetsQuery(
+    { params: { deviceId } },
+    { refetchOnMountOrArgChange: true },
+  );
 
   const {
     refetch: refetchDeviceErrorLogs,

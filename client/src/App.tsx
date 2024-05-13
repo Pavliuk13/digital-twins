@@ -6,6 +6,7 @@ import Toast from '@@features/Toast';
 
 import SignUp from '@@pages/SignUp';
 import SignIn from '@@pages/SignIn';
+import AcceptInvitation from '@@pages/AcceptInvitation';
 import Templates from '@@pages/Templates';
 import TemplateHome from '@@pages/Template/Home';
 import TemplateDatastreams from '@@pages/Template/Datastreams';
@@ -29,6 +30,7 @@ function App() {
       <Routes>
         <Route path={ROUTES.SIGN_UP} element={<SignUp />} />
         <Route path={ROUTES.SIGN_IN} element={<SignIn />} />
+        <Route path={ROUTES.ACCEPT_INVITATION} element={<AcceptInvitation />} />
         <Route path={ROUTES.TEMPLATES.INDEX} element={<Templates />} />
         <Route path={ROUTES.TEMPLATES.HOME_ROUTE} element={<TemplateHome />} />
         <Route

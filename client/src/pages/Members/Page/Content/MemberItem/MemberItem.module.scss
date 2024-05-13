@@ -4,6 +4,13 @@
 .wrapper {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 12px;
 }
 
@@ -16,10 +23,9 @@
   background-color: $grey_200;
 }
 
-.welcome {
-  font-family: $font_noto_sans;
-  font-size: $font_size_14;
-  line-height: $font_line_height_22;
-  font-weight: $font_weight_400;
+.status {
   color: $grey_200;
+  background-color: $grey_900;
+  padding: 4px 8px;
+  border-radius: 10px;
 }

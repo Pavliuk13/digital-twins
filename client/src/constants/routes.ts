@@ -2,6 +2,7 @@ export const ROUTES = {
   INDEX: '/',
   SIGN_UP: '/sign-up',
   SIGN_IN: '/sign-in',
+  ACCEPT_INVITATION: '/accept-invitation',
   TEMPLATES: {
     INDEX: '/templates',
     HOME_ROUTE: '/templates/:templateId/home',
@@ -21,3 +22,9 @@ export const ROUTES = {
   },
   NOT_FOUND: '/*',
 } as const;
+
+export const PUBLIC_ROUTES = [
+  ROUTES.SIGN_IN,
+  ROUTES.SIGN_UP,
+  ROUTES.ACCEPT_INVITATION,
+];
