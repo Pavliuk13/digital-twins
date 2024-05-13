@@ -40,6 +40,7 @@ public static class ServiceCollectionExtension
         });
         
         services.Configure<MqttOptions>(configuration.GetSection(MqttOptions.SectionName));
+        services.Configure<SenderOptions>(configuration.GetSection(SenderOptions.SectionName));
         
         services.AddHostedService<MqttSubscriber>();
         services.AddSingleton<IMqttSubscriber, MqttSubscriber>();

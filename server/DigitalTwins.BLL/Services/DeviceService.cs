@@ -124,7 +124,7 @@ public class DeviceService : IDeviceService
         var errorLog = new ErrorLog
         {
             DeviceId = device.Id,
-            Name = model.Name,
+            Name = model.Error,
             Description = model.Description,
             DateTime = DateTime.Now
         };
