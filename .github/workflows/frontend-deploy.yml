@@ -30,12 +30,12 @@ jobs:
       working-directory: ./client
 
     - name: List build directory contents
-      run: ls -al ./build
+      run: ls -al ./dist
       working-directory: ./client
 
     - name: Zip artifact for deployment
       run: |
-          cd build
+          cd dist
           zip -r ../release.zip .
       working-directory: ./client
 
