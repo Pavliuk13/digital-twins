@@ -51,6 +51,21 @@ public class CurrentUserService : ICurrentUserService
 
         return userOrganization.OrganizationId;
     }
+    
+    public async Task<UserDTO> GetCurrentUserWithRole()
+    {
+        var user = await GetCurrentUser();
+
+        var userOrganization = await _context.UserOrganizationRoles
+                                   .Include(x => x.Role)
+                                   .AsNoTracking()
+                                   .FirstOrDefaultAsync(x => x.UserId == user.Id)
+                               ?? throw new KeyNotFoundException("User doesn't belong to any organization");
+
+        user.Role = userOrganization.Role.Name;
+
+        return user;
+    }
 
     private async Task<string> GetCurrentUserEmail()
     {

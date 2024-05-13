@@ -26,7 +26,7 @@ public class UserController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDTO))]
     public async Task<IActionResult> GetCurrent()
     {
-        return Ok(await _currentUserService.GetCurrentUser());
+        return Ok(await _currentUserService.GetCurrentUserWithRole());
     }
     
     [AllowAnonymous]

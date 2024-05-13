@@ -29,15 +29,27 @@ public class GetUsersListQueryHandler : IRequestHandler<GetUsersListQuery, IEnum
     {
         var organizationId = await _currentUserService.GetCurrentOrganizationId();
         
-        var userIds = await _context.UserOrganizationRoles.AsNoTracking()
-            .Where(x => x.OrganizationId == organizationId)
-                .Select(x => x.UserId)
+        var usersWithRoles = await _context.Users
+            .AsNoTracking()
+            .Where(u => _context.UserOrganizationRoles.Any(ur => ur.UserId == u.Id 
+                                                                 && ur.OrganizationId == organizationId))
+            .Select(u => new 
+            {
+                User = u,
+                RoleName = _context.UserOrganizationRoles
+                    .Where(ur => ur.UserId == u.Id && ur.OrganizationId == organizationId)
+                    .Select(ur => ur.Role.Name)
+                    .FirstOrDefault()
+            })
             .ToListAsync(cancellationToken);
+        
+        var userDtos = usersWithRoles.Select(x => 
+        {
+            var userDto = _mapper.Map<UserDTO>(x.User);
+            userDto.Role = x.RoleName ?? string.Empty;
+            return userDto;
+        });
 
-        var users = await _context.Users.AsNoTracking()
-            .Where(x => userIds.Contains(x.Id))
-            .ToListAsync(cancellationToken);
-
-        return _mapper.Map<IEnumerable<UserDTO>>(users);
+        return userDtos;
     }
 }

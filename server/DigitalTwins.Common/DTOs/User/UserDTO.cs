@@ -19,4 +19,6 @@ public class UserDTO
     public DateTime UpdatedAt { get; set; }
 
     public string? InvitationCode { get; set; }
+
+    public string Role { get; set; } = string.Empty;
 }
