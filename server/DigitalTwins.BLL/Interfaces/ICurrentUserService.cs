@@ -7,4 +7,6 @@ public interface ICurrentUserService
     Task<UserDTO> GetCurrentUser();
     
     Task<long> GetCurrentOrganizationId();
+
+    Task<UserDTO> GetCurrentUserWithRole();
 }

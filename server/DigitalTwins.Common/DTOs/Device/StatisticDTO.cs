@@ -3,6 +3,8 @@ namespace DigitalTwins.Common.DTOs.Device;
 public class StatisticDTO
 {
     public long Id { get; set; }
+    
+    public int LightSwitchCount { get; set; }
 
     public DateTime StatsTime { get; set; }
 
