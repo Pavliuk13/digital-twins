@@ -9,8 +9,6 @@ import { usePageContentContext } from '@@contexts/PageContentContext';
 
 import { Data } from '../types';
 
-import styles from './DeviceWidgets.module.scss';
-
 function DeviceWidgets() {
   const { deviceId } = useParams();
 
@@ -19,14 +17,14 @@ function DeviceWidgets() {
   } = usePageContentContext<Data>();
 
   return (
-    <div className={styles.wrapper}>
+    <div>
       <Card isScale={false}>
-        <div className={styles.header}>
+        <div>
           <Typography variant="subheading2" bottomOffset={16}>
             Widgets
           </Typography>
         </div>
-        <div className={styles.list}>
+        <div>
           {deviceWidgets?.map((widget) => {
             return (
               <Widget

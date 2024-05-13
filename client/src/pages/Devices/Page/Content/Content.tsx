@@ -16,7 +16,7 @@ function Content() {
       <div className={styles.wrapper}>
         <div className={styles.devices}>
           {data.map((device) => {
-            return <DeviceCard device={device} />;
+            return <DeviceCard key={device.id} device={device} />;
           })}
         </div>
       </div>

@@ -15,5 +15,6 @@ export const getDefaultFormState = (data?: Device, options: Options) => {
     [FIELD_NAME.NAME]: data?.name || '',
     [FIELD_NAME.TEMPLATE_ID]:
       data?.[FIELD_NAME.TEMPLATE_ID] || templateId || '',
+    [FIELD_NAME.AZURE_DIGITAL_TWIN_URL]: data?.azureDigitalTwinUrl || '',
   };
 };
