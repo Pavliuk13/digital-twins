@@ -58,7 +58,7 @@ public class InviteUserCommandHandler : IRequestHandler<InviteUserCommand, UserD
     
     public async Task<UserDTO> Handle(InviteUserCommand request, CancellationToken cancellationToken)
     {
-        var organizationId = 1;
+        var organizationId = await _currentUserService.GetCurrentOrganizationId();
         
         var user = new DAL.Entities.User
         {
