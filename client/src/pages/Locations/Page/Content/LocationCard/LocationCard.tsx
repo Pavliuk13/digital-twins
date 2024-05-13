@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 
 import { useDispatch } from '@@store/index';
 import { showModal } from '@@store/modals/slice';
+import { useEditPermission } from '@@hooks/permissions/useEditPermission';
 
 import { useDeleteLocationMutation } from '@@api/locations';
 import { usePageContentContext } from '@@contexts/PageContentContext';
@@ -31,6 +32,8 @@ function LocationCard(props: LocationCardProps) {
   const dispatch = useDispatch();
 
   const { refetch } = usePageContentContext();
+
+  const canEdit = useEditPermission(location.createdBy);
 
   const [deleteLocation] = useDeleteLocationMutation();
 
@@ -73,18 +76,24 @@ function LocationCard(props: LocationCardProps) {
       <Typography variant="note">
         created by {location.owner.name} ({location.owner.email})
       </Typography>
-      <div className={styles.actions}>
-        <Button variant="outline" color="blue_500" onClick={handleEditLocation}>
-          <Image image={EditSvg} cursor="pointer" />
-        </Button>
-        <Button
-          variant="outline"
-          color="red_500"
-          onClick={handleLocationDevice}
-        >
-          <Image image={TrashSvg} cursor="pointer" />
-        </Button>
-      </div>
+      {canEdit && (
+        <div className={styles.actions}>
+          <Button
+            variant="outline"
+            color="blue_500"
+            onClick={handleEditLocation}
+          >
+            <Image image={EditSvg} cursor="pointer" />
+          </Button>
+          <Button
+            variant="outline"
+            color="red_500"
+            onClick={handleLocationDevice}
+          >
+            <Image image={TrashSvg} cursor="pointer" />
+          </Button>
+        </div>
+      )}
     </Card>
   );
 }
