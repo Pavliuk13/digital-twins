@@ -29,8 +29,14 @@ jobs:
           yarn build
       working-directory: ./client
 
+    - name: List build directory contents
+      run: ls -al ./build
+      working-directory: ./client
+
     - name: Zip artifact for deployment
-      run: zip -r release.zip ./build/*
+      run: |
+          cd build
+          zip -r ../release.zip .
       working-directory: ./client
 
     - name: Deploy application
@@ -38,4 +44,4 @@ jobs:
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE_UI }}
-        package: release.zip
+        package: ./client/release.zip
