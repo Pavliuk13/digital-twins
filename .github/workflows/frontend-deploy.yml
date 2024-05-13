@@ -8,7 +8,7 @@ on:
 
 env:
   AZURE_WEBAPP_NAME: digital-twins-kpi-ui
-  AZURE_WEBAPP_PACKAGE_PATH: './client/build'
+  AZURE_WEBAPP_PACKAGE_PATH: './client'
   NODE_VERSION: '20.x'
 
 jobs:
