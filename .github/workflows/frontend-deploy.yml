@@ -24,6 +24,10 @@ jobs:
         node-version: ${{ env.NODE_VERSION }}
     
     - name: 'Install dependencies, build'
+      env:
+        VITE_API_URL: ${{ secrets.BACKEND_URL }}
+        VITE_API_VERSION: "api"
+        VITE_FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
       run: |
           yarn install --frozen-lockfile
           yarn build
