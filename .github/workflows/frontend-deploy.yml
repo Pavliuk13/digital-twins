@@ -27,11 +27,15 @@ jobs:
       run: |
           yarn install --frozen-lockfile
           yarn build
-      working-directory: ./client/build
+      working-directory: ./client
+
+    - name: Zip artifact for deployment
+      run: zip -r release.zip ./build/*
+      working-directory: ./client
 
     - name: Deploy application
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE_UI }}
-        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+        package: release.zip
