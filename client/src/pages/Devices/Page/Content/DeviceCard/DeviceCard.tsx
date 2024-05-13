@@ -7,6 +7,7 @@ import { showModal } from '@@store/modals/slice';
 
 import { useDeleteDeviceMutation } from '@@api/devices';
 import { usePageContentContext } from '@@contexts/PageContentContext';
+import { useEditPermission } from '@@hooks/permissions/useEditPermission';
 
 import Button from '@@components/ui/Button';
 import Image from '@@components/ui/Image';
@@ -37,6 +38,8 @@ function DeviceCard(props: DeviceCardProps) {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
+
+  const canEdit = useEditPermission(device.createdBy);
 
   const { refetch } = usePageContentContext();
 
@@ -90,12 +93,24 @@ function DeviceCard(props: DeviceCardProps) {
         className={styles.image}
       />
       <div className={styles.actions}>
-        <Button variant="outline" color="blue_500" onClick={handleEditDevice}>
-          <Image image={EditSvg} cursor="pointer" />
-        </Button>
-        <Button variant="outline" color="red_500" onClick={handleDeleteDevice}>
-          <Image image={TrashSvg} cursor="pointer" />
-        </Button>
+        {canEdit && (
+          <>
+            <Button
+              variant="outline"
+              color="blue_500"
+              onClick={handleEditDevice}
+            >
+              <Image image={EditSvg} cursor="pointer" />
+            </Button>
+            <Button
+              variant="outline"
+              color="red_500"
+              onClick={handleDeleteDevice}
+            >
+              <Image image={TrashSvg} cursor="pointer" />
+            </Button>
+          </>
+        )}
       </div>
       <div className={styles.info}>
         <Typography variant="bodyBold" bottomOffset={4}>

@@ -2,6 +2,7 @@ import { memo } from 'react';
 
 import { useDispatch } from '@@store/index';
 import { showModal } from '@@store/modals/slice';
+import { useEditPermission } from '@@hooks/permissions/useEditPermission';
 
 import EmptyContentLayout from '@@components/layouts/EmptyContentLayout';
 
@@ -20,6 +21,8 @@ function Page() {
 
   const dispatch = useDispatch();
 
+  const canEdit = useEditPermission();
+
   const handleAddLocation = () => {
     dispatch(
       showModal(LocationModalName, {
@@ -35,10 +38,12 @@ function Page() {
         <EmptyContentLayout
           title="Use locations to organize your devices better"
           description="Start by creating location. Once created, you can assign users and devices to a location"
-          button={{
-            text: 'New location',
-            onClick: handleAddLocation,
-          }}
+          {...(canEdit && {
+            button: {
+              text: 'New location',
+              onClick: handleAddLocation,
+            },
+          })}
         />
       )}
     </div>

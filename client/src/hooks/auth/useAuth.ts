@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { User, onAuthStateChanged } from 'firebase/auth';
 
 import { auth } from '@@services/auth/firebase';
@@ -11,12 +11,14 @@ import {
 } from '@@store/user/slice';
 import { useCreateUserMutation, useLazyGetCurrentUserQuery } from '@@api/user';
 
-import { ROUTES } from '@@constants/routes';
+import { PUBLIC_ROUTES, ROUTES } from '@@constants/routes';
 
 export const useAuth = () => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
+
+  const { pathname } = useLocation();
 
   const [createUser] = useCreateUserMutation();
   const [getCurrentUser] = useLazyGetCurrentUserQuery();
@@ -34,7 +36,10 @@ export const useAuth = () => {
       }
 
       dispatch(setIsAuthenticated(true));
-      navigate(ROUTES.TEMPLATES.INDEX);
+
+      if (PUBLIC_ROUTES.some((route) => pathname.includes(route))) {
+        navigate(ROUTES.TEMPLATES.INDEX);
+      }
     } else {
       dispatch(setIsAuthenticated(false));
     }

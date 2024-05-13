@@ -8,7 +8,7 @@ export const schema = yup.object().shape({
   [FIELD_NAME.TITLE]: yup
     .string()
     .trim()
-    .max(256, ERROR_MESSAGES.maxSymbols(256))
+    .max(50, ERROR_MESSAGES.maxSymbols(50))
     .required(ERROR_MESSAGES.required),
   [FIELD_NAME.DATASTREAM_ID]: yup
     .number()

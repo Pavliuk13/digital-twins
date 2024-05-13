@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 import styles from './Toggle.module.scss';
@@ -33,6 +33,10 @@ function Toggle(props: ToggleProps) {
     setIsChecked((prevIsChecked) => !prevIsChecked);
     onChange?.(!isChecked);
   };
+
+  useEffect(() => {
+    setIsChecked(value);
+  }, [value]);
 
   return (
     <label htmlFor={name} className={toggleClassName}>

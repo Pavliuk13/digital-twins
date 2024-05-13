@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 
 import { useDispatch } from '@@store/index';
 import { showModal } from '@@store/modals/slice';
+import { useEditPermission } from '@@hooks/permissions/useEditPermission';
 
 import { usePageContentContext } from '@@contexts/PageContentContext';
 
@@ -27,7 +28,11 @@ function TemplateSettings() {
 
   const { data, refetch } = usePageContentContext<Template>();
 
+  const { createdBy } = data;
+
   const dispatch = useDispatch();
+
+  const canEdit = useEditPermission(createdBy);
 
   const handleTemplateSettings = () => {
     dispatch(
@@ -61,14 +66,16 @@ function TemplateSettings() {
             </>
           )}
         </div>
-        <Image
-          image={SettingsSvg}
-          size={28}
-          fill="grey_200"
-          position="left_8"
-          cursor="pointer"
-          onClick={handleTemplateSettings}
-        />
+        {canEdit && (
+          <Image
+            image={SettingsSvg}
+            size={28}
+            fill="grey_200"
+            position="left_8"
+            cursor="pointer"
+            onClick={handleTemplateSettings}
+          />
+        )}
       </div>
       <div className={styles.divider} />
       <div className={styles.header}>

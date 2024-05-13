@@ -15,7 +15,7 @@ function Home() {
 
   const tabs = usePageTabs(templateId);
 
-  const { template, isLoading, refetch } = useTemplate();
+  const { template = {}, isLoading, refetch } = useTemplate();
 
   const pageContentContext = useMemo(() => {
     return {

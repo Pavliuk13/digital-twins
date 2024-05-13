@@ -56,8 +56,6 @@ function DeviceStatistics() {
     refetch,
   } = usePageContentContext<Data>();
 
-  console.log({ deviceStatistics });
-
   const handleRssiFilter = () => {
     setActiveFilter('rssi');
   };
@@ -108,7 +106,7 @@ function DeviceStatistics() {
                 </Button>
               </div>
               <ResponsiveContainer width="100%" height="100%" maxHeight={500}>
-                .
+                <span className={styles.dot}>.</span>
                 <LineChart width={500} height={350} data={deviceStatistics}>
                   <CartesianGrid />
                   <XAxis
