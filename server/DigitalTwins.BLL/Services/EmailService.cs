@@ -11,6 +11,7 @@ public class EmailService : IEmailService
 {
     private readonly string _senderEmail;
     private readonly string _senderName;
+    private readonly string _invitationUrl;
     private readonly ILogger<EmailService> _logger;
     private readonly TransactionalEmailsApi _api;
 
@@ -18,16 +19,19 @@ public class EmailService : IEmailService
     {
         _senderEmail = configuration["Sender:Email"];
         _senderName = configuration["Sender:Name"];
+        _invitationUrl = configuration["Sender:InvitationUrl"];
         _logger = logger;
         _api = new TransactionalEmailsApi();
     }
     
     public async Task SendInvitationAsync(string name, string email, string code)
     {
+        var urlWithCode = string.Format(_invitationUrl, code);
+        
         var body = $@"{name} Welcome!
         We're excited to see you on board.
         To get started, you'll need to create a password for your account.
-        Here is your invitation code: {code}";
+        Navigate by url to complete your registration: <a href=""{urlWithCode}"">{urlWithCode}</a>";
         
         var subject = "Welcome to SmartLabs";
 
