@@ -21,7 +21,7 @@ public class LocationController : ControllerBase
     }
     
     [HttpGet("list")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<TemplateDTO>))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<LocationDTO>))]
     public async Task<IActionResult> Get()
     {
         return Ok(await _mediator.Send(new GetLocationsListQuery()));

@@ -6,11 +6,11 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from 'recharts';
 import _minBy from 'lodash/minBy';
 import _maxBy from 'lodash/maxBy';
+import classNames from 'classnames';
 
 import Typography from '@@components/ui/Typography';
 import Card from '@@components/common/Card';
@@ -40,6 +40,9 @@ function CustomTooltip({ active, payload }) {
         <Typography variant="note">
           Heap usage: {data.payload.heapUsage}
         </Typography>
+        <Typography variant="note">
+          Task count: {data.payload.lightSwitchCount}
+        </Typography>
       </Card>
     );
   }
@@ -64,6 +67,10 @@ function DeviceStatistics() {
     setActiveFilter('heapUsage');
   };
 
+  const handleTaskCountFilter = () => {
+    setActiveFilter('lightSwitchCount');
+  };
+
   return (
     <div className={styles.wrapper}>
       <Card isScale={false}>
@@ -85,13 +92,14 @@ function DeviceStatistics() {
           {deviceStatistics.length ? (
             <>
               <div className={styles.filters}>
-                <Typography variant="note">
-                  Statistics by {activeFilter}
-                </Typography>
+                <Typography variant="note">Statistics by</Typography>
                 <Button
                   variant="outline"
                   color="grey_200"
                   size="small"
+                  className={classNames({
+                    [styles.filters__filter_active]: activeFilter === 'rssi',
+                  })}
                   onClick={handleRssiFilter}
                 >
                   Rssi
@@ -100,9 +108,25 @@ function DeviceStatistics() {
                   variant="outline"
                   color="grey_200"
                   size="small"
+                  className={classNames({
+                    [styles.filters__filter_active]:
+                      activeFilter === 'heapUsage',
+                  })}
                   onClick={handleHeapUsageFilter}
                 >
                   Heap usage
+                </Button>
+                <Button
+                  variant="outline"
+                  color="grey_200"
+                  size="small"
+                  className={classNames({
+                    [styles.filters__filter_active]:
+                      activeFilter === 'lightSwitchCount',
+                  })}
+                  onClick={handleTaskCountFilter}
+                >
+                  Task count
                 </Button>
               </div>
               <ResponsiveContainer width="100%" height="100%" maxHeight={500}>
@@ -123,7 +147,6 @@ function DeviceStatistics() {
                     className={styles.yAxis}
                   />
                   <Tooltip content={<CustomTooltip />} />
-                  <Legend />
                   <Line
                     type="monotone"
                     dataKey={activeFilter}

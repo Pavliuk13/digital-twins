@@ -121,7 +121,7 @@ function DeviceCard(props: DeviceCardProps) {
         </Typography>
       </div>
       <Typography variant="description">
-        created by {device.user.email}
+        created by {device.user.name} ({device.user.email})
       </Typography>
     </Card>
   );

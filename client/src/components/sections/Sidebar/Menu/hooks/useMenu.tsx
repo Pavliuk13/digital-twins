@@ -61,6 +61,7 @@ export const useMenu = () => {
           onClick: async () => {
             dispatch(api.util.resetApiState());
             await doSignOut();
+            window.location.reload();
           },
         },
       ],
