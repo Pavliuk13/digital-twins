@@ -37,7 +37,13 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 24px;
+
+  &__filter {
+    &_active {
+      border-color: $grey_900;
+      background-color: $grey_900;
+    }
+  }
 }
 
 .dot {

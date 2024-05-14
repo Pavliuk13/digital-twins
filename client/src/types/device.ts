@@ -35,6 +35,7 @@ export interface DeviceStatLog {
   uptime: number;
   heapUsage: number;
   rssi: number;
+  lightSwitchCount: number;
   deviceId: Device['id'];
 }
 
