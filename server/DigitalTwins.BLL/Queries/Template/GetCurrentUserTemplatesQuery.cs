@@ -27,12 +27,12 @@ public class GetCurrentUserTemplatesQueryHandler : IRequestHandler<GetCurrentUse
     
     public async Task<List<TemplateDTO>> Handle(GetCurrentUserTemplatesQuery request, CancellationToken cancellationToken)
     {
-        var user = await _currentUserService.GetCurrentUser();
+        var organizationId = await _currentUserService.GetCurrentOrganizationId();
         
         var templates = await _context.Templates.AsNoTracking()
                 .Include(x => x.Datastreams)
                 .Include(x => x.Devices)
-            .Where(x => x.CreatedBy == user.Id)
+            .Where(x => x.OrganizationId == organizationId)
             .ToListAsync(cancellationToken);
         
         return _mapper.Map<List<TemplateDTO>>(templates);
