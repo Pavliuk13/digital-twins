@@ -1,7 +1,6 @@
 using DigitalTwins.BLL.Commands.Location;
 using DigitalTwins.BLL.Queries.Location;
 using DigitalTwins.Common.DTOs.Location;
-using DigitalTwins.Common.DTOs.Template;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

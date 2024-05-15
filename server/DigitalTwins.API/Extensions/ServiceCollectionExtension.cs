@@ -43,7 +43,6 @@ public static class ServiceCollectionExtension
         services.Configure<SenderOptions>(configuration.GetSection(SenderOptions.SectionName));
         
         services.AddHostedService<MqttSubscriber>();
-        services.AddSingleton<IMqttSubscriber, MqttSubscriber>();
         services.AddTransient<IMqttPublisher, MqttPublisher>();
         services.AddTransient<IDeviceService, DeviceService>();
         services.AddTransient<ICurrentUserService, CurrentUserService>();

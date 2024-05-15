@@ -57,7 +57,12 @@ public class MqttPublisher : IMqttPublisher
             .Build();
 
         await _mqttClient.PublishAsync(mqttMessage);
-        
+
+        await SaveWidgetState(requestDto);
+    }
+
+    private async Task SaveWidgetState(MqttRequestDTO requestDto)
+    {
         var widgetDevice = await _context.WidgetDevices
             .FirstOrDefaultAsync(x => x.WidgetId == requestDto.WidgetId && x.DeviceId == requestDto.DeviceId);
 
